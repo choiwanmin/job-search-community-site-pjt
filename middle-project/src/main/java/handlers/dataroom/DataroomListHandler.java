@@ -25,6 +25,8 @@ public class DataroomListHandler implements Handler {
 			list = service.getAll();
 		}else if(viewtype==2) {
 			list = service.getByCnt();
+		}else if(viewtype==3) {
+			list = service.getByFcnt();
 		}
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("list", list);

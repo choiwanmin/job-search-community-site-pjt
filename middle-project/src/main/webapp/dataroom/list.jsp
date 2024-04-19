@@ -52,7 +52,7 @@ const b=(viewtype)=>{
 
 <table border="1" class = "table table-striped table-hover">
 <thead>
-<tr class="thead-dark"><th>num</th><th>title</th><th>writer</th><th>wdate</th><th>조회수</th></tr>
+<tr class="thead-dark"><th>num</th><th>title</th><th>writer</th><th>wdate</th><th>조회수</th><th>좋아요</th></tr>
 </thead>
 <c:forEach var="d" items="${list }">
 <tr>
@@ -61,6 +61,7 @@ const b=(viewtype)=>{
 	<td>${d.writer }</td>
 	<td>${d.wdate }</td>
 	<td>${d.cnt }</td>
+	<td>${d.fcnt }</td>
 </tr>
 </c:forEach>
 </table>

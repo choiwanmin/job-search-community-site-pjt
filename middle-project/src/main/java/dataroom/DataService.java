@@ -39,10 +39,14 @@ public class DataService {
 		public ArrayList<Data> getByCnt() {
 			return dao.selectByCnt();
 		}
+		public ArrayList<Data> getByFcnt() {
+			return dao.selectByFcnt();
+		}
 	// 회원목록
 	public ArrayList<Data> getByType(int type) {
 		return dao.selectByType(type);
 	}
+	
 	public void editCnt(int num) {
 		dao.updateCnt(num);
 	}
