@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="Recruit-project4">
+        <wb-resource deploy-path="/" source-path="/src/main/webapp" tag="defaultRootSource"/>
+        <wb-resource deploy-path="/WEB-INF/classes" source-path="/middle-project/src/main/java"/>
+        <property name="context-root" value="Recruit-project4"/>
+        <property name="java-output-path" value="/Recruit-project4/bin"/>
+    </wb-module>
+</project-modules>

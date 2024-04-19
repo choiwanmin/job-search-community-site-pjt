@@ -40,7 +40,7 @@ public class DataroomAddHandler implements Handler {
 			}
 			DataService dservice = new DataService();
 			dservice.addData(new Data(0,writer,null,title,content,fname,0,type));
-			view = "redirect:/dataroom/list.do";
+			view = "redirect:/dataroom/list.do?viewtype=1";
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
