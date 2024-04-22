@@ -19,12 +19,13 @@ public class RecruitApplyDao {
 	//insert
 	public void insert(RecruitApply r) {
 		Connection conn = db.conn();
-		String sql = "insert into recruit_apply values(?,?,?,sysdate)";
+		String sql = "insert into recruit_apply values(?,?,?,sysdate,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, r.getWanted_auth_no());
 			pstmt.setString(2, r.getWanted_title());
 			pstmt.setString(3, r.getApplycant_num());
+			pstmt.setString(4, r.getBusi_no());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
 			e.printStackTrace();

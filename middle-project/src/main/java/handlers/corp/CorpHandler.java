@@ -14,7 +14,8 @@ public class CorpHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		//get=처음에 회사 정보 등록 페이지로 이동
 		String view = "/index.jsp";
-
+		String msg = "";
+		
 		//post=처음 회사 정보 등록(db에 추가)
 		if(request.getMethod().equals("POST")) {
 			String corpid = (String)request.getSession().getAttribute("loginId");
