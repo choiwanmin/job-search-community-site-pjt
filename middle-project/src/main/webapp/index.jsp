@@ -39,7 +39,7 @@
 <a href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">자료실 목록</a><br/>
 <c:if test = "${not empty sessionScope.loginId }">
 <a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a><br/>
-<a href="${pageContext.request.contextPath }/person/personadd.do">추가정보 입력</a>
+<a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>
 </c:if>
 </c:if>
 

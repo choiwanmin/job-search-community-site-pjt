@@ -2,12 +2,9 @@ package appform;
 
 import java.util.ArrayList;
 
-import person.Person;
-import person.PersonDao;
-
 public class AppFormService {
 private AppFormDao dao;
-	
+public static String path=	"C:\\app\\";
 	
 	public AppFormService() {
 		

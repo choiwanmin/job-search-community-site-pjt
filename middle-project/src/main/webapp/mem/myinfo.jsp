@@ -19,7 +19,7 @@ window.onload = () => {
 <body>
 <h3>내 정보 확인</h3>
 <c:if test="${sessionScope.loginType == '구직자' }">
-<form action="${pageContext.request.contextPath }/mem/myinfo.do" method="post">
+<form action="${pageContext.request.contextPath }/mem/editmyinfo.do">
 <table border="1">
 <tr><th>ID</th><td><input type="text" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input type="text" name="pwd" value="${m.pwd }" ></td></tr>
@@ -32,7 +32,10 @@ window.onload = () => {
 <tr><th>나이</th><td><input type="text" name="age" value="${p.age }" ></td></tr>
 <tr><th>관심분야</th><td><input type="text" name="jobCd" value="${p.jobNm }" ></td></tr>
 <tr><th>TYPE</th><td id="type"></td></tr>
-<tr><th>수정</th><td><input type="submit" value="수정"></td></tr>
+<tr>
+<th>수정</th><td><input type="submit" value="수정"><c:if test="${empty sessionScope.person }">
+<a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></c:if></td>
+</tr>
 </table>
 </form>
 </c:if>
