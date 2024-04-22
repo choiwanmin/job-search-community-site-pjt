@@ -3,8 +3,6 @@ package handlers.recruitapply;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import corp.corp.Corp;
-import corp.corp.CorpService;
 import handlers.Handler;
 import recruit.recruitlist.RecruitListService;
 
@@ -32,7 +30,7 @@ public class applyHandler implements Handler {
 				String busi_no=request.getParameter("busi_no");
 					
 					
-				CorpService service = new CorpService();
+				//CorpService service = new CorpService();
 				//service.addCorp(new Corp(0,corpid,corp_nm,corp_addr,busi_no));
 				
 				view = "/index.jsp";

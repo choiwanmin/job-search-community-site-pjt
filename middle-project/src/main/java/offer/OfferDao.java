@@ -73,6 +73,26 @@ public class OfferDao {
 		}
 		return list;
 	}
+	//회사 제안 전체 리스트
+	public ArrayList<Offer> offerByCorp(int corp_id) {
+		Connection conn = db.conn();
+		String sql = "select * from offer where corp_id=? order by num";
+		ArrayList<Offer> list = new ArrayList<Offer>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, corp_id);
+			ResultSet rs = pstmt.executeQuery();
+			//ResultSet 읽을 줄로 이동
+			while(rs.next()) {
+				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getInt(6)));
+			}
+		} catch (SQLException e) {e.printStackTrace();} 
+		finally {
+			try {conn.close();} 
+			catch (SQLException e) {e.printStackTrace();}
+		}
+		return list;
+	}
 	//wantedSelect(회사가 제안한 공고 제안 리스트-공고별)
 	public ArrayList<Offer> wantedByUser(String wanted_auth_no) {
 		Connection conn = db.conn();
