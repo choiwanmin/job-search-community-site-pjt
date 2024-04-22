@@ -32,10 +32,10 @@ public class DataroomListHandler implements Handler {
 		ArrayList<ArrayList<Data>> paging=null;
 		if(viewtype==1) {
 			list = service.getAll();
-			paging=page.paging(list, 5);
+			paging=page.paging(list, 2);
 		}else if(viewtype==2) {
 			list = service.getByCnt();
-			paging=page.paging(list, 5);
+			paging=page.paging(list, 2);
 		}
 		request.setAttribute("type", viewtype);
 		request.setAttribute("viewtype", viewtype);
