@@ -1,7 +1,6 @@
 package recruit.recruitdetail;
 
 import java.sql.Date;
-import java.util.ArrayList;
 
 // 공고상세
 public class RecruitDetail {
