@@ -13,25 +13,7 @@ public class RecruitDetailDao {
 	public RecruitDetailDao() {
 		db = DBConnect.getInstance();
 	}
-	
-	//
-	//
-	public int insertSeq() {
-		Connection conn = db.conn();
-		String sql = "select seq_recruit_detail.currval from dual";
-		int num = 0;
-		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql);
-			ResultSet rs = pstmt.executeQuery();
-			if (rs.next()) {
-				num = rs.getInt(1);
-			}
-		} catch (SQLException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
-		return num;
-	}
+
 	//
 	//
 	public void insertApi(RecruitDetail rd) {
@@ -66,6 +48,7 @@ public class RecruitDetailDao {
 			}
 		}
 	}
+
 	//
 	//
 	public void insertNew(RecruitDetail rd, int num) {
