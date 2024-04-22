@@ -64,7 +64,7 @@
               </div>
           </div>
     </nav>
-<h3>RECRUIT</h3>
+<h3>RECRUITㅇㅇ</h3>
 
 
 <td style = "width:150px; height:400px">
