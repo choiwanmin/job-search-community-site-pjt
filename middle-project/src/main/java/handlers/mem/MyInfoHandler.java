@@ -32,6 +32,9 @@ public class MyInfoHandler implements Handler {
 			request.setAttribute("m", m);
 			request.setAttribute("p", p);
 			request.setAttribute("view", "/mem/myinfo.jsp");
+			if(p!=null) {
+				session.setAttribute("person", p);
+			}
 		}else {//post 요청 .수정
 			String id = request.getParameter("id");
 			String pwd = request.getParameter("pwd");

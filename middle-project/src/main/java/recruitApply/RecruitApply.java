@@ -5,13 +5,11 @@ import java.sql.Date;
 public class RecruitApply {
 	private String wanted_auth_no;//공고 번호-공고 번호(wanted_auth_no)
 	private String wanted_title;//공고 제목
-	private String applycant_num;//지원자-person(num)
+	private String applycant_num;//지원자-person(id)
 	private Date appldate;//지원일
 	private String busi_no;//사업자 번호
 	
-	
 	public RecruitApply() {}
-	
 	
 	public RecruitApply(String wanted_auth_no, String wanted_title, String applycant_num, Date appldate, String busi_no) {
 		super();

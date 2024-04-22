@@ -30,11 +30,13 @@ public class PersonAddHandler implements Handler {
 				String age = request.getParameter("age");// "1"
 				
 				String[] jobCd =request.getParameterValues("jobCd");// "1"
-				for(int i =0; i<jobCd.length; i++) {
-						String []a=jobCd[i].split(",");
-					   jcd+=a[0]+" , ";
-					  jNm+=a[1]+" , ";
-				}
+				if(jobCd!=null) {
+					for(int i =0; i<jobCd.length; i++) {
+							String []a=jobCd[i].split(",");
+						   jcd+=a[0]+" , ";
+						  jNm+=a[1]+" , ";
+					}
+					}
 				service.addPerson(new Person(0,userid,usertel,email,education,career,skill,gender,age,jcd,jNm));
 			}else {
 				System.out.println("이미 정보를 등록하셧습니다, 내정보보기에서 정보를 수정해주세요");
