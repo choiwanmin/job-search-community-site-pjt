@@ -1,0 +1,53 @@
+body{
+    font-family: "Noto Sans KR", sans-serif;
+    font-weight: 500;
+    background-color: #f3f3f4;
+}
+.w1200{
+    max-width: 1200px;
+    margin: auto;
+}
+.w800{
+    max-width: 800px;
+    margin: auto;
+}
+.text-center{
+    text-align: center;
+}
+/* header */
+nav {
+    box-shadow: 2px 2px 10px 0px rgba(0, 0, 0, 0.1);
+    z-index: 0;
+    background-color: #ffffff;
+    border-bottom: 1px solid #e8e8e8;
+}
+.navbar{
+    position: fixed;
+    width: 100%;
+}
+.container-fluid{
+    padding: 0;
+    max-width: 1200px;
+}
+.flex-column{
+	position: absolute;
+    width: 150px;
+    top: 56px;
+    box-shadow: 0 0 0 0;
+    text-align:center;
+}
+.log-nav{
+	color: #646464;
+}
+.log-nav:hover {
+	 background-color: #ecf0f0;
+}
+#navUser{
+    justify-content: flex-end;
+}
+#log-info:hover #show{display:block;}
+.show{
+	display:none;
+}
+
+
