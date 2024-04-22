@@ -13,10 +13,28 @@ public class RecruitDetailDao {
 	public RecruitDetailDao() {
 		db = DBConnect.getInstance();
 	}
-
+	
 	//
 	//
-	public void insert(RecruitDetail rd) {
+	public int insertSeq() {
+		Connection conn = db.conn();
+		String sql = "select seq_recruit_detail.currval from dual";
+		int num = 0;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return num;
+	}
+	//
+	//
+	public void insertApi(RecruitDetail rd) {
 		Connection conn = db.conn();
 		String sql = "insert into recruit_detail values(seq_recruit_detail.nextval,?,?,?,?,?,?,?,?,?,?,?)";
 
@@ -33,6 +51,42 @@ public class RecruitDetailDao {
 			pstmt.setString(9, rd.getDetailAddr());
 			pstmt.setString(10, rd.getContactTelNo());
 			pstmt.setInt(11, rd.getType());
+
+			int cnt = pstmt.executeUpdate();
+			System.out.println(cnt + "줄 공고상세추가");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+	//
+	//
+	public void insertNew(RecruitDetail rd, int num) {
+		Connection conn = db.conn();
+		String sql = "insert into recruit_detail values(?,concat('C',?),?,?,?,?,?,sysdate,?,?,?,?,?)";
+
+		try {
+			// smodifyDtm(공고최종수정일) db에 sysdate로 현재 날짜로 입력
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			pstmt.setInt(2, num);
+			pstmt.setInt(3, rd.getMinSal());
+			pstmt.setInt(4, rd.getMaxSal());
+			pstmt.setString(5, rd.getRelJobNm());
+			pstmt.setString(6, rd.getSrchKeyWordNm());
+			pstmt.setString(7, rd.getJobCont());
+			pstmt.setString(8, rd.getBasicAddr());
+			pstmt.setString(9, rd.getDetailAddr());
+			pstmt.setString(10, rd.getContactTelNo());
+			pstmt.setInt(11, rd.getType());
+			pstmt.setInt(12, rd.getRecruitCheck());
 
 			int cnt = pstmt.executeUpdate();
 			System.out.println(cnt + "줄 공고상세추가");

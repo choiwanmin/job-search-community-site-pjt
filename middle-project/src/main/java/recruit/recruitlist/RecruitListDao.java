@@ -14,12 +14,45 @@ public class RecruitListDao {
 	public RecruitListDao() {
 		db = DBConnect.getInstance();
 	}
-
+	
 	//
 	//
-	public void insert(RecruitList rl) {
+	public int[] insertSeq() {
 		Connection conn = db.conn();
-		String sql = "insert into recruit_list values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql1 = "select seq_recruit_detail.nextval from dual";
+		String sql2 = "select seq_recruit_detail.currval from dual";
+		int[] arr = new int[2];
+		
+		int num1 = 0;
+		int num2 = 0;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql1);
+			ResultSet rs1 = pstmt.executeQuery();
+			if (rs1.next()) {
+				num1 = rs1.getInt(1);
+				arr[0] = num1;
+			}
+			
+			pstmt = conn.prepareStatement(sql2);
+			ResultSet rs2 = pstmt.executeQuery();
+			if (rs2.next()) {
+				num2 = rs2.getInt(1);
+				arr[1] = num2;
+			}
+			
+			
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return arr;
+	}
+	
+	//
+	//
+	public void insertApi(RecruitList rl) {
+		Connection conn = db.conn();
+		String sql = "insert into recruit_list values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,0)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -38,7 +71,45 @@ public class RecruitListDao {
 			pstmt.setDate(13, rl.getCloseDt());
 			pstmt.setInt(14, rl.getSaveStatus());
 			pstmt.setString(15, rl.getHomePg());
-			pstmt.setBoolean(16, rl.isType());
+
+			int cnt = pstmt.executeUpdate();
+			System.out.println(cnt + "줄 공고목록추가");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+	}
+
+	//
+	//
+	public void insertNew(RecruitList rl, int num) {
+		Connection conn = db.conn();
+		String sql = "insert into recruit_list values(?,concat('C',?),?,?,?,?,?,?,?,?,?,?,?,?,?,1)";
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, rl.getBusiNo());
+			pstmt.setInt(2, num);
+			pstmt.setString(3, rl.getWantedTitle());
+			pstmt.setString(4, rl.getSalTpCd());
+			pstmt.setString(5, rl.getSal());
+			pstmt.setString(6, rl.getMinEdubgIcd());
+			pstmt.setString(7, rl.getEnterTpCd());
+			pstmt.setString(8, rl.getWorkRegion());
+			pstmt.setInt(9, rl.getRegionCd());
+			pstmt.setString(10, rl.getJobsNm());
+			pstmt.setInt(11, rl.getJobsCd());
+			pstmt.setDate(12, rl.getRegDt());
+			pstmt.setDate(13, rl.getCloseDt());
+			pstmt.setInt(14, rl.getSaveStatus());
+			pstmt.setString(15, rl.getHomePg());
 
 			int cnt = pstmt.executeUpdate();
 			System.out.println(cnt + "줄 공고목록추가");
@@ -158,16 +229,79 @@ public class RecruitListDao {
 		}
 		return null;
 	}
+	
+	//
+	// 사업자등록번호와 공고번호로 찾아서 공고목록 반환
+	public RecruitList selectByWantedAuthNo(String wantedAuthNo) {
+		Connection conn = db.conn();
+		String sql = "select * from recruit_list where wanted_auth_no=?";
+
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, wantedAuthNo);
+
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				return new RecruitList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+						rs.getString(10), rs.getInt(11), rs.getDate(12), rs.getDate(13), rs.getInt(14),
+						rs.getString(15), rs.getBoolean(16));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return null;
+	}
 
 	//
-	// 사업자등록번호로 찾아서 전체 공고목록 반환
+	// 사업자등록번호로 찾아서 공고목록 반환
 	public ArrayList<RecruitList> selectByBusiNo(String busiNo) {
 		Connection conn = db.conn();
-		String sql = "select * from recruit_list where busi_no=? order by reg_dt";
+		String sql = "select * from recruit_list where busi_no=?";
 		ArrayList<RecruitList> list = new ArrayList<RecruitList>();
+
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, busiNo);
+
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				list.add(new RecruitList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+						rs.getString(10), rs.getInt(11), rs.getDate(12), rs.getDate(13), rs.getInt(14),
+						rs.getString(15), rs.getBoolean(16)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
+	//
+	// 저장상태로 찾아서 전체 공고목록 반환
+	public ArrayList<RecruitList> selectAll(int saveStatus) {
+		Connection conn = db.conn();
+		String sql = "select * from recruit_list where save_status=? order by reg_dt";
+		ArrayList<RecruitList> list = new ArrayList<RecruitList>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, saveStatus);
 
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
