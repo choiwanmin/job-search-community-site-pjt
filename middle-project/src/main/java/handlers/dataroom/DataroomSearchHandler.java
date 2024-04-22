@@ -2,7 +2,6 @@ package handlers.dataroom;
 
 import java.util.ArrayList;
 
-import javax.servlet.RequestDispatcher;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -10,7 +9,7 @@ import dataroom.Data;
 import dataroom.DataService;
 import handlers.Handler;
 
-public class DataroomListHandler implements Handler {
+public class DataroomSearchHandler implements Handler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
@@ -19,16 +18,15 @@ public class DataroomListHandler implements Handler {
 		DataService service = new DataService();
 		ArrayList<Data> list = null;
 		
+		int searchtype = Integer.parseInt(request.getParameter("searchtype"));
+		String search = request.getParameter("search");
 		int viewtype = Integer.parseInt(request.getParameter("viewtype"));
-		if(viewtype==1) {
-			list = service.getAll();
-		}else if(viewtype==2) {
-			list = service.getByCnt();
-		}else if(viewtype==3) {
-			list = service.getByFcnt();
-		}else if(viewtype==4) {
-			list = service.getByMyFavo(request.getParameter("id"));
-		}
+		
+		list = service.getBySearchType(search, searchtype, viewtype);
+		
+		
+		request.setAttribute("search", search);
+		request.setAttribute("searchtype", searchtype);
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("list", list);
 		request.setAttribute("view", "/dataroom/list.jsp");

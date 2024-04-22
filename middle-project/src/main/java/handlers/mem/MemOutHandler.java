@@ -13,9 +13,10 @@ public class MemOutHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		MemService service = new MemService();
-		System.out.println(request.getParameter("id"));
-		service.delMem(request.getParameter("id"));
-		HttpSession session = request.getSession(false);
+
+		HttpSession session = request.getSession();// 현재 사용중인 세션을 반환.
+		service.delMem((String) session.getAttribute("loginId"));
+		session = request.getSession(false);
 		session.invalidate();
 		return "/index.jsp";
 	}

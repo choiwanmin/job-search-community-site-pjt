@@ -39,7 +39,7 @@ public class DataroomAddHandler implements Handler {
 				fname = f.getName();//업로드된 파일명
 			}
 			DataService dservice = new DataService();
-			dservice.addData(new Data(0,writer,null,title,content,fname,0,0,type));
+			dservice.addData(new Data(0,writer,null,title,content,fname,0,type,0));
 			view = "redirect:/dataroom/list.do?viewtype=1";
 		} catch (IOException e) {
 			// TODO Auto-generated catch block
