@@ -19,7 +19,7 @@ public class DataDao {
 	public void insert(Data d) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "insert into dataroom values(seq_dataroom.nextval,?,sysdate,?,?,?,0,?)";
+		String sql = "insert into dataroom values(seq_dataroom.nextval,?,sysdate,?,?,?,0,?,0)";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -94,7 +94,29 @@ public class DataDao {
 		}
 		return cnt;
 	}
-	
+	public int updateFcnt(int fcnt, int num) {// id로 찾아서 pwd수정
+		Connection conn = db.conn();
+		String sql = "update dataroom set fcnt=? where num=?";
+		int cnt = 0;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, fcnt);
+			pstmt.setInt(2, num);
+			cnt = pstmt.executeUpdate();//처리된 줄 수 반환
+			System.out.println(cnt + "번 글의 fcnt 변경");
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return cnt;
+	}
 	public int delete(int num) {
 		Connection conn = db.conn();
 		String sql = "delete from dataroom where num=?";
@@ -132,7 +154,7 @@ public class DataDao {
 			//rs.next(): 읽을 다음 줄로 이동. 읽을 것이 있으면 true, 없으면 false반환
 			if (rs.next()) {
 				return new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
-						rs.getString(6),rs.getInt(7),rs.getInt(8));
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -168,7 +190,7 @@ public class DataDao {
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {
 				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
-						rs.getString(6),rs.getInt(7),rs.getInt(8)));
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -203,7 +225,331 @@ public class DataDao {
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {
 				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
-						rs.getString(6),rs.getInt(7),rs.getInt(8)));
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByTitle(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where title like ? order by wdate desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByTitleByCnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where title like ? order by cnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByTitleByFcnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where title like ? order by fcnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByContent(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where content like ? order by wdate desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByContentByCnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where content like ? order by cnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByContentByFcnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where content like ? order by fcnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByWriter(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where writer like ? order by wdate desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByWriterByCnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where writer like ? order by cnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByWriterByFcnt(String search){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where writer like ? order by fcnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, "%"+search+"%");
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -238,7 +584,7 @@ public class DataDao {
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {
 				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
-						rs.getString(6),rs.getInt(7),rs.getInt(8)));
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -275,7 +621,115 @@ public class DataDao {
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {
 				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
-						rs.getString(6),rs.getInt(7),rs.getInt(8)));
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByMyFavo(String id){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where num in (select datanum from favodata where id =?) order by num desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByTypeCnt(int type){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where type = ? order by cnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, type);
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByTypeFcnt(int type){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where type = ? order by fcnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, type);
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block

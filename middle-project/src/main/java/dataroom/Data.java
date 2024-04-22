@@ -25,7 +25,7 @@ public class Data {
 		return "Data [num=" + num + ", writer=" + writer + ", wdate=" + wdate + ", title=" + title + ", content="
 				+ content + ", fname=" + fname + ", cnt=" + cnt + ", fcnt=" + fcnt + "]";
 	}
-	public Data(int num, String writer, Date wdate, String title, String content, String fname, int cnt,int type) {
+	public Data(int num, String writer, Date wdate, String title, String content, String fname, int cnt, int type,int fcnt) {
 		super();
 		this.num = num;
 		this.writer = writer;
@@ -34,6 +34,7 @@ public class Data {
 		this.content = content;
 		this.fname = fname;
 		this.cnt = cnt;
+		this.fcnt = fcnt;
 		this.type = type;
 	}
 	public String getFname() {
