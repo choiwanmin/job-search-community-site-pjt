@@ -14,40 +14,27 @@ public class RecruitListDao {
 	public RecruitListDao() {
 		db = DBConnect.getInstance();
 	}
-	
+
 	//
 	//
-	public int[] insertSeq() {
+	public int insertSeq() {
 		Connection conn = db.conn();
-		String sql1 = "select seq_recruit_detail.nextval from dual";
-		String sql2 = "select seq_recruit_detail.currval from dual";
-		int[] arr = new int[2];
-		
-		int num1 = 0;
-		int num2 = 0;
+		String sql = "select seq_recruit_detail.nextval from dual";
+		int num = 0;
 		try {
-			PreparedStatement pstmt = conn.prepareStatement(sql1);
-			ResultSet rs1 = pstmt.executeQuery();
-			if (rs1.next()) {
-				num1 = rs1.getInt(1);
-				arr[0] = num1;
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			ResultSet rs = pstmt.executeQuery();
+			if (rs.next()) {
+				num = rs.getInt(1);
 			}
-			
-			pstmt = conn.prepareStatement(sql2);
-			ResultSet rs2 = pstmt.executeQuery();
-			if (rs2.next()) {
-				num2 = rs2.getInt(1);
-				arr[1] = num2;
-			}
-			
-			
+
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return arr;
+		return num;
 	}
-	
+
 	//
 	//
 	public void insertApi(RecruitList rl) {
@@ -229,7 +216,7 @@ public class RecruitListDao {
 		}
 		return null;
 	}
-	
+
 	//
 	// 사업자등록번호와 공고번호로 찾아서 공고목록 반환
 	public RecruitList selectByWantedAuthNo(String wantedAuthNo) {
