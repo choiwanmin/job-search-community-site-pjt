@@ -22,16 +22,15 @@ public class AppFormDao {
 	public void insert(AppForm f) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "insert into appform values(?,?,?,?,?)";
+		String sql = "insert into appform values(seq_appform.nextval,?,?,?,?,0)";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			// pstmt.set..(?순서, 값): ? 들어갈 값 설정
-			pstmt.setInt(1, f.getNum());
-			pstmt.setInt(2, f.getUserid());
-			pstmt.setString(3, f.getCoverletter());
-			pstmt.setString(4, f.getPofol());
-			pstmt.setString(5, f.getPicture());
+			pstmt.setInt(1, f.getUserid());
+			pstmt.setString(2, f.getCoverletter());
+			pstmt.setString(3, f.getPofol());
+			pstmt.setString(4, f.getPicture());
 			// sql 실행
 			int cnt = pstmt.executeUpdate();// insert, update, delete문장 실행.
 			// pstmt.executeQuery()//select문 실행 => ResultSet 반환
