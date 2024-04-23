@@ -30,11 +30,27 @@ const e =(viewtype)=>{
 <body>
 <div class = "container my-3">
 <h3>자료실</h3>
+<c:if test="${empty searchtype or searchtype==1 }">
 <select id="searchtype">
 <option value="1" selected>제목으로검색</option>
 <option value="2">내용으로검색</option>
 <option value="3">작성자로검색</option>
-</select><input type="text" id="search"><input type="button" value="검색" onclick="d()"><br/>
+</select>
+</c:if>
+<c:if test="${searchtype==2 }">
+<select id="searchtype">
+<option value="1" >제목으로검색</option>
+<option value="2"selected>내용으로검색</option>
+<option value="3">작성자로검색</option>
+</select>
+</c:if>
+<c:if test="${searchtype==3 }">
+<select id="searchtype">
+<option value="1" >제목으로검색</option>
+<option value="2">내용으로검색</option>
+<option value="3"selected>작성자로검색</option>
+</select>
+</c:if><input type="text" id="search"><input type="button" value="검색" onclick="d()"><br/>
 <input type="button" value="전체" onclick = "b(1)">
 <input type="button" value="신입" onclick = "a(1)">
 <input type="button" value="취준" onclick = "a(2)">
@@ -145,10 +161,6 @@ const e =(viewtype)=>{
 </table>
 </form>
 </c:if>
-<<<<<<< HEAD
-=======
-
->>>>>>> refs/heads/jaehyung
 <!-- 타입으로검색 -->
 <c:if test="${not empty type }">
 <form action="${pageContext.request.contextPath }/dataroom/type.do" method="post">
