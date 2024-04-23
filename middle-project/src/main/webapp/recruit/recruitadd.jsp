@@ -19,10 +19,10 @@
 
 const save = () => {
 	let f = document.querySelector("form");
-	f.saveStatus.value = '1';
     if(f.requestSubmit) {
         f.requestSubmit();
     } else {
+		f.saveStatus.value = '1';
 		f.submit();
     }
 }

@@ -6,6 +6,11 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+const add = () => {
+	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
+}
+</script>
 </head>
 <body>
 <c:if test = "${sessionScope.loginType.equals('기업')}">
@@ -39,5 +44,6 @@
 </tr>
 </c:forEach>
 </table>
+<input type="button" value="공고 등록" onclick="add()">
 </body>
 </html>
