@@ -15,6 +15,7 @@ public class CommentAddHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
+		
 		if (request.getMethod().equals("POST")) {
 			HttpSession session = request.getSession();
 			int data_num = Integer.parseInt(request.getParameter("num"));
@@ -22,9 +23,19 @@ public class CommentAddHandler implements Handler {
 			String content = request.getParameter("comment");
 			
 			CommentService service = new CommentService();
-			service.addComment(new Comment(id,content,data_num));
+			service.addComment(new Comment(id,content,data_num,0));
 			view="redirect:/dataroom/detail.do?num="+data_num+"&id="+id;
 			
+		}
+		else {
+			HttpSession session = request.getSession();
+			int data_num = Integer.parseInt(request.getParameter("data_num"));
+			int ref_num = Integer.parseInt(request.getParameter("ref_num"));
+			String id = (String) session.getAttribute("loginId");
+			String content = request.getParameter("comment");
+			CommentService service = new CommentService();
+			service.addComment(new Comment(id,content,data_num,ref_num));
+			view="redirect:/dataroom/detail.do?num="+data_num+"&id="+id;
 		}
 		return view;
 	}
