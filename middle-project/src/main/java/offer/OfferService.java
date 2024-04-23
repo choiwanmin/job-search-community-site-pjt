@@ -23,6 +23,7 @@ public class OfferService {
 	public ArrayList<Offer> getOfferList(int userid) {
 		return dao.selectByUser(userid);
 	}
+	//기업이 제안한 offerList 반환
 	public ArrayList<Offer> getOfferCorp(int corp_id){
 		return dao.offerByCorp(corp_id);
 	}

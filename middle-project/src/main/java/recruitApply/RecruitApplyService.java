@@ -13,7 +13,7 @@ public class RecruitApplyService {
 		dao.insert(r);
 	}
 	//개인 회원이 지원한 리스트
-	public ArrayList<RecruitApply> getUserList(int applycant_num){
+	public ArrayList<RecruitApply> getUserList(String applycant_num){
 		return dao.selectByUser(applycant_num);
 	}
 	//지원 VO 1개 반환(지원자 번호와 공고 번호)

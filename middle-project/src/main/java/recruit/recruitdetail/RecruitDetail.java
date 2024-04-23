@@ -15,7 +15,7 @@ public class RecruitDetail {
 	private String basicAddr; // 공고-근무지 기본주소
 	private String detailAddr; // 공고-근무지 상세주소
 	private String contactTelNo; // 공고-공고 담당 전화번호
-	private int recruitCheck;
+	private int recruitCheck; // 공고조회수
 	private int type; // 공고상태(ex.진행, 마감, 삭제)
 
 	public RecruitDetail() {

@@ -4,6 +4,7 @@ import java.util.ArrayList;
 
 public class RecruitListService {
 	private RecruitListDao dao;
+	public static int num;
 
 	public RecruitListService() {
 		dao = new RecruitListDao();
@@ -12,13 +13,14 @@ public class RecruitListService {
 	public void addApiRecruitList(RecruitList rl) {
 		dao.insertApi(rl);
 	}
-	
-	public int[] addSeq() {
-		return dao.insertSeq();
+
+	public int addSeq() {
+		num = dao.insertSeq();
+		return num;
 	}
-	
+
 	public void addNewRecruitList(RecruitList rl) {
-		dao.insertNew(rl, addSeq()[0]);
+		dao.insertNew(rl, addSeq());
 	}
 
 	public void editRecruitList(RecruitList rl) {
@@ -32,7 +34,7 @@ public class RecruitListService {
 	public RecruitList getByWantedAuthNo(String busiNo, String wantedAuthNo) {
 		return dao.selectByWantedAuthNo(busiNo, wantedAuthNo);
 	}
-	
+
 	public RecruitList getByWantedAuthNo(String wantedAuthNo) {
 		return dao.selectByWantedAuthNo(wantedAuthNo);
 	}
