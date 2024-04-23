@@ -675,6 +675,7 @@ public class DataDao {
 		//db 연결
 		Connection conn = db.conn();
 
+
 		//sql문 작성
 		String sql = "select * from dataroom where num in (select datanum from favodata where id =?) order by cnt desc";
 
@@ -724,6 +725,7 @@ public class DataDao {
 
 			//sql 실행
 			ResultSet rs = pstmt.executeQuery();
+
 
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {

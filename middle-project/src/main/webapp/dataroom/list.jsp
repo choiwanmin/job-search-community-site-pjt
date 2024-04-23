@@ -145,6 +145,10 @@ const e =(viewtype)=>{
 </table>
 </form>
 </c:if>
+<<<<<<< HEAD
+=======
+
+>>>>>>> refs/heads/jaehyung
 <!-- 타입으로검색 -->
 <c:if test="${not empty type }">
 <form action="${pageContext.request.contextPath }/dataroom/type.do" method="post">

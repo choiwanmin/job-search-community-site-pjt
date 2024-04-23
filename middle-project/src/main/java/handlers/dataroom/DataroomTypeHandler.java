@@ -42,7 +42,6 @@ public class DataroomTypeHandler implements Handler {
 			list = service.getByType(type,viewtype);
 			paging=page.paging(list, 2);
 		}
-		
 		request.setAttribute("list", paging.get(rnum));
 		request.setAttribute("type", type);
 		request.setAttribute("pnum", pnum);
@@ -50,6 +49,7 @@ public class DataroomTypeHandler implements Handler {
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("view", "/dataroom/list.jsp");
 		request.setAttribute("paging", paging);
+
 		return view;
 	}
 

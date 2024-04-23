@@ -18,10 +18,9 @@ public class DataroomSearchHandler implements Handler {
 		String view = "/index.jsp";
 		DataService service = new DataService();
 		ArrayList<Data> list = null;
-		
 		GeneralPage<Data> page=new GeneralPage<>();
 		String num=request.getParameter("num");
-
+		
 		int rnum=0; 
 		if(num!=null) {
 			rnum=Integer.parseInt(num);
@@ -34,11 +33,9 @@ public class DataroomSearchHandler implements Handler {
 		ArrayList<ArrayList<Data>> paging=null;
 		int searchtype = Integer.parseInt(request.getParameter("searchtype"));
 		String search = request.getParameter("search");
-
 		list = service.getBySearchType(search, searchtype, viewtype);
-		
 		paging=page.paging(list, 2);
-
+		
 
 		request.setAttribute("pnum", pnum);
 		request.setAttribute("pnume", pnum+5);
