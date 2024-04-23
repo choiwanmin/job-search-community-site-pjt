@@ -31,8 +31,8 @@ public class PersonEditHandler implements Handler {
 			if (jobCd != null) {
 				for (int i = 0; i < jobCd.length; i++) {
 					String[] a = jobCd[i].split(",");
-					jcd += a[0] + " , ";
-					jNm += a[1] + " , ";
+					jcd += a[0] + ",";
+					jNm += a[1]+ ",";
 				}
 			}
 			service.editPerson(new Person(0, userid, usertel, email, education, career, skill, gender, age, jcd, jNm));
