@@ -36,6 +36,9 @@ public class DataroomListHandler implements Handler {
 		}else if(viewtype==2) {
 			list = service.getByCnt();
 			paging=page.paging(list, 2);
+		}else if(viewtype==3) {
+			list = service.getByFcnt();
+			paging=page.paging(list, 2);
 		}
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("pnum", pnum);
