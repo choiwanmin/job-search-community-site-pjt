@@ -14,7 +14,7 @@ public class MyappListRecentListHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view = "/test1.jsp";
+		String view = "/index.jsp";
 		HttpSession session = request.getSession(false);
 		String num = request.getParameter("num");
 		String dnum=request.getParameter("dnum");
@@ -42,8 +42,10 @@ public class MyappListRecentListHandler implements Handler {
 			}
 		}
 		session.setAttribute("recent", list);
-		session.setAttribute("view", "/myapplist/recent.jsp");
-		return "redirect:"+view;
+		for(MyappList m:list) {
+			System.out.println(m.getWanted_auth_no());
+		} // list 확인
+		return view;
 	}
 
 }
