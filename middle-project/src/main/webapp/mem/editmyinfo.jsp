@@ -119,9 +119,14 @@
 <option value="133301,웹 개발자(웹 엔지니어·웹 프로그래머)">웹 개발자(웹 엔지니어·웹 프로그래머)</option>
 <option value="133302,웹 기획자">웹 기획자</option>
 <option value="133900,IT 테스터 및 IT QA 전문가">IT 테스터 및 IT QA 전문가</option>
-</select></td></tr>
+</select>
+
+
+</td></tr>
 </table>
 <input type="submit" value="올리기" style="width: 80px">
 </form>
+
+
 </body>
 </html>
