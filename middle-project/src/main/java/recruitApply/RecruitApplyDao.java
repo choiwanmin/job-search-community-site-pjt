@@ -96,13 +96,13 @@ public class RecruitApplyDao {
 		return list;
 	}
 	//userSelect(유저가 지원한 리스트)
-	public ArrayList<RecruitApply> selectByUser(int applycant_num) {
+	public ArrayList<RecruitApply> selectByUser(String applycant_num) {
 		Connection conn = db.conn();
 		String sql = "select * from recruit_apply where recruit_apply=? order by appldate";
 		ArrayList<RecruitApply> list = new ArrayList<RecruitApply>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, applycant_num);
+			pstmt.setString(1, applycant_num);
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
