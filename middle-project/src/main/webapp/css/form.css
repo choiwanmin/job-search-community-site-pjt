@@ -52,3 +52,12 @@ form{
     border-radius: 0;
     padding: 10px 0;
 }
+.readbtn{
+	    background-color: #adadad;
+}
+.readbtn:hover {
+	  background-color: #adadad;
+}
+.readbtn:first-child:active{
+	background-color: #adadad;
+}

@@ -9,16 +9,6 @@
 <script type="text/javascript">
 let flag = false;
 const check = () => {
-	if(f.busi_no.value.length<=0){
-		alert("사업자 등록 번호를 입력해주세요.");
-		f.busi_no.focus();
-		return;
-	}
-	if(f.corp_nm.value.length<=0){
-		alert("회사 이름을 입력해주세요.");
-		f.corp_nm.focus();
-		return;
-	}
 	if(f.addr.value.length<=0){
 		alert("회사 주소를 입력해주세요.");
 		f.addr.focus();
@@ -36,20 +26,23 @@ console.log("${c }")
 </head>
 <body>
   <div class="w800 p40">
-  <h3 class="form_title text-center">기업 정보 등록하기</h3>
-  <p class="form_sub text-center">회사의 정보를 기입해주세요.</p>
+  <c:if test="${empty c }"><h3>회사 정보가 등록되어야 합니다.</h3></c:if>
+  	<c:if test="${not empty c }">
+  <h3 class="form_title text-center">기업 정보 수정하기</h3>
+  <p class="form_sub text-center">수정할 회사의 정보를 기입해주세요.</p>
+  
   <div class="form_Wrap">
-    <form class="" action="${pageContext.request.contextPath }/corp/add.do" method="post" name="f">
+    <form class="" action="${pageContext.request.contextPath }/mem/corpedit.do" method="post" name="f">
       <div class="row mb-3">
-        <label for="inputEmail3" class="col-sm-2 col-form-label">회사명</label>
+        <label for="inputEmail3" class="col-sm-2 col-form-label" >회사명</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputEmail3" name="corp_nm">
+          <input type="text" class="form-control" id="inputEmail3" name="corp_nm" value="${c.corp_nm }" readonly>
         </div>
       </div>
       <div class="row mb-3">
         <label for="inputPassword3" class="col-sm-2 col-form-label">사업자등록번호</label>
         <div class="col-sm-10">
-          <input type="text" class="form-control" id="inputPassword3" name="busi_no">
+          <input type="text" class="form-control" id="inputPassword3" name="busi_no" value="${c.busi_no }" readonly>
         </div>
       </div>
      <div class="row mb-3">
@@ -64,15 +57,11 @@ console.log("${c }")
         </div>
       </div>
     <div class="btn_wrap">
-    	<c:if test="${not empty c }">
-			 <button type="button" class="btn btn-primary readbtn">이미 등록된 회사입니다.</button>
-		</c:if>
-		<c:if test="${empty c }">
-			 <button type="button" class="btn btn-primary" onclick="check()">회사 정보등록</button>
-		</c:if>
+		<button type="button" class="btn btn-primary" onclick="check()">회사 정보수정</button>
     </div>
     </form>
   </div>
+  </c:if>
 </div>
 
 </body>

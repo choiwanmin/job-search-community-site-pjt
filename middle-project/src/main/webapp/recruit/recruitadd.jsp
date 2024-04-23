@@ -8,7 +8,7 @@
 <title>Insert title here</title>
 <script type="text/javascript">
 // 등록일, 마감일 현재 날짜에 선택되어 있도록 하는 구문
-document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
+// document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
 
 // 전화번호 수정 방법1
 // const hypenTel = (target) => {
@@ -18,8 +18,13 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 // 	}
 
 const save = () => {
+	let f = document.querySelector("form");
 	f.saveStatus.value = '1';
-	f.submit();
+    if(f.requestSubmit) {
+        f.requestSubmit();
+    } else {
+		f.submit();
+    }
 }
 </script>
 </head>

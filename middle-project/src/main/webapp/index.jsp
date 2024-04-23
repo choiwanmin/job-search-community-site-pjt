@@ -30,11 +30,19 @@
                   <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">Main</a>
                 </li>
                 <li class="nav-item">
-                  <a class="nav-link" href="#">게시판</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
                 </li>
-                <li class="nav-item">
-                  <a class="nav-link" href="#">공고보기</a>
+              	<c:if test="${sessionScope.loginType.equals('구직자') }">
+              	<li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고보기</a>
                 </li>
+              	</c:if>
+				<c:if test="${sessionScope.loginType.equals('기업') }">
+				<li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath }/person/list.do">인재추천</a>
+                </li>
+				</c:if>
+                
               </ul>
             </div>
             <div class="collapse navbar-collapse" id="navUser">
@@ -52,7 +60,7 @@
 		     <ul id="log-info" class="navbar-nav"  onclick="show()">
                   <li class="nav-item nav-link">
                     ${sessionScope.loginId } /${sessionScope.loginType } 회원 <span id="user">▼</span>
-                                <nav id="show" class="nav flex-column show">
+             <nav id="show" class="nav flex-column show">
 				<c:if test="${sessionScope.loginType.equals('구직자') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/myinfo.do">내 정보 확인</a></c:if>
 				<c:if test="${sessionScope.loginType.equals('기업') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a></c:if>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
@@ -63,28 +71,29 @@
 		</c:if>
               </div>
           </div>
+          
     </nav>
 <h3>RECRUITㅇㅇ</h3>
 <td style = "width:150px; height:400px">
 메뉴<br/>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
-<a href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">자료실 목록</a><br/>
+
 <c:if test = "${not empty sessionScope.loginId }">
 <a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a><br/>
-<a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>
-<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
+<a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a><br/>
+<a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
 </c:if>
 </c:if>
-
 <c:if test = "${sessionScope.loginType.equals('기업')}">
 <a href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
-<a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고 목록</a>
+<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
+<a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
 <a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a>
+<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
 </c:if>
 </td>
 <td style = "width:450px;height:400px">
 	<center>
-		${msg }
 		<c:if test="${not empty view }">
 			<jsp:include page="${view }"></jsp:include>
 		</c:if>
