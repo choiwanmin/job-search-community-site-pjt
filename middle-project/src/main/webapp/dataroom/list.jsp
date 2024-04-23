@@ -67,7 +67,7 @@ const b=(viewtype)=>{
 <form action="${pageContext.request.contextPath }/dataroom/list.do" method="post">
 <table>
 <tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
-<td><input type="submit" name="num" value="${step.index}"> <input type="hidden" name="viewtype" value="${type }">  
+<td><input type="submit" name="num" value="${step.count+pnum}"> <input type="hidden" name="viewtype" value="${type }"> ${pnume } 
 </td>
 </c:forEach>
 </tr>
