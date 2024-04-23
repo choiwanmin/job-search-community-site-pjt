@@ -42,8 +42,14 @@ public class DataService {
 		public ArrayList<Data> getByFcnt() {
 			return dao.selectByFcnt();
 		}
-		public ArrayList<Data> getByMyFavo(String id) {
-			return dao.selectByMyFavo(id);
+		public ArrayList<Data> getByMyFavo(String id,int viewtype) {
+			if(viewtype==1) {
+				return dao.selectByMyFavo(id);}
+			else if(viewtype==2) {
+				return dao.selectByMyFavoByCnt(id);}
+			else if(viewtype==3) {
+				return dao.selectByMyFavoByFcnt(id);}
+			return null;
 		}
 	// 회원목록
 	public ArrayList<Data> getByType(int type,int viewtype) {

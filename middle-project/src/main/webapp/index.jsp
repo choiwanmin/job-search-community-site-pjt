@@ -72,6 +72,7 @@
 <c:if test = "${not empty sessionScope.loginId }">
 <a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a><br/>
 <a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>
+<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
 </c:if>
 </c:if>
 

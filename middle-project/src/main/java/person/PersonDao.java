@@ -186,5 +186,82 @@ public class PersonDao {
 		}
 		return list;
 	}
+	public ArrayList<Person> selectrecommend(Person p) {
+		Connection conn = db.conn();
+		String sql = "select * from person where jobcd like ? and education = ? and career = ? ";
+		ArrayList<Person> list = new ArrayList<Person>();
+		try {
+			// PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// sql 실행
+			pstmt.setString(1, "%" + p.getJobCd() + "%");
+			pstmt.setString(2, p.getEducation());
+			pstmt.setString(3, p.getCareer());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Person person = new Person();
+				person.setNum(rs.getInt(1));
+				person.setUserid(rs.getString(2));
+				person.setUsertel(rs.getString(3)); 
+				person.setEmail(rs.getString(4));
+				person.setEducation(rs.getString(5));
+				person.setCareer(rs.getString(6));
+				person.setSkill(rs.getString(7));
+				person.setGender(rs.getString(8));
+				person.setAge(rs.getString(9));
+				person.setJobCd(rs.getString(10));
+				list.add(person);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Person> selectrecommend2(Person p) {
+		Connection conn = db.conn();
+		String sql = "select * from person where jobcd like ? and career = ? ";
+		ArrayList<Person> list = new ArrayList<Person>();
+		try {
+			// PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// sql 실행
+			pstmt.setString(1, "%" + p.getJobCd() + "%");
+			pstmt.setString(2, p.getCareer());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Person person = new Person();
+				person.setNum(rs.getInt(1));
+				person.setUserid(rs.getString(2));
+				person.setUsertel(rs.getString(3)); 
+				person.setEmail(rs.getString(4));
+				person.setEducation(rs.getString(5));
+				person.setCareer(rs.getString(6));
+				person.setSkill(rs.getString(7));
+				person.setGender(rs.getString(8));
+				person.setAge(rs.getString(9));
+				person.setJobCd(rs.getString(10));
+				list.add(person);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 
 }
