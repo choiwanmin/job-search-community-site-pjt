@@ -25,7 +25,7 @@ const a=(val)=>{
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>공고 목록</h3>
 </c:if>
-<table class = "table table-striped table-hover">
+<table class = "table table-striped table-hover w800 p40">
 <tr>
 <th>공고제목</th>
 <th>채용직무</th>
