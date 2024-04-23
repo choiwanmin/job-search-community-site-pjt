@@ -52,7 +52,7 @@ public class PersonDao {
 
 	public int update(Person p) {// id로 찾아서 pwd수정
 		Connection conn = db.conn();
-		String sql = "update person set usertel=? , email=?, skill=?, jobCd=? where userid=?";
+		String sql = "update person set usertel=? , email=?, skill=?, jobCd=?,jobNm=?, education=?, career=?, age=?, gender=? where userid=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -60,7 +60,12 @@ public class PersonDao {
 			pstmt.setString(2, p.getEmail());
 			pstmt.setString(3, p.getSkill());
 			pstmt.setString(4, p.getJobCd());
-			pstmt.setString(5, p.getUserid());
+			pstmt.setString(5, p.getJobNm());
+			pstmt.setString(6, p.getEducation());
+			pstmt.setString(7, p.getCareer());
+			pstmt.setString(8, p.getAge());
+			pstmt.setString(9, p.getGender());
+			pstmt.setString(10, p.getUserid());
 			cnt = pstmt.executeUpdate();// 처리된 줄 수 반환
 			System.out.println(cnt + " 줄이 수정됨");
 		} catch (SQLException e) {

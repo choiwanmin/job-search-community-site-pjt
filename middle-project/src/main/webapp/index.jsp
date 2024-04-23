@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Main</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">Main</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">게시판</a>
@@ -65,8 +65,6 @@
           </div>
     </nav>
 <h3>RECRUITㅇㅇ</h3>
-
-
 <td style = "width:150px; height:400px">
 메뉴<br/>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
@@ -81,6 +79,7 @@
 <c:if test = "${sessionScope.loginType.equals('기업')}">
 <a href="${pageContext.request.contextPath }/product/list.do">상품목록</a><br/>
 <a href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
+<a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a>
 </c:if>
 </td>
 <td style = "width:450px;height:400px">
@@ -94,5 +93,4 @@
 </tr>
 </table>
 </body>
-
 </html>

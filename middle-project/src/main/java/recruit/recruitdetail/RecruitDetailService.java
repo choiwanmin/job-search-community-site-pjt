@@ -1,17 +1,31 @@
 package recruit.recruitdetail;
 
+import recruit.recruitlist.RecruitListService;
+
 public class RecruitDetailService {
-	private RecruitDetailDao dao;
+	private RecruitDetailDao rddao;
 
 	public RecruitDetailService() {
-		dao = new RecruitDetailDao();
+		rddao = new RecruitDetailDao();
 	}
 
-	public void addRecruitDetail(RecruitDetail rd) {
-		dao.insert(rd);
+	public void addApiRecruitDetail(RecruitDetail rd) {
+		rddao.insertApi(rd);
+	}
+
+	public void addNewRecruitDetail(RecruitDetail rd) {
+		rddao.insertNew(rd, RecruitListService.num);
 	}
 
 	public RecruitDetail getByWantedAuthNo(String wantedAuthNo) {
-		return dao.selectByWantedAuthNo(wantedAuthNo);
+		return rddao.selectByWantedAuthNo(wantedAuthNo);
+	}
+
+	public void editRecruitDetail(RecruitDetail rd) {
+		rddao.update(rd);
+	}
+
+	public void delRecruitDetail(String wantedString) {
+		rddao.delete(wantedString);
 	}
 }
