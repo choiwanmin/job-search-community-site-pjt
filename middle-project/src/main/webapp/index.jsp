@@ -27,7 +27,7 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="#">Main</a>
+                  <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">Main</a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="#">게시판</a>
@@ -65,8 +65,6 @@
           </div>
     </nav>
 <h3>RECRUITㅇㅇ</h3>
-
-
 <td style = "width:150px; height:400px">
 메뉴<br/>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
