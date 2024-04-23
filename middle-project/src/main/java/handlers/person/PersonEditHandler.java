@@ -13,6 +13,7 @@ public class PersonEditHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		String view = "/index.jsp"; // get 방식일때 이동할 뷰페이지경로
 		PersonService service = new PersonService();
+		String msg = "";
 		String userid = (String) request.getSession().getAttribute("loginId");
 		System.out.println(userid);
 		Person p=service.getPerson(userid);
@@ -31,8 +32,17 @@ public class PersonEditHandler implements Handler {
 			if (jobCd != null) {
 				for (int i = 0; i < jobCd.length; i++) {
 					String[] a = jobCd[i].split(",");
-					jcd += a[0] + ",";
-					jNm += a[1]+ ",";
+					if(a.length>=2) {
+						jcd += a[0] + ",";
+						jNm += a[1]+ ",";
+						System.out.println(jNm+" : " + jcd);
+					}else {
+						msg = "해당 분야의 정보가 없습니다.";
+						System.out.println(jcd);
+						System.out.println(jNm);
+						System.out.println(msg);
+					}
+					
 				}
 			}
 			service.editPerson(new Person(0, userid, usertel, email, education, career, skill, gender, age, jcd, jNm));

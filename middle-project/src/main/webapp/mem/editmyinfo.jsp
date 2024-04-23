@@ -28,13 +28,13 @@
 <tr><th>나이</th><td><input type="number" name="age" value="${person.age}" ></td></tr>
 <tr><th>관심분야</th><td>
 <select multiple="multiple" size="3" name="jobCd">
-<option value="131100">컴퓨터 하드웨어 기술자</option>
-<option value="131200">컴퓨터 하드웨어 기술자</option>
-<option value="131201">컴퓨터 하드웨어 기술자</option>
-<option value="131202">컴퓨터 하드웨어 기술자</option>
-<option value="131203">컴퓨터 하드웨어 기술자</option>
-<option value="132000">컴퓨터 하드웨어 기술자</option>
-<option value="132001">컴퓨터 하드웨어 기술자</option>
+<option value="131100,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="131200,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="131201,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="131202,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="131203,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="132000,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
+<option value="132001,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
 </select> </td></tr>
 </table>
 <input type="submit" value="올리기">
