@@ -284,7 +284,7 @@ public class RecruitListDao {
 	// 저장상태로 찾아서 전체 공고목록 반환
 	public ArrayList<RecruitList> selectAll(int saveStatus) {
 		Connection conn = db.conn();
-		String sql = "select * from recruit_list where save_status=? order by reg_dt";
+		String sql = "select * from recruit_list where save_status=? order by reg_dt desc";
 		ArrayList<RecruitList> list = new ArrayList<RecruitList>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

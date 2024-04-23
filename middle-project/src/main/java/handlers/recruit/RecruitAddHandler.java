@@ -58,6 +58,7 @@ public class RecruitAddHandler implements Handler {
 					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
 					null, contactTelNo, 0, 0));
+			view = "redirect:/recruit/recruitlist.do?id=" + corpid + "&busiNo=" + busiNo;
 		} else {
 			view = "/recruit/recruitadd.jsp";
 			request.setAttribute("view", view);

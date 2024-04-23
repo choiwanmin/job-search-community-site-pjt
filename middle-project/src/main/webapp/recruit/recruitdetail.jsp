@@ -6,6 +6,15 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+const edit = () => {
+	location.href = '{pageContext.request.contextPath }/recruit/recruitedit.do?=${wantedAuthNo }";
+}
+
+const del = () => {
+	location.href = '{pageContext.request.contextPath }/recruit/recruitdel.do?=${wantedAuthNo }";	
+}
+</script>
 </head>
 <body>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
@@ -36,5 +45,10 @@
 <tr><th>공고담당자전화번호</th><td>${rd.contactTelNo }</td></tr>
 <tr><th>공고상태</th><td>${rd.type }</td></tr>
 </table>
+
+<c:if test = "${sessionScope.loginType.equals('구직자')}">
+<input type="button" value="수정" onclick=edit()>
+<input type="button" value="삭제" onclick=del()>
+</c:if>
 </body>
 </html>
