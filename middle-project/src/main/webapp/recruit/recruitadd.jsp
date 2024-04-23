@@ -17,6 +17,10 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 // 	   .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
 // 	}
 
+const save = () => {
+	f.saveStatus.value = '1';
+	f.submit();
+}
 </script>
 </head>
 <body>
@@ -57,26 +61,31 @@ document.getElementById('currentDate').value = new Date().toISOString().substrin
 
 <tr><th>근무 지역 주소</th><td><input type="text" style="width:98%;border:0" name="workRegion" required></td></tr>
 
-<!-- db에서 직종 이름을 반복문으로 가져와서 나타내기 -->
-<!-- 직종 이름으로 db에서 직종 코드 찾아서 직종 코드 컬럼에 값 추가 -->
-<tr><th>채용 직무</th><td><input type="text" style="width:98%;border:0" list="jobsNm" required>
-<datalist id="jobsNm">
+<tr><th>채용 직무</th><td><input type="text" style="width:98%;border:0" list="jobsNmList" id="jobsNm" name="jobsNm">
+<datalist id="jobsNmList">
 <option value="개발자"/>
 <option value="백엔드"/>
 <option value="프론트엔드"/>
 </datalist></td></tr>
+
+<!-- db에서 직종 이름을 반복문으로 가져와서 나타내기 -->
+<!-- 직종 이름으로 db에서 직종 코드 찾아서 직종 코드 컬럼에 값 추가 -->
+<!-- <datalist id="jobsNmList"> -->
+<%-- <c:forEach var="j" items="${jobList }"> --%>
+<%-- <option value="${j.depth1Nm }"></option> --%>
+<%-- </c:forEach> --%>
+<!-- </datalist></td></tr> -->
 
 <tr><th>공고등록일</th><td><input type="date" id="currentDate" style="width:25%;border:0" name="regDt" required></td></tr>
 <tr><th>공고마감일</th><td><input type="date" id="currentDate" style="width:25%;border:0" name="closeDt" required></td></tr>
 <!-- <tr><th>공고담당자전화번호</th><td><input type="text" name="contacttelno" oninput="hypenTel(this)" maxlength="15"></td></tr> -->
 <tr><th>공고담당자전화번호</th><td><input type="tel" id="contactTelNo" style="width:98%;border:0" name="contactTelNo" value="000-0000-0000" pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" required></td></tr>
 </table>
-<input type="radio" name="saveStatus" value="0" checked>임시 저장
-<input type="radio" name="saveStatus" value="1">등록
-<br/>
+
+<input type="hidden" name="saveStatus" value="0">
 
 <input type="submit" value="임시 저장">
-<input type="submit" value="등록">
+<input type="button" value="공고 등록" onclick="save()">
 </form>
 </body>
 </html>

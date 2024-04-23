@@ -23,6 +23,7 @@ public class PersonAddHandler implements Handler {
 				String email = request.getParameter("email");
 				String education = request.getParameter("education");// "1"
 				String career = request.getParameter("career");// "1"
+				System.out.println(career);
 				String skill = request.getParameter("skill");
 				String gender = request.getParameter("gender");// "1"
 				String age = request.getParameter("age");// "1"

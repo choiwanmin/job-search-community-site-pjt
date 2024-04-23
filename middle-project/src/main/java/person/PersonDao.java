@@ -52,7 +52,7 @@ public class PersonDao {
 
 	public int update(Person p) {// id로 찾아서 pwd수정
 		Connection conn = db.conn();
-		String sql = "update person set usertel=? , email=?, skill=?, jobCd=?,jobNm=? where userid=?";
+		String sql = "update person set usertel=? , email=?, skill=?, jobCd=?,jobNm=?, education=?, career=?, age=?, gender=? where userid=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -61,7 +61,11 @@ public class PersonDao {
 			pstmt.setString(3, p.getSkill());
 			pstmt.setString(4, p.getJobCd());
 			pstmt.setString(5, p.getJobNm());
-			pstmt.setString(6, p.getUserid());
+			pstmt.setString(6, p.getEducation());
+			pstmt.setString(7, p.getCareer());
+			pstmt.setString(8, p.getAge());
+			pstmt.setString(9, p.getGender());
+			pstmt.setString(10, p.getUserid());
 			cnt = pstmt.executeUpdate();// 처리된 줄 수 반환
 			System.out.println(cnt + " 줄이 수정됨");
 		} catch (SQLException e) {
@@ -154,6 +158,83 @@ public class PersonDao {
 			// PreparedStatement 객체 생성
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			// sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Person person = new Person();
+				person.setNum(rs.getInt(1));
+				person.setUserid(rs.getString(2));
+				person.setUsertel(rs.getString(3)); 
+				person.setEmail(rs.getString(4));
+				person.setEducation(rs.getString(5));
+				person.setCareer(rs.getString(6));
+				person.setSkill(rs.getString(7));
+				person.setGender(rs.getString(8));
+				person.setAge(rs.getString(9));
+				person.setJobCd(rs.getString(10));
+				list.add(person);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Person> selectrecommend(Person p) {
+		Connection conn = db.conn();
+		String sql = "select * from person where jobcd like ? and education = ? and career = ? ";
+		ArrayList<Person> list = new ArrayList<Person>();
+		try {
+			// PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// sql 실행
+			pstmt.setString(1, "%" + p.getJobCd() + "%");
+			pstmt.setString(2, p.getEducation());
+			pstmt.setString(3, p.getCareer());
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				Person person = new Person();
+				person.setNum(rs.getInt(1));
+				person.setUserid(rs.getString(2));
+				person.setUsertel(rs.getString(3)); 
+				person.setEmail(rs.getString(4));
+				person.setEducation(rs.getString(5));
+				person.setCareer(rs.getString(6));
+				person.setSkill(rs.getString(7));
+				person.setGender(rs.getString(8));
+				person.setAge(rs.getString(9));
+				person.setJobCd(rs.getString(10));
+				list.add(person);
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Person> selectrecommend2(Person p) {
+		Connection conn = db.conn();
+		String sql = "select * from person where jobcd like ? and career = ? ";
+		ArrayList<Person> list = new ArrayList<Person>();
+		try {
+			// PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			// sql 실행
+			pstmt.setString(1, "%" + p.getJobCd() + "%");
+			pstmt.setString(2, p.getCareer());
 			ResultSet rs = pstmt.executeQuery();
 			while (rs.next()) {
 				Person person = new Person();

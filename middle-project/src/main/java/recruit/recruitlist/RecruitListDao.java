@@ -218,7 +218,7 @@ public class RecruitListDao {
 	}
 
 	//
-	// 사업자등록번호와 공고번호로 찾아서 공고목록 반환
+	// 공고번호로 찾아서 공고목록 반환
 	public RecruitList selectByWantedAuthNo(String wantedAuthNo) {
 		Connection conn = db.conn();
 		String sql = "select * from recruit_list where wanted_auth_no=?";
@@ -247,7 +247,7 @@ public class RecruitListDao {
 		}
 		return null;
 	}
-
+	
 	//
 	// 사업자등록번호로 찾아서 공고목록 반환
 	public ArrayList<RecruitList> selectByBusiNo(String busiNo) {
