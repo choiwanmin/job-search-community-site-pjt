@@ -30,8 +30,10 @@ public class CommentService {
 	}
 
 	// 회원목록
-	public ArrayList<Comment> getByDataNum(int data_num) {
-		return dao.selectByDataNum(data_num);
+	public ArrayList<Comment> getByDataNum0(int data_num) {
+		return dao.selectByDataNum0(data_num);
 	}
-	
+	public ArrayList<Comment> getByDataNumRef(int data_num) {
+		return dao.selectByDataNumRef(data_num);
+	}
 }
