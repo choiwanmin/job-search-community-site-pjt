@@ -71,21 +71,21 @@ const e =(viewtype)=>{
 <!-- 타입게시물 -->
 <c:if test="${not empty type }">
 <c:if test="${viewtype==1}">
-<select name="viewtype" onchange="d(this.value)">
+<select name="viewtype" onchange="c(this.value)">
 <option value="1" selected>최신순</option>
 <option value="2">조회수순</option>
 <option value="3">좋아요순</option>
 </select><br/>
 </c:if>
 <c:if test="${viewtype==2}">
-<select name="viewtype" onchange="d(this.value)">
+<select name="viewtype" onchange="c(this.value)">
 <option value="1" >최신순</option>
 <option value="2" selected>조회수순</option>
 <option value="3">좋아요순</option>
 </select><br/>
 </c:if>
 <c:if test="${viewtype==3 }">
-<select name="viewtype" onchange="d(this.value)">
+<select name="viewtype" onchange="c(this.value)">
 <option value="1" >최신순</option>
 <option value="2">조회수순</option>
 <option value="3" selected>좋아요순</option>
@@ -133,6 +133,8 @@ const e =(viewtype)=>{
 </tr>
 </c:forEach>
 </table>
+<!-- 전체검색 -->
+<c:if test="${empty type }">
 <form action="${pageContext.request.contextPath }/dataroom/list.do" method="post">
 <table>
 <tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
@@ -142,6 +144,21 @@ const e =(viewtype)=>{
 </tr>
 </table>
 </form>
+</c:if>
+
+<!-- 타입으로검색 -->
+<c:if test="${not empty type }">
+<form action="${pageContext.request.contextPath }/dataroom/type.do" method="post">
+<table>
+<tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
+<td><input type="submit" name="num" value="${step.index}"> <input type="hidden" name="viewtype" value="${viewtype }">
+<input type="hidden" name="type" value="${type }">  
+</td>
+</c:forEach>
+</tr>
+</table>
+</form>
+</c:if>
 </div>
 </body>
 </html>

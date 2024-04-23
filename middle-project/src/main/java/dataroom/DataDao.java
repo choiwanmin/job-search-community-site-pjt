@@ -672,6 +672,78 @@ public class DataDao {
 		}
 		return list;
 	}
+	public ArrayList<Data> selectByMyFavoByCnt(String id){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where num in (select datanum from favodata where id =?) order by cnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+	public ArrayList<Data> selectByMyFavoByFcnt(String id){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from dataroom where num in (select datanum from favodata where id =?) order by fcnt desc";
+		
+		//ArrayList 생성
+		ArrayList<Data> list = new ArrayList<Data>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1, id);
+			
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Data(rs.getInt(1), rs.getString(2), rs.getDate(3), rs.getString(4), rs.getString(5),
+						rs.getString(6),rs.getInt(7),rs.getInt(8),rs.getInt(9)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	public ArrayList<Data> selectByTypeCnt(int type){
 		//db 연결
 		Connection conn = db.conn();
