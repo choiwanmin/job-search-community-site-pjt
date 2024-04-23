@@ -29,7 +29,9 @@ public class DataroomDetailHandler implements Handler {
 		int fcnt = fservice.getFcnt(num);
 		d.setFcnt(fcnt);
 		CommentService cservice = new CommentService();
-		ArrayList<Comment> list = cservice.getByDataNum(num);
+		ArrayList<Comment> list = cservice.getByDataNum0(num);
+		ArrayList<Comment> ref_list = cservice.getByDataNumRef(num);
+		
 		System.out.println(list);
 		
 		boolean flag = true;
@@ -39,6 +41,7 @@ public class DataroomDetailHandler implements Handler {
 		request.setAttribute("d", d);
 		request.setAttribute("flag", flag);
 		request.setAttribute("list", list);
+		request.setAttribute("ref_list", ref_list);
 		
 
 		request.setAttribute("view", "/dataroom/detail.jsp");

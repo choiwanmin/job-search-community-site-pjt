@@ -19,7 +19,7 @@ public class CommentDao {
 	public void insert(Comment c) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "insert into comment_table values(seq_comment.nextval,?,?,?)";
+		String sql = "insert into comment_table values(seq_comment.nextval,?,?,?,sysdate,?,0)";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -27,6 +27,7 @@ public class CommentDao {
 			pstmt.setString(1, c.getId());
 			pstmt.setString(2, c.getContent());
 			pstmt.setInt(3, c.getData_num());
+			pstmt.setInt(4, c.getRef_num());
 			// sql 실행
 			int cnt = pstmt.executeUpdate();// insert, update, delete문장 실행.
 			// pstmt.executeQuery()//select문 실행 => ResultSet 반환
@@ -46,7 +47,7 @@ public class CommentDao {
 
 	public int update(Comment c) {
 		Connection conn = db.conn();
-		String sql = "update comment_table set content=? where num=?";
+		String sql = "update comment_table set content=?, is_edit = 1 where num=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -107,7 +108,7 @@ public class CommentDao {
 			ResultSet rs = pstmt.executeQuery();
 			//rs.next(): 읽을 다음 줄로 이동. 읽을 것이 있으면 true, 없으면 false반환
 			if (rs.next()) {
-				return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4));
+				return new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDate(5),rs.getInt(6),rs.getInt(7));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -123,12 +124,12 @@ public class CommentDao {
 		return null;
 	}
 	
-	public ArrayList<Comment> selectByDataNum(int data_num){
+	public ArrayList<Comment> selectByDataNum0(int data_num){
 		//db 연결
 		Connection conn = db.conn();
 		
 		//sql문 작성
-		String sql = "select * from comment_table where data_num = ? order by num ";
+		String sql = "select * from comment_table where data_num = ? and ref_num = 0 order by num ";
 		
 		//ArrayList 생성
 		ArrayList<Comment> list = new ArrayList<Comment>();
@@ -142,7 +143,7 @@ public class CommentDao {
 			
 			//ResultSet 읽을 줄로 이동
 			while (rs.next()) {
-				list.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4)));
+				list.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDate(5),rs.getInt(6),rs.getInt(7)));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -157,5 +158,38 @@ public class CommentDao {
 		}
 		return list;
 	}
-	
+	public ArrayList<Comment> selectByDataNumRef(int data_num){
+		//db 연결
+		Connection conn = db.conn();
+		
+		//sql문 작성
+		String sql = "select * from comment_table where data_num = ? and ref_num != 0 order by num ";
+		
+		//ArrayList 생성
+		ArrayList<Comment> list = new ArrayList<Comment>();
+		
+		try {
+			//PreparedStatement 객체 생성
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, data_num);
+			//sql 실행
+			ResultSet rs = pstmt.executeQuery();
+			
+			//ResultSet 읽을 줄로 이동
+			while (rs.next()) {
+				list.add(new Comment(rs.getInt(1), rs.getString(2), rs.getString(3), rs.getInt(4), rs.getDate(5),rs.getInt(6),rs.getInt(7)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 }
