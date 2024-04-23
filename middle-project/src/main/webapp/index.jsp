@@ -80,23 +80,15 @@
 
 <c:if test = "${not empty sessionScope.loginId }">
 <a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a><br/>
-<a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>
-<<<<<<< HEAD
+<a href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a><br/>
 
-=======
-<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
 <a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
->>>>>>> stash
 </c:if>
 </c:if>
-
 <c:if test = "${sessionScope.loginType.equals('기업')}">
 <a href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
-<<<<<<< HEAD
-
-=======
+<a href="${pageContext.request.contextPath }/person/list.do">test1</a>
 <a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
->>>>>>> stash
 <a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a>
 </c:if>
 </td>

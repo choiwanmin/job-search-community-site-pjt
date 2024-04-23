@@ -8,8 +8,8 @@
 </head>
 <body>
 <form action="${pageContext.request.contextPath }/appform/add.do" method="post" enctype="multipart/form-data">
-<table border="1">
-<tr><th></th><td><input type="text" name="userid" value="${sessionScope.loginId }"  type="hidden"></td></tr>
+<table >
+<tr><th></th><td><input type="hidden" name="userid" value="${sessionScope.loginId }"  ></td></tr>
 <tr><th>지원서파일</th><td><input type="file" name="coverletter"></td></tr>
 <tr><th>사진</th><td><input type="file" name="pofol"></td></tr>
 <tr><th>포토폴리오</th><td><input type="file" name="picture"></td></tr>

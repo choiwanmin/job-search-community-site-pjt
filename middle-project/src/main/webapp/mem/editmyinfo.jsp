@@ -96,7 +96,7 @@
          </fieldset>   </td></tr>
 
 <tr><th>관심분야</th><td>
-<select multiple="multiple" size="5" name="jobCd">
+<select multiple class="form-select" size="5" name="jobCd">
 <option value="131100,컴퓨터 하드웨어 기술자">컴퓨터 하드웨어 기술자</option>
 <option value="131200,통신공학 기술자 및 연구원">통신공학 기술자 및 연구원</option>
 <option value="131201,통신기기·장비 개발자 및 연구원">통신기기·장비 개발자 및 연구원</option>

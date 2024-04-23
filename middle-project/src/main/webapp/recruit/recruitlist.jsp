@@ -6,6 +6,16 @@
 <head>
 <meta charset="EUC-KR">
 <title>Insert title here</title>
+<script type="text/javascript">
+const a=(val)=>{
+	let req=new XMLHttpRequest()
+	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
+	req.send()
+	req.onload=()=>{
+	}
+}
+
+</script>
 </head>
 <body>
 <c:if test = "${sessionScope.loginType.equals('기업')}">
@@ -15,9 +25,8 @@
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>공고 목록</h3>
 </c:if>
-<table border="1">
+<table class = "table table-striped table-hover">
 <tr>
-<th>공고번호</th>
 <th>공고제목</th>
 <th>채용직무</th>
 <th>공고등록일</th>
@@ -28,10 +37,9 @@
 </tr>
 <c:forEach var="rllist" items="${rlList }">
 <tr>
-<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }">${rllist.wantedAuthNo }</a></td>
-<td>${rllist.wantedTitle }</td>
+<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
 <td>${rllist.jobsNm }</td>
-<td>${rllist.regDt }</td>
+<td >${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>
 <c:if test = "${sessionScope.loginType.equals('기업')}">
 <td>${rllist.saveStatus }</td>
