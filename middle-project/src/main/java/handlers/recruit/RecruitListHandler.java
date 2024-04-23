@@ -5,7 +5,9 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import corp.CorpService;
 import handlers.Handler;
+import mem.MemService;
 import recruit.recruitlist.RecruitList;
 import recruit.recruitlist.RecruitListService;
 
@@ -14,12 +16,26 @@ public class RecruitListHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		// 저장상태가(임시저장:0, 등록:1) 1인 공고만 전달
+		String id = (String) request.getSession().getAttribute("loginId");
+		MemService mservice = new MemService();
+		CorpService cservice = new CorpService();
+		RecruitListService rlservice = new RecruitListService();
+		ArrayList<RecruitList> rlList = new ArrayList<RecruitList>();
+		String busiNo = "";
 		int saveStatus = 1;
 		
-		RecruitListService rlservice = new RecruitListService();
-		ArrayList<RecruitList> rl = rlservice.getAll(saveStatus);
+		if(mservice.getMem(id).getType() == 1) {
+			rlList = rlservice.getAll(saveStatus);
+		} else {
+			busiNo = (cservice.getByCorpId(id)).getBusi_no();
+			rlList = rlservice.getByBusiNo(busiNo);
+		}
+
+		request.setAttribute("id", id);
+		request.setAttribute("busiNo", busiNo);
+		request.setAttribute("rlList", rlList);
 		
-		request.setAttribute("rl", rl);
 		return "/recruit/recruitlist.jsp";
 	}
 

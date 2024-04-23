@@ -26,7 +26,8 @@ public class RecruitDelHandler implements Handler {
 		
 		rlservice.delRecruitList(busiNo, wantedAuthNo);
 		rdservice.delRecruitDetail(wantedAuthNo);
-		return "/index.jsp";
+		
+		return "redirect:/recruit/recruitlist.do?id=" + corpid + "&busiNo=" + busiNo;
 	}
 
 }
