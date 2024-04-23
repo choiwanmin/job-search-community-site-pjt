@@ -10,7 +10,7 @@
 <h3>로그인</h3>
 ${msg }
 <form action="${pageContext.request.contextPath }/mem/login.do" method="post" name="f">
-<table border="1">
+<table>
 	<tr>
 		<th>ID</th><td><input type="text" name="id"></td>
 	</tr>

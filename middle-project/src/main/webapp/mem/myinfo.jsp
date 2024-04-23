@@ -21,7 +21,10 @@ window.onload = () => {
 <h3>내 정보 확인</h3>
 <c:if test="${sessionScope.loginType == '구직자' }">
 <form action="${pageContext.request.contextPath }/mem/editmyinfo.do"  style="padding: 20px">
-<table border="1" style="padding: 40px">
+<div style="display: none" id="type">
+TYPE
+</div>
+<table style="padding: 40px">
 <tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" readonly></td></tr>
 <tr><th>전화번호</th><td><input class="form-control form-control-lg" type="text" placeholder="UserTel..." aria-label=".form-control-lg example"name="usertel" value="${p.usertel }" readonly></td></tr>
@@ -32,12 +35,12 @@ window.onload = () => {
 <tr><th>성별</th><td><input class="form-control form-control-lg" type="text" placeholder="성별" aria-label=".form-control-lg example" name="gender" value="${p.gender }" readonly></td></tr>
 <tr><th>나이</th><td><input class="form-control form-control-lg" type="text" placeholder="나이를 입력하세요.." aria-label=".form-control-lg example" name="age" value="${p.age }" readonly></td></tr>
 <tr><th>관심분야</th><td><input class="form-control form-control-lg" type="text" placeholder="관심분야 .. ..." aria-label=".form-control-lg example" name="jobCd" value="${p.jobNm }" readonly></td></tr>
-<tr><th>TYPE</th><td id="type"></td></tr>
 <tr>
-<th>수정</th><td><input type="submit" value="수정"><c:if test="${empty sessionScope.person }">
+<td><c:if test="${empty sessionScope.person }">
 <a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></c:if></td>
 </tr>
 </table>
+<input type="submit" value="수정" style="width: 80px">
 </form>
 </c:if>
 <c:if test="${sessionScope.loginType == '기업' }">
