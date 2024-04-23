@@ -12,7 +12,6 @@ import javax.servlet.http.HttpServletResponse;
 import org.json.simple.JSONObject;
 
 import fav.FavoDataService;
-import oracle.net.aso.f;
 
 /**
  * Servlet implementation class DataroomGetJson

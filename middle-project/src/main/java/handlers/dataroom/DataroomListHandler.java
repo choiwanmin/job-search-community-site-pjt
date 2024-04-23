@@ -22,7 +22,7 @@ public class DataroomListHandler implements Handler {
 		String num=request.getParameter("num");
 		int rnum=0; 
 		if(num!=null) {
-			rnum=Integer.parseInt(num);
+			rnum=Integer.parseInt(num)-1;
 		}
 		int pnum=0;
 		if(rnum>=1) {
@@ -32,15 +32,15 @@ public class DataroomListHandler implements Handler {
 		ArrayList<ArrayList<Data>> paging=null;
 		if(viewtype==1) {
 			list = service.getAll();
-			paging=page.paging(list, 5);
+			paging=page.paging(list, 2);
 		}else if(viewtype==2) {
 			list = service.getByCnt();
-			paging=page.paging(list, 5);
+			paging=page.paging(list, 2);
 		}
 		request.setAttribute("type", viewtype);
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("pnum", pnum);
-		request.setAttribute("pnume", pnum+5);
+		request.setAttribute("pnume", pnum+4);
 		request.setAttribute("list", paging.get(rnum));
 		request.setAttribute("view", "/dataroom/list.jsp");
 		request.setAttribute("paging", paging);
