@@ -175,5 +175,6 @@ const e =(viewtype)=>{
 </form>
 </c:if>
 </div>
+<a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a>
 </body>
 </html>

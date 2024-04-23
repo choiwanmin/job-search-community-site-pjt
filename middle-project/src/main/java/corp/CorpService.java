@@ -38,4 +38,7 @@ public class CorpService {
 	public Corp getByCorpId(String corpid) {
 		return dao.selectByCorpId(corpid);
 	}
+	public void editCorp(int num, String addr) {
+		dao.update(num, addr);
+	}
 }
