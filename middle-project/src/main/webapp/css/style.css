@@ -45,11 +45,9 @@ nav {
 #navUser{
     justify-content: flex-end;
 }
-#log-info:hover #show{display:block;}
+
 .show{
 	display:none;
 }
-
-
 
 

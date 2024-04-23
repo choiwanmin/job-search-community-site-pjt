@@ -24,7 +24,7 @@ window.onload = () => {
 <div style="display: none" id="type">
 TYPE
 </div>
-<table style="padding: 40px">
+<table style="padding: 40px; width: 600px">
 <tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" readonly></td></tr>
 <tr><th>전화번호</th><td><input class="form-control form-control-lg" type="text" placeholder="UserTel..." aria-label=".form-control-lg example"name="usertel" value="${p.usertel }" readonly></td></tr>

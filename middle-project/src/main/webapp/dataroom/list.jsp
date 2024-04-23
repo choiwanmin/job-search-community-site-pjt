@@ -166,7 +166,7 @@ const e =(viewtype)=>{
 <form action="${pageContext.request.contextPath }/dataroom/type.do" method="post">
 <table>
 <tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
-<td><input type="submit" name="num" value="${step.index}"> <input type="hidden" name="viewtype" value="${viewtype }">
+<td><input type="submit" name="num" value="${step.count}"> <input type="hidden" name="viewtype" value="${viewtype }">
 <input type="hidden" name="type" value="${type }">  
 </td>
 </c:forEach>
@@ -175,5 +175,6 @@ const e =(viewtype)=>{
 </form>
 </c:if>
 </div>
+<a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a>
 </body>
 </html>

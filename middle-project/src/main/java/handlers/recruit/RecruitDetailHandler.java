@@ -1,7 +1,10 @@
 package handlers.recruit;
 
+import java.io.IOException;
 import java.sql.Date;
 
+import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletException;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -45,7 +48,8 @@ public class RecruitDetailHandler implements Handler {
 //			MemService mservice = new MemService();
 //			mservice.
 //			if(id.equals(view))
-			view = "/recruit/recruitdetail.jsp";
+			request.setAttribute("view" , "/recruit/recruitdetail.jsp");
+			
 		} else {
 			// update
 			RecruitListService rlservice = new RecruitListService();

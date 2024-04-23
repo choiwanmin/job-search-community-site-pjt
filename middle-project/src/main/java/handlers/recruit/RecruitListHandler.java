@@ -17,6 +17,7 @@ public class RecruitListHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		// 저장상태가(임시저장:0, 등록:1) 1인 공고만 전달
+		String view = "/index.jsp";
 		String id = (String) request.getSession().getAttribute("loginId");
 		MemService mservice = new MemService();
 		CorpService cservice = new CorpService();
@@ -35,8 +36,8 @@ public class RecruitListHandler implements Handler {
 		request.setAttribute("id", id);
 		request.setAttribute("busiNo", busiNo);
 		request.setAttribute("rlList", rlList);
-		
-		return "/recruit/recruitlist.jsp";
+		request.setAttribute("view", "/recruit/recruitlist.jsp");
+		return view;
 	}
 
 }
