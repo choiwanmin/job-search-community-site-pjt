@@ -77,8 +77,8 @@
 </c:if>
 
 <c:if test = "${sessionScope.loginType.equals('기업')}">
-<a href="${pageContext.request.contextPath }/product/list.do">상품목록</a><br/>
 <a href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
+<a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고 목록</a>
 <a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a>
 </c:if>
 </td>
