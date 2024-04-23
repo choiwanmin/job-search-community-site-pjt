@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import corp.CorpService;
 import handlers.Handler;
-import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;
-import recruit.recruitlist.RecruitList;
 import recruit.recruitlist.RecruitListService;
 
 public class RecruitDelHandler implements Handler {

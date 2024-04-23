@@ -7,6 +7,11 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
+<<<<<<< HEAD
+const add = () => {
+	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
+}
+
 const a=(val)=>{
 	let req=new XMLHttpRequest()
 	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
@@ -47,5 +52,6 @@ const a=(val)=>{
 </tr>
 </c:forEach>
 </table>
+<input type="button" value="공고 등록" onclick="add()">
 </body>
 </html>
