@@ -10,6 +10,9 @@ p{
 }
 
 /* ------------------section----------------------- */
+section{
+    padding: 100px 0;
+}
 .job_rec_wrap{
     padding: 0;
     text-align: center;
@@ -51,4 +54,46 @@ p{
 }
 .rec_date{
     color: #5545be;
+}
+/* -------------------info----------------------- */
+.info_wrap{
+    display: flex;
+    width: 100%;
+    min-height: 800px;
+    background-color: #fcfcfc;
+    padding: 30px 0;
+}
+.info_left{
+    width: 20%;
+    height: inherit;
+
+}
+.info_title{
+    padding-top: 10px;
+}
+.info_title a{
+    color: #424244;
+}
+.info_title a:hover{
+    color: #282828;
+    text-decoration:underline;
+}
+.info_right{
+    width: 80%;
+    height: 100%;
+}
+.topic{
+    font-weight: 700;
+    margin-left: 20px;
+}
+.topic::after{
+    display: block;
+    content: "";
+    margin-top: 10px;
+    width: 145px;
+    height: 2px;
+    background-color: #929292;
+}
+.topic:nth-last-of-type(1){
+    margin-top: 35px;
 }
