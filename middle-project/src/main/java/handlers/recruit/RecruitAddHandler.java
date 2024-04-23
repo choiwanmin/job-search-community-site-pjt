@@ -1,8 +1,6 @@
 package handlers.recruit;
 
 import java.sql.Date;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -19,10 +17,10 @@ public class RecruitAddHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-
+		String view = "/index.jsp";
 		if (request.getMethod().equals("POST")) {
 			String corpid = (String) request.getSession().getAttribute("loginId");
-			
+
 			CorpService cservice = new CorpService();
 			String busiNo = (cservice.getByCorpId(corpid)).getBusi_no(); // 기업-사업자등록번호(corp테이블-busi_no컬럼)
 //			String wantedAuthNo; // 공고-공고번호
@@ -36,9 +34,7 @@ public class RecruitAddHandler implements Handler {
 
 			String jobsNm = request.getParameter("jobsNm"); // 공고-직종이름
 //			int jobsCd = response. // 공고-직종코드
-			
-//			SimpleDateFormat aFormat = new SimpleDateFormat("yyyy-MM-dd");
-			
+
 			String regDt = request.getParameter("regDt"); // 공고-등록일
 			String closeDt = request.getParameter("closeDt"); // 공고-마감일
 
@@ -47,25 +43,26 @@ public class RecruitAddHandler implements Handler {
 
 //			int saveStatus = Integer.parseInt(request.getParameter("saveStatus")); // 공고저장상태(ex.임시저장, 등록)
 //			String saveStatus = request.getParameter("saveStatus"); // 공고저장상태(ex.임시저장, 등록)
-			boolean listType = Boolean.parseBoolean(request.getParameter("listType")); // 공고등록(ex.api공고, 사용자공고)
-			
+
 			int minSal = Integer.parseInt(request.getParameter("minSal")); // 공고-최소임금금액
 			int maxSal = Integer.parseInt(request.getParameter("maxSal")); // 공고-최대임금금액
 			String jobCont = request.getParameter("jobCont"); // 공고-공고상세
 //			Date smodifyDtm; // 공고-최종수정일
 			String contactTelNo = request.getParameter("contactTelNo"); // 공고-공고 담당 전화번호
 //			int detailType = Integer.parseInt(request.getParameter("detailType")); // 공고상태(ex.진행, 마감, 삭제)
+
 			RecruitListService rlservice = new RecruitListService();
-			rlservice.addNewRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, null, null, 0, null, false));
 			RecruitDetailService rdservice = new RecruitDetailService();
+
+			rlservice.addNewRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
+					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
 					null, contactTelNo, 0, 0));
 		} else {
-			request.setAttribute("view", "/recruit/recruitadd.jsp");
+			view = "/recruit/recruitadd.jsp";
+			request.setAttribute("view", view);
 		}
-
-		return "/index.jsp";
+		return view;
 	}
 
 }

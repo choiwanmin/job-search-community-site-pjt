@@ -1,6 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=utf-8"
     pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
 <!DOCTYPE html>
 <html>
 <head>
@@ -19,18 +20,18 @@ window.onload = () => {
 <body>
 <h3>내 정보 확인</h3>
 <c:if test="${sessionScope.loginType == '구직자' }">
-<form action="${pageContext.request.contextPath }/mem/editmyinfo.do">
-<table border="1">
-<tr><th>ID</th><td><input type="text" name="id" value="${m.id }" readonly></td></tr>
-<tr><th>PWD</th><td><input type="text" name="pwd" value="${m.pwd }" ></td></tr>
-<tr><th>전화번호</th><td><input type="text" name="usertel" value="${p.usertel }" ></td></tr>
-<tr><th>이메일</th><td><input type="text" name="email" value="${p.email }" ></td></tr>
-<tr><th>학력</th><td><input type="text" name="education" value="${p.education }" ></td></tr>
-<tr><th>경력</th><td><input type="text" name="career" value="${p.career }" ></td></tr>
-<tr><th>활용기술</th><td><input type="text" name="skill" value="${p.skill }" ></td></tr>
-<tr><th>성별</th><td><input type="text" name="gender" value="${p.gender }" ></td></tr>
-<tr><th>나이</th><td><input type="text" name="age" value="${p.age }" ></td></tr>
-<tr><th>관심분야</th><td><input type="text" name="jobCd" value="${p.jobNm }" ></td></tr>
+<form action="${pageContext.request.contextPath }/mem/editmyinfo.do"  style="padding: 20px">
+<table border="1" style="padding: 40px">
+<tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
+<tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" ></td></tr>
+<tr><th>전화번호</th><td><input class="form-control form-control-lg" type="text" placeholder="UserTel..." aria-label=".form-control-lg example"name="usertel" value="${p.usertel }" ></td></tr>
+<tr><th>이메일</th><td><input class="form-control form-control-lg" type="text" placeholder="Email" aria-label=".form-control-lg example" name="email" value="${p.email }" ></td></tr>
+<tr><th>학력</th><td><input class="form-control form-control-lg" type="text" placeholder="학력을 등록하세요.." aria-label=".form-control-lg example" name="education" value="${p.education }" ></td></tr>
+<tr><th>경력</th><td><input class="form-control form-control-lg" type="text" placeholder="경력을 입력하세요.." aria-label=".form-control-lg example" name="career" value="${p.career }" ></td></tr>
+<tr><th>활용기술</th><td><input class="form-control form-control-lg" type="text" placeholder="활용가능 스킬.." aria-label=".form-control-lg example" name="skill" value="${p.skill }" ></td></tr>
+<tr><th>성별</th><td><input class="form-control form-control-lg" type="text" placeholder="성별" aria-label=".form-control-lg example" name="gender" value="${p.gender }" ></td></tr>
+<tr><th>나이</th><td><input class="form-control form-control-lg" type="text" placeholder="나이를 입력하세요.." aria-label=".form-control-lg example" name="age" value="${p.age }" ></td></tr>
+<tr><th>관심분야</th><td><input class="form-control form-control-lg" type="text" placeholder="관심분야 .. ..." aria-label=".form-control-lg example" name="jobCd" value="${p.jobNm }" ></td></tr>
 <tr><th>TYPE</th><td id="type"></td></tr>
 <tr>
 <th>수정</th><td><input type="submit" value="수정"><c:if test="${empty sessionScope.person }">

@@ -36,7 +36,7 @@ public class PersonEditHandler implements Handler {
 				}
 			}
 			service.editPerson(new Person(0, userid, usertel, email, education, career, skill, gender, age, jcd, jNm));
-
+			
 		} else {
 			request.setAttribute("view", "/mem/editmyinfo.jsp");
 		}

@@ -26,7 +26,8 @@ ${msg }
 </tr>
 <tr><th>경력</th><td><input type="number" name="career"></td></tr>
 <tr><th>활용스킬</th><td><input type="text" name="skill"></td></tr>
-<tr><th>성별</th><td><input type="number" name="gender"></td></tr>
+<tr><th>성별</th><td><label><input type="checkbox" name="gender" value="1"> 남자</label>
+<label><input type="checkbox" name="gender" value="2"> 여자</label></td></tr>
 <tr><th>나이</th><td><input type="number" name="age"></td></tr>
 <tr><th>관심분야</th><td>
 <select multiple="multiple" size="3" name="jobCd">
