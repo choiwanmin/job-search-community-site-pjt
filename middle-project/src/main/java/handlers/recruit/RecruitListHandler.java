@@ -26,7 +26,7 @@ public class RecruitListHandler implements Handler {
 		String num=request.getParameter("num");
 		int rnum=1;
 		if(num!=null) {
-			rnum=Integer.parseInt(num);
+			rnum=Integer.parseInt(num); 
 		}
 		int pnum=rnum;
 		if(pnum>=3) {

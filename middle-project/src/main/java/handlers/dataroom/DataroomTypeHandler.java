@@ -25,7 +25,7 @@ public class DataroomTypeHandler implements Handler {
 		if(num!=null) {
 			rnum=Integer.parseInt(num);
 		}
-		int pnum=rnum;
+		int pnum=rnum; 
 		if(pnum>=3) {
 			pnum=pnum-2;
 		}

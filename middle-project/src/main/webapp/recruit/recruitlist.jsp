@@ -41,7 +41,7 @@ window.onload()
 <form action="${pageContext.request.contextPath }/recruit/recruitlist.do" method="post">
 <table>
 <tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
-<td><input type="submit" name="num" value="${step.count+pnum}"> 
+<td><input type="submit" name="num" value="${step.count+pnum}">  
 </td>
 </c:forEach>
 </tr>

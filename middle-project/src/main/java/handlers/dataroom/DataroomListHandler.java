@@ -17,7 +17,7 @@ public class DataroomListHandler implements Handler {
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
 		DataService service = new DataService();
-		ArrayList<Data> list = null;
+		ArrayList<Data> list = null; 
 		GeneralPage<Data> page=new GeneralPage<>();
 		ArrayList<ArrayList<Data>> paging=null;
 		String num=request.getParameter("num");

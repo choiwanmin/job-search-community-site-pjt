@@ -20,7 +20,7 @@ public class DataroomSearchHandler implements Handler {
 		ArrayList<Data> list = null;
 		GeneralPage<Data> page=new GeneralPage<>();
 		String num=request.getParameter("num");
-		int rnum=1;
+		int rnum=1; 
 		if(num!=null) {
 			rnum=Integer.parseInt(num);
 		}

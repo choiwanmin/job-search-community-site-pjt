@@ -12,7 +12,7 @@
 <script type="text/javascript">
 const a = (type) =>{
 	location.href="${pageContext.request.contextPath }/dataroom/type.do?type="+type+"&viewtype=1";
-}
+} 
 const b=(viewtype)=>{
 	location.href="${pageContext.request.contextPath }/dataroom/list.do?viewtype="+viewtype;
 }
