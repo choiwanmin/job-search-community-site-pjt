@@ -19,11 +19,10 @@ public class OfferHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		//기업 제안 핸들러
-		//view 페이지 유저 페이지에 맞춰서 넣어주세요.
 		String view = "/index.jsp";
 		if (request.getMethod().equals("POST")) {
-			//유저ID로 변경 요청
-			String userId = (String)request.getAttribute("userid");
+			//유저ID 파라미터로 넘겨주기
+			int personNum = Integer.parseInt(request.getParameter("personNum"));
 			
 			//제안 회사 및 공고 정보
 			String wanted_auth_no = (String)request.getAttribute("wanted_auth_no");
@@ -33,7 +32,7 @@ public class OfferHandler implements Handler {
 			int corpNum = c.getNum();
 			
 			OfferService oservice = new OfferService();
-			oservice.addOffer(new Offer(0,corpNum,wanted_auth_no,userId,null,0));
+			oservice.addOffer(new Offer(0,corpNum,wanted_auth_no,personNum,null,0));
 		}
 		return view;
 	}
