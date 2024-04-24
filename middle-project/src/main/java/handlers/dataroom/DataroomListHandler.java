@@ -19,31 +19,34 @@ public class DataroomListHandler implements Handler {
 		DataService service = new DataService();
 		ArrayList<Data> list = null;
 		GeneralPage<Data> page=new GeneralPage<>();
+		ArrayList<ArrayList<Data>> paging=null;
 		String num=request.getParameter("num");
-		int rnum=0; 
+		int rnum=1;
 		if(num!=null) {
-			rnum=Integer.parseInt(num)-1;
+			rnum=Integer.parseInt(num);
 		}
-		int pnum=0;
-		if(rnum>=1) {
-			pnum=rnum-1;
+		int pnum=rnum;
+		if(pnum>=3) {
+			pnum=pnum-2;
+		}
+		else {
+			pnum=1;
 		}
 		int viewtype = Integer.parseInt(request.getParameter("viewtype"));
-		ArrayList<ArrayList<Data>> paging=null;
 		if(viewtype==1) {
 			list = service.getAll();
-			paging=page.paging(list, 2);
+			paging=page.paging(list, 10);
 		}else if(viewtype==2) {
 			list = service.getByCnt();
-			paging=page.paging(list, 2);
+			paging=page.paging(list, 10);
 		}else if(viewtype==3) {
 			list = service.getByFcnt();
-			paging=page.paging(list, 2);
+			paging=page.paging(list, 10);
 		}
 		request.setAttribute("viewtype", viewtype);
-		request.setAttribute("pnum", pnum);
-		request.setAttribute("pnume", pnum+4);
-		request.setAttribute("list", paging.get(rnum));
+		request.setAttribute("pnum", pnum-1);
+		request.setAttribute("pnume", pnum+3);
+		request.setAttribute("list", paging.get(rnum-1));
 		request.setAttribute("view", "/dataroom/list.jsp");
 		request.setAttribute("paging", paging);
 		return view;

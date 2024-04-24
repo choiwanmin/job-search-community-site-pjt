@@ -172,7 +172,11 @@ button.btn-primary {
 </tr>
 </c:forEach>
 </table>
+<c:if test="${not empty msg }">
+${msg }
+</c:if>
 <!-- 전체검색 -->
+<c:if test="${empty searchtype }">
 <c:if test="${empty type }">
 <form action="${pageContext.request.contextPath }/dataroom/list.do" method="post">
 <table>
@@ -184,22 +188,35 @@ button.btn-primary {
 </table>
 </form>
 </c:if>
+</c:if>
 <!-- 타입으로검색 -->
 <c:if test="${not empty type }">
+<div class="d-flex justify-content-center">
 <form action="${pageContext.request.contextPath }/dataroom/type.do" method="post">
 <table>
-<div class="d-flex justify-content-center">
 <tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
-<td><input type="submit" name="num" value="${step.count}"> <input type="hidden" name="viewtype" value="${viewtype }">
+<td><input type="submit" name="num" value="${step.count+pnum}"> <input type="hidden" name="viewtype" value="${viewtype }">
 <input type="hidden" name="type" value="${type }">  
 </td>
 </c:forEach>
 </tr>
+</table>
+</form>
 </div>
+</c:if>
+</div>
+<c:if test="${not empty searchtype }">
+<form action="${pageContext.request.contextPath }/dataroom/search.do?" method="post">
+<table>
+<tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
+<td><input type="submit" name="num" value="${step.count+pnum}"> <input type="hidden" name="viewtype" value="${viewtype }">
+<input type="hidden" name="searchtype" value="${searchtype }"> <input type="hidden" name="search" value="${search }"> 
+</td>
+</c:forEach>
+</tr>
 </table>
 </form>
 </c:if>
-</div>
 <!--  <a href="${pageContext.request.contextPath }/dataroom/add.do">자료등록</a>-->
 </body>
 </html>
