@@ -23,8 +23,8 @@ public class RecruitDetail {
 	}
 
 	public RecruitDetail(int num, String wantedAuthNo, int minSal, int maxSal, String relJobNm, String srchKeyWordNm,
-			String jobCont, Date smodifyDtm, String basicAddr, String detailAddr, String contactTelNo, int recruitCheck,
-			int type) {
+			String jobCont, Date smodifyDtm, String basicAddr, String detailAddr, String contactTelNo, int type,
+			int recruitCheck) {
 		super();
 		this.num = num;
 		this.wantedAuthNo = wantedAuthNo;
@@ -37,8 +37,8 @@ public class RecruitDetail {
 		this.basicAddr = basicAddr;
 		this.detailAddr = detailAddr;
 		this.contactTelNo = contactTelNo;
-		this.recruitCheck = recruitCheck;
 		this.type = type;
+		this.recruitCheck = recruitCheck;
 	}
 
 	@Override
@@ -46,7 +46,7 @@ public class RecruitDetail {
 		return "RecruitDetail [num=" + num + ", wantedAuthNo=" + wantedAuthNo + ", minSal=" + minSal + ", maxSal="
 				+ maxSal + ", relJobNm=" + relJobNm + ", srchKeyWordNm=" + srchKeyWordNm + ", jobCont=" + jobCont
 				+ ", smodifyDtm=" + smodifyDtm + ", basicAddr=" + basicAddr + ", detailAddr=" + detailAddr
-				+ ", contactTelNo=" + contactTelNo + ", recruitCheck=" + recruitCheck + ", type=" + type + "]";
+				+ ", contactTelNo=" + contactTelNo + ", type=" + type + ", recruitCheck=" + recruitCheck + "]";
 	}
 
 	public int getNum() {
@@ -137,20 +137,20 @@ public class RecruitDetail {
 		this.contactTelNo = contactTelNo;
 	}
 
-	public int getRecruitCheck() {
-		return recruitCheck;
-	}
-
-	public void setRecruitCheck(int recruitCheck) {
-		this.recruitCheck = recruitCheck;
-	}
-
 	public int getType() {
 		return type;
 	}
 
 	public void setType(int type) {
 		this.type = type;
+	}
+
+	public int getRecruitCheck() {
+		return recruitCheck;
+	}
+
+	public void setRecruitCheck(int recruitCheck) {
+		this.recruitCheck = recruitCheck;
 	}
 
 }

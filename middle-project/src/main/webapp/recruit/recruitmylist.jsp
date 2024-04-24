@@ -7,7 +7,6 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-<<<<<<< HEAD
 const add = () => {
 	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
 }

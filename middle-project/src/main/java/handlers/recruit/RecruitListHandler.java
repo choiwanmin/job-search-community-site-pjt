@@ -17,17 +17,17 @@ public class RecruitListHandler implements Handler {
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
 		String id = (String) request.getSession().getAttribute("loginId");
-		
+
 		MemService mservice = new MemService();
 		RecruitListService rlservice = new RecruitListService();
 		ArrayList<RecruitList> rlList = new ArrayList<RecruitList>();
-		
+
 		int saveStatus = 1;
-		
-		if(mservice.getMem(id).getType() == 1) {
+
+		if (mservice.getMem(id).getType() == 1) {
 			rlList = rlservice.getAll(saveStatus);
 		}
-		
+
 		request.setAttribute("rlList", rlList);
 		request.setAttribute("view", "/recruit/recruitlist.jsp");
 		return view;
