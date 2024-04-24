@@ -20,7 +20,8 @@ const a=(val)=>{
 <body>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>공고 목록</h3>
-<table class = "table table-striped table-hover">
+</c:if>
+<table class = "table table-striped table-hover w800 p40">
 <tr>
 <th>공고제목</th>
 <th>채용직무</th>
@@ -36,6 +37,5 @@ const a=(val)=>{
 </tr>
 </c:forEach>
 </table>
-</c:if>
 </body>
 </html>
