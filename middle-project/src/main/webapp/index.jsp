@@ -75,7 +75,6 @@
           </div>
           
     </nav>
-<h3>RECRUITㅇㅇ</h3>
 <td style = "width:150px; height:400px">
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 
