@@ -51,7 +51,6 @@ const scrap = () => {
 <table >
 <tr><th>기업명</th><td>${corp_nm }</td></tr>
 <tr><th>기업주소</th><td>${corp_addr }</td></tr>
-<tr><th>사업자등록번호</th><td>${busi_no }</td></tr>
 </table>
 </c:if>
 <table border="1">

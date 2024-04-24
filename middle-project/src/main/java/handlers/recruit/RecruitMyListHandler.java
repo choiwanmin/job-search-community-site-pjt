@@ -27,14 +27,26 @@ public class RecruitMyListHandler implements Handler {
 
 		String busiNo = "";
 
+		String saveStatusStr = "";
 		if (mservice.getMem(id).getType() == 2) {
 			busiNo = (cservice.getByCorpId(id)).getBusi_no();
 			rlList = rlservice.getByBusiNo(busiNo);
-		}
-
+//			for(RecruitList rl : rlList) {
+//				int saveStatus = rl.getSaveStatus();
+//				switch(saveStatus) {
+//				case 0:
+//					saveStatusStr = "임시 저장";
+//					break;
+//				case 1:
+//					saveStatusStr = "공고 등록";
+//					break;
+//				}
+			}
+		
 		request.setAttribute("id", id);
 		request.setAttribute("busiNo", busiNo);
 		request.setAttribute("rlList", rlList);
+//		request.setAttribute("saveStatusStr", saveStatusStr);
 		request.setAttribute("view", "/recruit/recruitmylist.jsp");
 		return view;
 	}

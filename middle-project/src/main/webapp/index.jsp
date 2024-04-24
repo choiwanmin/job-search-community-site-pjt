@@ -40,6 +40,9 @@
 				<li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/person/list.do">인재추천</a>
                 </li>
+         		<li class="nav-item">
+                  <a class="nav-link log-nav" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고 목록</a>
+                </li>
 				</c:if>
                 
               </ul>
@@ -61,15 +64,12 @@
                     ${sessionScope.loginId } /${sessionScope.loginType } 회원 <span id="user">▼</span>
              <nav id="show" class="nav flex-column show">
 				<c:if test="${sessionScope.loginType.equals('구직자') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/myinfo.do">내 정보 확인</a>
+				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
 				<a class="nav-link log-nav"  href="${pageContext.request.contextPath }/dataroom/add.do">자료 등록</a>
 				<a class="nav-link log-nav"  href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>
 				</c:if>
 				<c:if test="${sessionScope.loginType.equals('기업') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
-				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고 목록</a>
-				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
-				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/person/list.do">test1</a>
-				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/out.do?id=${sessionScope.loginId }">회원탈퇴</a>
 				</c:if>
 			 </nav>
                   </li>

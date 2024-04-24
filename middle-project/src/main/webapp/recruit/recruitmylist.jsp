@@ -42,6 +42,7 @@ const chageLangSelect=()=>{
 <th>채용직무</th>
 <th>공고등록일</th>
 <th>공고마감일</th>
+<th>공고저장상태</th>
 </tr>
 <c:forEach var="rllist" items="${rlList }">
 <tr>
@@ -49,6 +50,7 @@ const chageLangSelect=()=>{
 <td>${rllist.jobsNm }</td>
 <td >${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>
+<td>${rllist.saveStatus }</td>
 </tr>
 </c:forEach>
 </table>

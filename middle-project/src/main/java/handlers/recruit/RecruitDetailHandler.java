@@ -177,7 +177,7 @@ public class RecruitDetailHandler implements Handler {
 			rlservice.editRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
 					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
 			rdservice.editRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 0));
+					null, contactTelNo, 0, 1));
 			view = "redirect:/recruit/recruitmylist.jsp";
 		}
 		return view;
