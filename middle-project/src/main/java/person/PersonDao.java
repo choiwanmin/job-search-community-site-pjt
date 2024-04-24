@@ -148,7 +148,48 @@ public class PersonDao {
 		}
 		return person;
 	}
-
+	// num로 유저 정보 검색
+	public Person selectByNum(int num) {
+		Connection conn = db.conn();
+		String sql = "select * from person where num=?";
+		Person person = null;
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, num);
+			// select는 executeQuery()로 실행
+			// executeQuery()는 select를 실행하고 검색 결과를 ResultSet에 담아서 반환
+			ResultSet rs = pstmt.executeQuery();
+			// rs.next(): 읽을 다음 줄로 이동. 읽을 것이 있으면 true, 없으면 false반환
+			if (rs.next()) {
+				person = new Person();
+				person.setNum(rs.getInt(1));// 1번 컬럼의 문자열 값을 읽음
+				person.setUserid(rs.getString(2));// 2번 컬럼의 문자열 값을 읽음
+				person.setUsertel(rs.getString(3));// 3번 컬럼의 문자열 값을 읽음
+				person.setEmail(rs.getString(4));// 4번 컬럼의 문자열 값을 읽음
+				person.setEducation(rs.getString(5));
+				person.setCareer(rs.getString(6));
+				person.setSkill(rs.getString(7));
+				person.setGender(rs.getString(8));
+				person.setAge(rs.getString(9));
+				person.setJobCd(rs.getString(10));
+				person.setJobNm(rs.getString(11));
+				// mem = new
+				// Mem(rs.getString(1),rs.getString(2),rs.getString(3),rs.getString(4),
+				// rs.getInt(5));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return person;
+	}
 	
 	public ArrayList<Person> selectAll() {
 		Connection conn = db.conn();

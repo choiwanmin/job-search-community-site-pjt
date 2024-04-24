@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import handlers.Handler;
+import person.Person;
+import person.PersonService;
 import recruit.recruitlist.RecruitList;
 import recruit.recruitlist.RecruitListService;
 import recruitApply.RecruitApply;
@@ -21,7 +23,10 @@ public class applyHandler implements Handler {
 		if(request.getMethod().equals("POST")) {
 			//지원자 ID
 			String userid = (String)request.getSession().getAttribute("loginId");
-					
+			PersonService pservice = new PersonService();
+			Person p = pservice.getPerson(userid);
+			int num = p.getNum();
+			
 			//공고 번호 가져오기
 			String wanted_auth_no = request.getParameter("wanted_auth_no");
 			RecruitListService list = new RecruitListService();
@@ -30,7 +35,7 @@ public class applyHandler implements Handler {
 			RecruitList r = rservice.getByWantedAuthNo(wanted_auth_no);
 			RecruitApplyService applyService = new RecruitApplyService();
 
-			applyService.addApply(new RecruitApply(wanted_auth_no,r.getWantedTitle(),userid,null,r.getBusiNo()));
+			applyService.addApply(new RecruitApply(wanted_auth_no,r.getWantedTitle(),num,null,r.getBusiNo()));
 				
 			view = "/index.jsp";
 		}else {//지원 공고 리스트 보기

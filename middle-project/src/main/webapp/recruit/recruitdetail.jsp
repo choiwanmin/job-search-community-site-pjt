@@ -7,22 +7,27 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-// const edit = () => {
-// 	location.href = '{pageContext.request.contextPath }/recruit/recruitedit.do?=${wantedAuthNo }";
-// }
-
-// const del = () => {
-// 	location.href = '{pageContext.request.contextPath }/recruit/recruitdel.do?=${wantedAuthNo }";	
-// }
-
-const list = () => {
-	location.href = '${pageContext.request.contextPath }/recruit/recruitlist.do?id=${corpid }&busiNo=${busiNo }';	
+const edit = () => {
+	location.href = '${pageContext.request.contextPath}/recruit/recruitedit.do?wantedAuthNo=${wantedAuthNo }';
 }
+
+const del = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitdel.do?wantedAuthNo=${wantedAuthNo }';
+}
+
+const mylist = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitmylist.do?id=${corpid }&busiNo=${busi_no }';
+}
+
+const recruitlist = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitlist.do';
+}
+
 const apply = () => {
-	location.href = '{pageContext.request.contextPath }/recruit/recruitdel.do?=${wantedAuthNo }";	
+	location.href = '${pageContext.request.contextPath }/recruit/recruitdel.do?wantedAuthNo=${wantedAuthNo }';
 }
 const scrap = () => {
-	location.href = '{pageContext.request.contextPath }/scrap/add.do?=${wantedAuthNo }";	
+	location.href = '${pageContext.request.contextPath }/scrap/add.do?wantedAuthNo=${wantedAuthNo }';
 }
 
 </script>
@@ -63,18 +68,18 @@ const scrap = () => {
 <tr><th>공고상태</th><td>${detailType }</td></tr>
 </table>
 <input type="hidden" name="corpid" value="${corpid }">
-<input type="hidden" name="busiNo" value="${busiNo }">
-<%-- <input type="hidden" name="" value="${busiNo }"> --%>
-<input type="button" value="공고 목록" onclick="list()">
+<input type="hidden" name="busiNo" value="${busi_no }">
 
 <c:if test = "${sessionScope.loginType.equals('기업')}">
-<input type="button" value="수정" onclick=edit()>
-<input type="button" value="삭제" onclick=del()>
+<input type="button" value="공고 목록" onclick="mylist()">
+<input type="button" value="수정" onclick="edit()">
+<input type="button" value="삭제" onclick="del()">
 </c:if>
 
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
-<input type="button" value="지원" onclick=apply()>
-<input type="button" value="스크랩" onclick=scrap()>
+<input type="button" value="공고 목록" onclick="recruitlist()">
+<input type="button" value="지원" onclick="apply()">
+<input type="button" value="스크랩" onclick="scrap()">
 </c:if>
 </body>
 </html>

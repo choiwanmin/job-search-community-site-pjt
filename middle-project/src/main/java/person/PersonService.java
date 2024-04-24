@@ -35,6 +35,9 @@ public class PersonService {
 		public Person getPerson(String userid) {
 			return dao.select(userid);
 		}
+		public Person getByNum(int num) {
+			return dao.selectByNum(num);
+		}
 		public ArrayList<Person> recommend(Person p){
 			if(p.getEducation().equals("0")) {
 				return dao.selectrecommend2(p);
