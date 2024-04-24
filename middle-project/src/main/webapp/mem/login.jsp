@@ -7,18 +7,24 @@
 <title>Insert title here</title>
 </head>
 <body>
-<h3>로그인</h3>
+<br>
+<br>
+<br>
+<br>
+<br>
+<br>
+<h2> 로그인</h2>
 ${msg }
 <form action="${pageContext.request.contextPath }/mem/login.do" method="post" name="f">
 <table>
 	<tr>
-		<th>ID</th><td><input type="text" name="id"></td>
+		<th>아이디</th><td><input type="text" name="id"></td>
 	</tr>
 	<tr>
-		<th>PWD</th><td><input type="password" name="pwd"></td>
+		<th>패스워드</th><td><input type="password" name="pwd"></td>
 	</tr>
 	<tr>
-		<th>LOGIN</th><td><input type="submit" value="로그인"></td>
+		<th></th><td><input type="submit" value="로그인"></td>
 	</tr>
 </table>
 </form>
