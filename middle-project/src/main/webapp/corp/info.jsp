@@ -31,17 +31,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
                 </li>
-              	<c:if test="${sessionScope.loginType.equals('구직자') }">
-              	<li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고보기</a>
-                </li>
-              	</c:if>
-				<c:if test="${sessionScope.loginType.equals('기업') }">
 				<li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/person/list.do">인재추천</a>
-                </li>
-				</c:if>
-                
+                </li>                
               </ul>
             </div>
             <div class="collapse navbar-collapse" id="navUser">
@@ -81,8 +73,8 @@
           </ul>
           <h4 class="topic">공고정보</h4>
           <ul>
-            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a></li>
-            <li class="info_title"><a href="">내 정보 수정</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">지원자 목록</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a></li>
             <li class="info_title"><a href="">내 공고 확인</a></li>
             <li class="info_title"><a href="">내 정보 수정</a></li>
           </ul>    

@@ -17,7 +17,7 @@ public class RecruitMyListHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		// 저장상태가(임시저장:0, 등록:1) 1인 공고만 전달
-		String view = "/index.jsp";
+		String view = "/corp/info.jsp";
 		String id = (String) request.getSession().getAttribute("loginId");
 
 		MemService mservice = new MemService();

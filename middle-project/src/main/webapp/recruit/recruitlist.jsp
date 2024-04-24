@@ -7,6 +7,11 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
+const add = () => {
+	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
+}
+
+
 const a=(val)=>{
 	let req=new XMLHttpRequest()
 	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
