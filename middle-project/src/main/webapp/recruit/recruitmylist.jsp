@@ -7,32 +7,30 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-const a=(val)=>{
-	let req=new XMLHttpRequest()
-	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
-	req.send()
-	req.onload=()=>{
-	}
+<<<<<<< HEAD
+const add = () => {
+	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
 }
-
 </script>
 </head>
 <body>
-<c:if test = "${sessionScope.loginType.equals('구직자')}">
-<h3>공고 목록</h3>
+<c:if test = "${sessionScope.loginType.equals('기업')}">
+<h3>${id }(사업자등록번호:${busiNo })님의 공고 목록</h3>
 <table class = "table table-striped table-hover">
 <tr>
 <th>공고제목</th>
 <th>채용직무</th>
 <th>공고등록일</th>
 <th>공고마감일</th>
+<th>공고저장상태</th>
 </tr>
 <c:forEach var="rllist" items="${rlList }">
 <tr>
-<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
+<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }">${rllist.wantedTitle }</a></td>
 <td>${rllist.jobsNm }</td>
 <td >${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>
+<td>${rllist.saveStatus }</td>
 </tr>
 </c:forEach>
 </table>
