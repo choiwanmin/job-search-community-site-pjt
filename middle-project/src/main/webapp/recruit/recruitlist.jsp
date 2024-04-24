@@ -7,11 +7,6 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-const add = () => {
-	location.href = "${pageContext.request.contextPath }/recruit/recruitadd.do";
-}
-
-
 const a=(val)=>{
 	let req=new XMLHttpRequest()
 	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
@@ -19,6 +14,7 @@ const a=(val)=>{
 	req.onload=()=>{
 	}
 }
+window.onload()
 
 </script>
 </head>
@@ -42,5 +38,14 @@ const a=(val)=>{
 </tr>
 </c:forEach>
 </table>
+<form action="${pageContext.request.contextPath }/recruit/recruitlist.do" method="post">
+<table>
+<tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
+<td><input type="submit" name="num" value="${step.count+pnum}"> 
+</td>
+</c:forEach>
+</tr>
+</table>
+</form>	
 </body>
 </html>

@@ -24,7 +24,7 @@ public class RecruitApplyDao {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1, r.getWanted_auth_no());
 			pstmt.setString(2, r.getWanted_title());
-			pstmt.setString(3, r.getApplycant_num());
+			pstmt.setInt(3, r.getApplycant_num());
 			pstmt.setString(4, r.getBusi_no());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -46,7 +46,7 @@ public class RecruitApplyDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			if(rs.next()) {
-				return new RecruitApply(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5));
+				return new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -66,7 +66,7 @@ public class RecruitApplyDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5)));
+				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -86,7 +86,7 @@ public class RecruitApplyDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5)));
+				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -106,7 +106,7 @@ public class RecruitApplyDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getString(3),rs.getDate(4),rs.getString(5)));
+				list.add(new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
