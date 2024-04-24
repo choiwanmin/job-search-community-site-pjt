@@ -6,13 +6,13 @@ public class Offer {
 	private int num;
 	private int corp_id;//회사 정보-회사 정보(num)
 	private String wanted_auth_no;//공고 번호-공고 번호(wanted_auth_no)
-	private String userid;//개인 회원-person(num)
+	private int userid;//개인 회원-person(num)
 	private Date offerdate;//제안 날짜
 	private int accept;//승락여부(제안 기본(미응답)-0,제안 승낙-1,제안 거부-2)
 	
 	public Offer() {}
 
-	public Offer(int num, int corp_id, String wanted_auth_no, String userid, Date offerdate, int accept) {
+	public Offer(int num, int corp_id, String wanted_auth_no, int userid, Date offerdate, int accept) {
 		super();
 		this.num = num;
 		this.corp_id = corp_id;
@@ -46,11 +46,11 @@ public class Offer {
 		this.wanted_auth_no = wanted_auth_no;
 	}
 
-	public String getUserid() {
+	public int getUserid() {
 		return userid;
 	}
 
-	public void setUserid(String userid) {
+	public void setUserid(int userid) {
 		this.userid = userid;
 	}
 

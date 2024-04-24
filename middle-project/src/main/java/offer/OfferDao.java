@@ -23,7 +23,7 @@ public class OfferDao {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1, o.getCorp_id());
 			pstmt.setString(2, o.getWanted_auth_no());
-			pstmt.setString(3, o.getUserid());
+			pstmt.setInt(3, o.getUserid());
 			pstmt.setInt(4, o.getAccept());
 			pstmt.executeUpdate();
 		} catch (SQLException e) {
@@ -44,7 +44,7 @@ public class OfferDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			if(rs.next()) {
-				return new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getInt(6));
+				return new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getInt(6));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -64,7 +64,7 @@ public class OfferDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getInt(6)));
+				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getInt(6)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -84,7 +84,7 @@ public class OfferDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getInt(6)));
+				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getInt(6)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
@@ -104,7 +104,7 @@ public class OfferDao {
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
-				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getString(4),rs.getDate(5),rs.getInt(6)));
+				list.add(new Offer(rs.getInt(1),rs.getInt(2),rs.getString(3),rs.getInt(4),rs.getDate(5),rs.getInt(6)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
