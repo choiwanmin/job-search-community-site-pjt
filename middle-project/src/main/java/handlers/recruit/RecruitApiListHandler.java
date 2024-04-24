@@ -103,6 +103,7 @@ public class RecruitApiListHandler implements Handler {
 
 				//
 				String jobsNm = wantedInfo.getElementsByTagName("jobsNm").item(0).getTextContent();
+				String[] jobsNmArr = jobsNm.split("\\(",2);
 				String wantedTitle = wantedInfo.getElementsByTagName("wantedTitle").item(0).getTextContent();
 				String relJobsNm = wantedInfo.getElementsByTagName("relJobsNm").item(0).getTextContent();
 				String jobCont = wantedInfo.getElementsByTagName("jobCont").item(0).getTextContent();
@@ -162,13 +163,13 @@ public class RecruitApiListHandler implements Handler {
 //					saveCntMemCorp++;
 //				}
 //				if (rlservice.getByWantedAuthNo(busino, wantedAuthNo) == null) {
-//					rlservice.addApiRecruitList(new RecruitList(busino, wantedAuthNo, wantedTitle, salTpCd, salTpCd,
-//							minEdubgIcd, enterTpCd, workRegion, Integer.parseInt(regionCd), jobsNm,
-//							Integer.parseInt(jobsCd), regDate, closeDate, 0, homePg, false));
+//					rlservice.addApiRecruitList(new RecruitList(busino, wantedAuthNo, wantedTitle, salTpCd, sal,
+//							minEdubgIcd, enterTpCd, workRegion, Integer.parseInt(regionCd), jobsNmArr[0],
+//							Integer.parseInt(jobsCd), regDate, closeDate, 0, homePg, true));
 //					if (rdservice.getByWantedAuthNo(wantedAuthNo) == null) {
 //						rdservice.addApiRecruitDetail(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal),
-//								Integer.parseInt(maxSal), relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr,
-//								detailAddr, contactTelno, 1, 0));
+//								Integer.parseInt(maxSal), jobsNmArr[0], srchKeywordNm, jobCont, smodifyDatetime, basicAddr,
+//								detailAddr, contactTelno, 0, 1));
 //						saveCntRecruit++;
 //					}
 //				}
@@ -179,9 +180,9 @@ public class RecruitApiListHandler implements Handler {
 				clist.add(new Corp(0, null, corpNm, corpAddr, busino));
 				rllist.add(new RecruitList(busino, wantedAuthNo, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
 						workRegion, Integer.parseInt(regionCd), jobsNm, Integer.parseInt(jobsCd), regDate, closeDate, 0,
-						homePg, false));
+						homePg, true));
 				rdlist.add(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal), Integer.parseInt(maxSal),
-						relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr, detailAddr, contactTelno, 1, 0));
+						relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr, detailAddr, contactTelno, 0, 1));
 
 				request.setAttribute("clist", clist);
 				request.setAttribute("rllist", rllist);

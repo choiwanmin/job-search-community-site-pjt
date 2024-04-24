@@ -4,6 +4,10 @@
 <!DOCTYPE html>
 <html>
 <head>
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
+<link rel="stylesheet"  href="${pageContext.request.contextPath }/css/form.css">
+<link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -29,11 +33,12 @@ const save = () => {
 </script>
 </head>
 <body>
+<br>
+<br>
+<br>
 <h3>공고 등록</h3>
 <form action="${pageContext.request.contextPath }/recruit/recruitadd.do" method="POST" name="f">
-<table border="1">
-<!-- 로그인 아이디 정보에 따라 사업자등록번호 자동 등록 -->
-<!-- 공고번호 랜덤한 값 자동 저장? -->
+<table>
 <tr><th>작성자</th><td><input type="text" style="width:98%;border:0;" name="writer" value="${sessionScope.loginId }" readonly></td></tr>
 <tr><th>공고 제목</th><td><input type="text" style="width:98%;border:0;" name="wantedTitle" required></td></tr>
 <tr><th>공고 직무 내용</th><td><textarea cols="50" rows="10" style="width:98%;border:0;resize:none;" name="jobCont"></textarea></td></tr>
@@ -81,8 +86,8 @@ const save = () => {
 
 <input type="hidden" name="saveStatus" value="0">
 
-<input type="submit" value="임시 저장">
-<input type="button" value="공고 등록" onclick="save()">
+<input type="submit" value="임시 저장" style="width: 80px">
+<input type="button" value="공고 등록" onclick="save()" style="width: 80px">
 </form>
 </body>
 </html>

@@ -59,11 +59,31 @@ const chageLangSelect=()=>{
 <h3>지원자 목록</h3>
 <table id="apply_list" class = "table table-striped table-hover">
 <tr>
+<<<<<<< HEAD
+<th>공고제목</th>
+<th>채용직무</th>
+<th>공고등록일</th>
+<th>공고마감일</th>
+<th>공고저장상태</th>
+=======
 <th>지원자 ID</th>
 <th>학력</th>
 <th>경력</th>
 <th>나이</th>
+>>>>>>> refs/heads/master
 </tr>
+<<<<<<< HEAD
+<c:forEach var="rllist" items="${rlList }">
+<tr>
+<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
+<td>${rllist.jobsNm }</td>
+<td >${rllist.regDt }</td>
+<td>${rllist.closeDt }</td>
+<td>${rllist.saveStatus }</td>
+</tr>
+</c:forEach>
+=======
+>>>>>>> refs/heads/master
 </table>
 
 </body>

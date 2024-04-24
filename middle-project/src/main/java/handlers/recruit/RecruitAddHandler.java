@@ -1,12 +1,18 @@
 package handlers.recruit;
 
+import java.io.BufferedReader;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
 import java.sql.Date;
+import java.util.ArrayList;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import corp.CorpService;
 import handlers.Handler;
+import recruit.job.Job;
 import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;
 import recruit.recruitlist.RecruitList;
@@ -57,9 +63,39 @@ public class RecruitAddHandler implements Handler {
 			rlservice.addNewRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
 					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, true));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 0));
-			view = "redirect:/recruit/recruitlist.do?id=" + corpid + "&busiNo=" + busiNo;
+					null, contactTelNo, 0, 1));
+			view = "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
 		} else {
+			String path = request.getServletContext().getRealPath("/WEB-INF/recruit_files/jobcdnm.csv");
+
+			String[] keys = null;
+			ArrayList<Job> jobList = new ArrayList<Job>();
+			try {
+				FileReader fr = new FileReader(path);
+				BufferedReader br = new BufferedReader(fr);
+
+				String str = "";
+				int cnt = 0;
+				while ((str = br.readLine()) != null) {
+					if (cnt == 0) {
+						keys = str.split(",");
+						cnt++;
+						continue;
+					}
+					String[] data = str.split(",");
+					jobList.add(new Job(data[0], data[1], data[2], data[3], data[4], data[5]));
+				}
+
+				request.setAttribute("keys", keys);
+				request.setAttribute("jobList", jobList);
+			} catch (FileNotFoundException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} catch (IOException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+
 			view = "/recruit/recruitadd.jsp";
 			request.setAttribute("view", view);
 		}
