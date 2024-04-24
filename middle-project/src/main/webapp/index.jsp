@@ -31,7 +31,7 @@
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
-                </li>
+                	</li>
               	<c:if test="${sessionScope.loginType.equals('구직자') }">
               	<li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고보기</a>
