@@ -85,7 +85,7 @@
 <c:if test = "${sessionScope.loginType.equals('기업')}">
 <a href="${pageContext.request.contextPath }/corp/add.jsp">추가정보 입력</a>
 <a href="${pageContext.request.contextPath }/person/list.do">test1</a>
-<a href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
+<a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고 목록</a>
 <a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a>
 <a href="${pageContext.request.contextPath }/person/list.do">test1</a>
 </c:if>
