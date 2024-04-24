@@ -19,7 +19,6 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <title>Insert title here</title>
-
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
