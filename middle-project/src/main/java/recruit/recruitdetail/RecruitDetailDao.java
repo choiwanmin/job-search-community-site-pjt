@@ -18,7 +18,7 @@ public class RecruitDetailDao {
 	//
 	public void insertApi(RecruitDetail rd) {
 		Connection conn = db.conn();
-		String sql = "insert into recruit_detail values(seq_recruit_detail.nextval,?,?,?,?,?,?,?,?,?,?,?)";
+		String sql = "insert into recruit_detail values(seq_recruit_detail.nextval,?,?,?,?,?,?,?,?,?,?,?,?)";
 
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -33,6 +33,7 @@ public class RecruitDetailDao {
 			pstmt.setString(9, rd.getDetailAddr());
 			pstmt.setString(10, rd.getContactTelNo());
 			pstmt.setInt(11, rd.getType());
+			pstmt.setInt(12, rd.getRecruitCheck());
 
 			int cnt = pstmt.executeUpdate();
 			System.out.println(cnt + "줄 공고상세추가");
