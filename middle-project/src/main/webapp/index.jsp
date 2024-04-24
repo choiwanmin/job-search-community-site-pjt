@@ -79,7 +79,6 @@
           </div>
           
     </nav>
-<h3>RECRUITㅇㅇ</h3>
 <td style = "width:150px; height:400px">
 </td>
 <td style = "width:450px;height:400px">
