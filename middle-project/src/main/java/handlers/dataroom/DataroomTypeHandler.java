@@ -21,13 +21,16 @@ public class DataroomTypeHandler implements Handler {
 		ArrayList<Data> list = null;
 		GeneralPage<Data> page=new GeneralPage<>();
 		String num=request.getParameter("num");
-		int rnum=0; 
+		int rnum=1;
 		if(num!=null) {
 			rnum=Integer.parseInt(num);
 		}
-		int pnum=0;
-		if(rnum>=1) {
-			pnum=rnum-1;
+		int pnum=rnum; 
+		if(pnum>=3) {
+			pnum=pnum-2;
+		}
+		else {
+			pnum=1;
 		}
 		int viewtype = Integer.parseInt(request.getParameter("viewtype"));
 		int type = Integer.parseInt(request.getParameter("type"));
@@ -37,15 +40,15 @@ public class DataroomTypeHandler implements Handler {
 		
 		if(type==6) {
 			list = service.getByMyFavo((String) session.getAttribute("loginId"),viewtype);
-			paging=page.paging(list, 2);
+			paging=page.paging(list, 10);
 		}else {
 			list = service.getByType(type,viewtype);
-			paging=page.paging(list, 2);
+			paging=page.paging(list, 10);
 		}
-		request.setAttribute("list", paging.get(rnum));
+		request.setAttribute("list", paging.get(rnum-1));
 		request.setAttribute("type", type);
-		request.setAttribute("pnum", pnum);
-		request.setAttribute("pnume", pnum+5);
+		request.setAttribute("pnum", pnum-1);
+		request.setAttribute("pnume", pnum+3);
 		request.setAttribute("viewtype", viewtype);
 		request.setAttribute("view", "/dataroom/list.jsp");
 		request.setAttribute("paging", paging);

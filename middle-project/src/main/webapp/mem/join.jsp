@@ -47,28 +47,40 @@ const a = () =>{
 </script>
 </head>
 <body>
-<h3>회원가입</h3>
-<form action="${pageContext.request.contextPath }/mem/add.do" method="post" name="f">
-<table border="1">
-	<tr>
-		<th>ID</th><td><input type="text" name="id" id="id"></td>
-		<th></th><td><input type="button" value="중복체크" onclick="a()")></td>
-		<span id='res'></span>
-	</tr>
-	<tr>
-		<th>PWD</th><td><input type="password" name="pwd"></td>
-	</tr>
-	<tr>
-		<th>TYPE</th>
-		<td>
-			<input type="radio" name="type" value="1" checked>구직자 
-			<input type="radio" name="type" value="2">기업 
-		</td>
-	</tr>
-	<tr>
-		<th>JOIN</th><td><input type="button" value="가입" onclick="check()"></td>
-	</tr>
-</table>
-</form>
-</body>
+<div class="w800 p40">
+  <h3 class="form_title text-center">회원가입</h3>
+  <p class="form_sub text-center">어서오세요. 사이트에서 사용할 회원 정보를 입력해주세요.</p>
+  <div class="form_Wrap" style="padding:80px 0">
+    <form action="${pageContext.request.contextPath }/mem/add.do" method="post" name="f">
+      <div class="row mb-3" >
+        <label for="userId" class="col-sm-2 col-form-label">아이디</label>
+        <div class="col-sm-10" style="display:flex">
+          <input type="text" id="id" class="form-control" type="text" name="id"  style="width:80%">
+          <input type="button" value="중복체크" onclick="a()")  style="width:20%">
+        </div>
+        <span id='res' style="color: #a7a7a7;"></span>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">패스워드</label>
+        <div class="col-sm-10">
+          <input type="password" name="pwd" class="form-control">
+        </div>
+      </div>
+      <div class="row mb-3">
+        <label for="inputPassword" class="col-sm-2 col-form-label">가입 타입</label>
+        <div class="col-sm-10 radio_wrap" style="width:180px;display: flex; align-items: center;">
+	        <input class="form-check-input" id="gridRadios1" type="radio" name="type" value="1" checked>
+	        <label class="form-check-label" for="gridRadios1" style="padding-right:10px"> 구직자</label>
+	        <input class="form-check-input" id="gridRadios1" type="radio" name="type" value="2" >
+	        <label class="form-check-label" for="gridRadios1"> 기업 </label>
+        </div>
+      </div>
+      </div>
+    <div class="btn_wrap">
+		<input type="submit" class="btn btn-primary"  value="회원가입" ></button>
+    </div>
+    </form>
+  </div>
+</div>
+
 </html>

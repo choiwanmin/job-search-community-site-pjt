@@ -5,13 +5,13 @@ import java.sql.Date;
 public class RecruitApply {
 	private String wanted_auth_no;//공고 번호-공고 번호(wanted_auth_no)
 	private String wanted_title;//공고 제목
-	private String applycant_num;//지원자-person(id)
+	private int applycant_num;//지원자-person(num)
 	private Date appldate;//지원일
 	private String busi_no;//사업자 번호
 	
 	public RecruitApply() {}
 	
-	public RecruitApply(String wanted_auth_no, String wanted_title, String applycant_num, Date appldate, String busi_no) {
+	public RecruitApply(String wanted_auth_no, String wanted_title, int applycant_num, Date appldate, String busi_no) {
 		super();
 		this.wanted_auth_no = wanted_auth_no;
 		this.wanted_title = wanted_title;
@@ -41,12 +41,12 @@ public class RecruitApply {
 	}
 
 
-	public String getApplycant_num() {
+	public int getApplycant_num() {
 		return applycant_num;
 	}
 
 
-	public void setApplycant_num(String applycant_num) {
+	public void setApplycant_num(int applycant_num) {
 		this.applycant_num = applycant_num;
 	}
 

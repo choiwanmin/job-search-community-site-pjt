@@ -36,7 +36,7 @@ public class OfferCheckHandler implements Handler {
 				
 
 				RecruitApplyService applyService = new RecruitApplyService();
-				applyService.addApply(new RecruitApply(wantedAuthNo,r.getWantedTitle(),userid,null,r.getBusiNo()));
+				//applyService.addApply(new RecruitApply(wantedAuthNo,r.getWantedTitle(),userid,null,r.getBusiNo()));
 			}
 			
 			//view = "redirect:/dataroom/list.do";(주소 정하기)

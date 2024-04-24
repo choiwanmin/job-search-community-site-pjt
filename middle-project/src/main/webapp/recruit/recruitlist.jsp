@@ -14,26 +14,20 @@ const a=(val)=>{
 	req.onload=()=>{
 	}
 }
+window.onload()
 
 </script>
 </head>
 <body>
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<h3>${id }(사업자등록번호:${busiNo })님의 공고 목록</h3>
-</c:if>
-
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>공고 목록</h3>
 </c:if>
-<table class = "table table-striped table-hover">
+<table class = "table table-striped table-hover w800 p40">
 <tr>
 <th>공고제목</th>
 <th>채용직무</th>
 <th>공고등록일</th>
 <th>공고마감일</th>
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<th>공고저장상태</th>
-</c:if>
 </tr>
 <c:forEach var="rllist" items="${rlList }">
 <tr>
@@ -41,11 +35,17 @@ const a=(val)=>{
 <td>${rllist.jobsNm }</td>
 <td >${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<td>${rllist.saveStatus }</td>
-</c:if>
 </tr>
 </c:forEach>
 </table>
+<form action="${pageContext.request.contextPath }/recruit/recruitlist.do" method="post">
+<table>
+<tr><c:forEach var="p" items="${paging }" varStatus="step" begin="${pnum }" end="${pnume }">
+<td><input type="submit" name="num" value="${step.count+pnum}">  
+</td>
+</c:forEach>
+</tr>
+</table>
+</form>	
 </body>
 </html>

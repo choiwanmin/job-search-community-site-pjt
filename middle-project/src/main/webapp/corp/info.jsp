@@ -31,17 +31,9 @@
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
                 </li>
-              	<c:if test="${sessionScope.loginType.equals('구직자') }">
-              	<li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath }/recruit/recruitmylist.do">공고보기</a>
-                </li>
-              	</c:if>
-				<c:if test="${sessionScope.loginType.equals('기업') }">
 				<li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/person/list.do">인재추천</a>
-                </li>
-				</c:if>
-                
+                </li>                
               </ul>
             </div>
             <div class="collapse navbar-collapse" id="navUser">
@@ -60,8 +52,7 @@
                   <li class="nav-item nav-link">
                     ${sessionScope.loginId } /${sessionScope.loginType } 회원 <span id="user">▼</span>
              <nav id="show" class="nav flex-column show">
-				<c:if test="${sessionScope.loginType.equals('구직자') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/myinfo.do">내 정보 확인</a></c:if>
-				<c:if test="${sessionScope.loginType.equals('기업') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a></c:if>
+				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/out.do?id=${sessionScope.loginId }">회원탈퇴</a>
 			 </nav>
@@ -82,8 +73,8 @@
           </ul>
           <h4 class="topic">공고정보</h4>
           <ul>
-            <li class="info_title"><a href="">내 정보 확인</a></li>
-            <li class="info_title"><a href="">내 정보 수정</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">지원자 목록</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a></li>
             <li class="info_title"><a href="">내 공고 확인</a></li>
             <li class="info_title"><a href="">내 정보 수정</a></li>
           </ul>    

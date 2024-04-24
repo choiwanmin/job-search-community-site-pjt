@@ -31,7 +31,6 @@ const check = () => {
 	}
 	f.submit();//폼을 action에 지정된 서버로 제출
 }
-console.log("${c }")
 </script>
 </head>
 <body>

@@ -41,7 +41,7 @@ public class RecruitAddHandler implements Handler {
 			Date regDate = Date.valueOf(regDt);
 			Date closeDate = Date.valueOf(closeDt);
 
-//			int saveStatus = Integer.parseInt(request.getParameter("saveStatus")); // 공고저장상태(ex.임시저장, 등록)
+			int saveStatus = Integer.parseInt(request.getParameter("saveStatus")); // 공고저장상태(ex.임시저장, 등록)
 //			String saveStatus = request.getParameter("saveStatus"); // 공고저장상태(ex.임시저장, 등록)
 
 			int minSal = Integer.parseInt(request.getParameter("minSal")); // 공고-최소임금금액
@@ -55,7 +55,7 @@ public class RecruitAddHandler implements Handler {
 			RecruitDetailService rdservice = new RecruitDetailService();
 
 			rlservice.addNewRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
+					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, true));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
 					null, contactTelNo, 0, 0));
 			view = "redirect:/recruit/recruitlist.do?id=" + corpid + "&busiNo=" + busiNo;

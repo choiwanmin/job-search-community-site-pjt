@@ -19,10 +19,10 @@
 
 const save = () => {
 	let f = document.querySelector("form");
-	f.saveStatus.value = '1';
     if(f.requestSubmit) {
         f.requestSubmit();
     } else {
+		f.saveStatus.value = '1';
 		f.submit();
     }
 }
@@ -68,18 +68,10 @@ const save = () => {
 
 <tr><th>채용 직무</th><td><input type="text" style="width:98%;border:0" list="jobsNmList" id="jobsNm" name="jobsNm">
 <datalist id="jobsNmList">
-<option value="개발자"/>
-<option value="백엔드"/>
-<option value="프론트엔드"/>
+<c:forEach var="j" items="${jobList }">
+<option value="${j.depth3Nm }"></option>
+</c:forEach>
 </datalist></td></tr>
-
-<!-- db에서 직종 이름을 반복문으로 가져와서 나타내기 -->
-<!-- 직종 이름으로 db에서 직종 코드 찾아서 직종 코드 컬럼에 값 추가 -->
-<!-- <datalist id="jobsNmList"> -->
-<%-- <c:forEach var="j" items="${jobList }"> --%>
-<%-- <option value="${j.depth1Nm }"></option> --%>
-<%-- </c:forEach> --%>
-<!-- </datalist></td></tr> -->
 
 <tr><th>공고등록일</th><td><input type="date" id="currentDate" style="width:25%;border:0" name="regDt" required></td></tr>
 <tr><th>공고마감일</th><td><input type="date" id="currentDate" style="width:25%;border:0" name="closeDt" required></td></tr>

@@ -5,8 +5,12 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+
 </head>
 <body>
+<br>
+<br>
+<br>
 <form action="${pageContext.request.contextPath }/mem/editmyinfo.do" method="post">
 <table>
 <tr><th>작성자 아이디</th><td><input type="text" name="userid" value="${sessionScope.loginId }" readonly></td></tr>

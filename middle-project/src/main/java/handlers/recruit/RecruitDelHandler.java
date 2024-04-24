@@ -5,9 +5,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import corp.CorpService;
 import handlers.Handler;
-import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;
-import recruit.recruitlist.RecruitList;
 import recruit.recruitlist.RecruitListService;
 
 public class RecruitDelHandler implements Handler {
@@ -20,14 +18,14 @@ public class RecruitDelHandler implements Handler {
 		String busiNo = (cservice.getByCorpId(corpid)).getBusi_no();
 
 		String wantedAuthNo = request.getParameter("wantedAuthNo");
-		
+
 		RecruitListService rlservice = new RecruitListService();
 		RecruitDetailService rdservice = new RecruitDetailService();
-		
+
 		rlservice.delRecruitList(busiNo, wantedAuthNo);
 		rdservice.delRecruitDetail(wantedAuthNo);
-		
-		return "redirect:/recruit/recruitlist.do?id=" + corpid + "&busiNo=" + busiNo;
+
+		return "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
 	}
 
 }

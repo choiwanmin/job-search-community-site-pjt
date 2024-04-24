@@ -6,7 +6,7 @@
 <html>
 <head>
 <meta charset="utf-8">
-<title>Insert title here</title>
+<title>내정보 확인</title>
 <script type="text/javascript">
 window.onload = () => {
 	let val = '기업';
@@ -20,6 +20,7 @@ window.onload = () => {
 <body>
 <h3>내 정보 확인</h3>
 <c:if test="${sessionScope.loginType == '구직자' }">
+  <h4>구직자 정보</h4>
 <form action="${pageContext.request.contextPath }/mem/editmyinfo.do"  style="padding: 20px">
 <div style="display: none" id="type">
 TYPE

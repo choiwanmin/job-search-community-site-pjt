@@ -34,7 +34,8 @@ public class RecruitApiListHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String authKey = "WNKXZRZNR5AUCD0GJSCZJ2VR1HK";
+		// 인증키 입력
+		String authKey = "";
 		int startPage = 6;
 		int display = 5;
 		String urlList = "http://openapi.work.go.kr/opi/opi/opia/wantedApi.do?authKey=" + authKey
@@ -47,7 +48,6 @@ public class RecruitApiListHandler implements Handler {
 		try {
 			URL url1 = new URL(urlList);
 			URLConnection conn1 = url1.openConnection();
-
 			InputStream is1 = conn1.getInputStream();
 
 			DocumentBuilderFactory factory = DocumentBuilderFactory.newDefaultInstance();
@@ -168,7 +168,7 @@ public class RecruitApiListHandler implements Handler {
 //					if (rdservice.getByWantedAuthNo(wantedAuthNo) == null) {
 //						rdservice.addApiRecruitDetail(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal),
 //								Integer.parseInt(maxSal), relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr,
-//								detailAddr, contactTelno, 0, 0));
+//								detailAddr, contactTelno, 1, 0));
 //						saveCntRecruit++;
 //					}
 //				}
@@ -181,13 +181,12 @@ public class RecruitApiListHandler implements Handler {
 						workRegion, Integer.parseInt(regionCd), jobsNm, Integer.parseInt(jobsCd), regDate, closeDate, 0,
 						homePg, false));
 				rdlist.add(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal), Integer.parseInt(maxSal),
-						relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr, detailAddr, contactTelno, 0, 0));
+						relJobsNm, srchKeywordNm, jobCont, smodifyDatetime, basicAddr, detailAddr, contactTelno, 1, 0));
 
 				request.setAttribute("clist", clist);
 				request.setAttribute("rllist", rllist);
 				request.setAttribute("rdlist", rdlist);
 
-				//
 //				System.out.println(
 //						"====================================================================================================");
 //				System.out.println(
@@ -242,10 +241,14 @@ public class RecruitApiListHandler implements Handler {
 //				System.out.println();
 				System.out.println();
 			}
-			System.out.println("응답 줄수:" + reqCnt);
-			System.out.println("db저장 mem과corp 줄수:" + saveCntMemCorp);
-			System.out.println("db저장 recruit 줄수:" + saveCntRecruit);
-
+			if (reqCnt == 0) {
+				System.out.println("인증키를 확인하시오.");
+			} else {
+				System.out.println("인증키가 유효합니다.");
+				System.out.println("응답 줄수:" + reqCnt);
+				System.out.println("db저장 mem과corp 줄수:" + saveCntMemCorp);
+				System.out.println("db저장 recruit 줄수:" + saveCntRecruit);
+			}
 		} catch (MalformedURLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
