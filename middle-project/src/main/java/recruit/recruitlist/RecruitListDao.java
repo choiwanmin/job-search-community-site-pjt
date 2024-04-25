@@ -311,4 +311,35 @@ public class RecruitListDao {
 		}
 		return list;
 	}
+	
+	//
+	//등록된 최신 공고 상위 12개 목록 반환
+	public ArrayList<RecruitList> selectByRegDt() {
+		Connection conn = db.conn();
+		String sql = "select * from (select * from recruit_list where save_status='1' order by reg_dt desc) where rownum <= 12";
+		ArrayList<RecruitList> list = new ArrayList<RecruitList>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+
+			ResultSet rs = pstmt.executeQuery();
+			while (rs.next()) {
+				list.add(new RecruitList(rs.getString(1), rs.getString(2), rs.getString(3), rs.getString(4),
+						rs.getString(5), rs.getString(6), rs.getString(7), rs.getString(8), rs.getInt(9),
+						rs.getString(10), rs.getInt(11), rs.getDate(12), rs.getDate(13), rs.getInt(14),
+						rs.getString(15), rs.getBoolean(16)));
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
+
 }

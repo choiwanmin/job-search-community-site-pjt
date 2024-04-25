@@ -46,4 +46,8 @@ public class RecruitListService {
 	public ArrayList<RecruitList> getAll(int saveStatus) {
 		return dao.selectAll(saveStatus);
 	}
+	
+	public ArrayList<RecruitList> getByRegDt() {
+		return dao.selectByRegDt();
+	}
 }
