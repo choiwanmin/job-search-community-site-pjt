@@ -49,4 +49,6 @@ public class RecruitEditHandler implements Handler {
 //		return view;
 //	}
 //
+	return null;
+	}
 }
