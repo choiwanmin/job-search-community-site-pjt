@@ -10,7 +10,6 @@
 	<div class="w800 p40">
 		<h3 class="form_title text-center">기업 정보 등록하기</h3>
 		<p class="form_sub text-center">회원님의 정보를 기입해주세요.</p>
-		<div class="form_Wrap">
 		<form class=""
 			action="${pageContext.request.contextPath }/person/personadd.do"
 			method="post" name="f">
@@ -159,16 +158,19 @@
 					</select>
 				</div>
 			</div>
+			<input type="submit" value="올리기">
+
 			<div class="btn_wrap">
 				<c:if test="${not empty c }">
-					<button type="button" class="btn btn-primary readbtn">이미 등록된 회원입니다.</button>
+					<button type="button" class="btn btn-primary readbtn">이미
+						등록된 회사입니다.</button>
 				</c:if>
 				<c:if test="${empty c }">
-					<button type="button" class="btn btn-primary" onclick="check()">회원정보등록</button>
+					<button type="button" class="btn btn-primary" onclick="check()">회사
+						정보등록</button>
 				</c:if>
 			</div>
 		</form>
-		</div>
 	</div>
 </body>
 </html>
