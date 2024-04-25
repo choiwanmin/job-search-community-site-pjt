@@ -27,9 +27,9 @@ const add = () => {
 <tr>
 <td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
 <td>${rllist.jobsNm }</td>
-<td >${rllist.regDt }</td>
+<td>${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>
-<td>${rllist.saveStatus }</td>
+<td>${saveStatusStrLst }</td>
 </tr>
 </c:forEach>
 </table>
