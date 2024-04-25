@@ -10,10 +10,8 @@ import java.util.ArrayList;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import corp.Corp;
 import corp.CorpService;
 import handlers.Handler;
-import mem.MemService;
 import recruit.job.Job;
 import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;

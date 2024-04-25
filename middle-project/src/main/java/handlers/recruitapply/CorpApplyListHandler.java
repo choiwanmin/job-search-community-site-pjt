@@ -20,8 +20,6 @@ public class CorpApplyListHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		//String view = "/index.jsp";
 		String wanted_auth_no = (String)request.getParameter("wanted_auth_no");
-		
-		System.out.println("wanted_auth_no: "+wanted_auth_no);
 		RecruitApplyService reservice = new RecruitApplyService();
 		ArrayList<RecruitApply> list = reservice.getauthNo(wanted_auth_no);
 		JSONArray arr = new JSONArray();

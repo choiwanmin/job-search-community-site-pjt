@@ -12,13 +12,54 @@
   <!-- bootstrap -->
   <scrpt src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> 
   <!-- css Style -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
   <link rel="stylesheet"  href="${pageContext.request.contextPath }/css/form.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+        
+       
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+window.onload=()=>{
+	listLoad()
+}
+
+
+const listLoad=()=>{
+    const req = new XMLHttpRequest();
+    let job_rec_wrap = document.querySelectorAll(".job_rec_wrap")[0];
+    let index_recr="";
+    req.onload = () => {
+    	let arr = JSON.parse(req.responseText);
+    	for(let a of arr){
+    		index_recr = `
+        	      <li class="main_job_cont">
+                <a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=\${a.authNo }">
+                  <div class="rec_main_wrap">
+                    <p class="job_title title_lim"> \${a.title}</p> 
+                    <p class="corp_nm">\${a.corp}</p>
+
+                  </div>
+                  <div class="rec_sub_wrap">
+                    <span class="rec_addr rec_sub">\${a.addr}</span>
+                    <span class="rec_date rec_sub">\${a.date}</span>
+                  </div>
+                </a>
+              </li>
+        	`;
+    		job_rec_wrap.innerHTML += index_recr;
+    	}
+	}
+
+	req.open('get', '${pageContext.request.contextPath }/main/index.do');
+	req.send();
+}
+</script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -77,18 +118,54 @@
 		</c:if>
               </div>
           </div>
-          
     </nav>
-<td style = "width:150px; height:400px">
-</td>
-<td style = "width:450px;height:400px">
-	<center>
-		<c:if test="${not empty view }">
-			<jsp:include page="${view }"></jsp:include>
-		</c:if>
-	</center>
-</td>
-</tr>
-</table>
+<!-- main index body -->
+		<center>
+			<c:if test="${not empty view }">
+				<jsp:include page="${view }"/>
+			</c:if>
+		</center>
+<c:if test="${empty view }">
+
+<section class="sw-wrap">
+<div class="w1200 p40">
+<!-- Swiper -->
+   <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/54_3_PC_00ARPih.png"></div>
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/56_3_PC_OmhsnRO.png"></div>
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/58_3_PC_wmhMSI3.png"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+</section>
+<section class="w1200 p40">
+    <div class="title_wrap">
+      <h2>최신 공고</h2>
+    </div>
+    <ul class="job_rec_wrap"> 
+    </ul>
+</section>  		
+</c:if>
 </body>
+<!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
+    </script>
 </html>
