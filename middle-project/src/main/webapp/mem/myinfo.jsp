@@ -37,8 +37,8 @@ TYPE
 <tr><th>나이</th><td><input class="form-control form-control-lg" type="text" placeholder="나이를 입력하세요.." aria-label=".form-control-lg example" name="age" value="${p.age }" readonly></td></tr>
 <tr><th>관심분야</th><td><input class="form-control form-control-lg" type="text" placeholder="관심분야 .. ..." aria-label=".form-control-lg example" name="jobCd" value="${p.jobNm }" readonly></td></tr>
 <tr>
-<td><c:if test="${empty sessionScope.person }">
-<a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></c:if></td>
+<td>
+<a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></td>
 </tr>
 </table>
 <input type="submit" value="수정" style="width: 80px">

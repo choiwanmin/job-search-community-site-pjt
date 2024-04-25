@@ -1,10 +1,42 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
 <!DOCTYPE html>
 <html>
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
+<script type="text/javascript">
+let flag = false;
+const check = () => {
+	if(f.usertel.value.length<=0){
+		alert("회원님의 전화번호를 입력해주세요.");
+		f.usertel.focus();
+		return;
+	}
+	if(f.email.value.length<=0){
+		alert("이메일을 작성해주세요.");
+		f.email.focus();
+		return;
+	}
+	if(f.skill.value.length<=0){
+		alert("활용가능한 스킬을 한가지 이상 작성하세요.");
+		f.skill.focus();
+		return;
+	}
+	if(f.age.value.length<=0){
+		alert("나이를 입력하세요");
+		f.age.focus();
+		return;
+	}
+	if(f.jobCd.value.length<=0){
+		alert("관심 업종 분야를 선택해주세요.");
+		f.jobCd.focus();
+		return;
+	}
+	f.submit();//폼을 action에 지정된 서버로 제출
+}
+</script>
 </head>
 <body>
 	<div class="w800 p40">
@@ -32,7 +64,7 @@
 			<div class="row mb-3">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">이메일</label>
 				<div class="col-sm-10">
-					<input type="text" class="form-control" id="inputPassword3"
+					<input type="email" class="form-control" id="inputPassword3"
 						name="email">
 				</div>
 			</div>
@@ -85,8 +117,6 @@
 								class="form-check-label" for="gridRadios2"> 박사 </label>
 						</div>
 					</div>
-					<input type="text" class="form-control" id="inputPassword3"
-						name="email">
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -109,6 +139,7 @@
 			<div class="row mb-3">
 				<label for="inputPassword3" class="col-sm-2 col-form-label">성별</label>
 				<div class="col-sm-10">
+				<div class="col-sm-10">
 					<div class="form-check">
 						<input class="form-check-input" type="radio" name="gender"
 							id="gridRadios1" value="1" checked> <label
@@ -119,6 +150,7 @@
 							id="gridRadios1" value="2"> <label
 							class="form-check-label" for="gridRadios1"> 여자 </label>
 					</div>
+				</div>
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -160,10 +192,10 @@
 				</div>
 			</div>
 			<div class="btn_wrap">
-				<c:if test="${not empty c }">
+				<c:if test="${not empty sessionScope.person }">
 					<button type="button" class="btn btn-primary readbtn">이미 등록된 회원입니다.</button>
 				</c:if>
-				<c:if test="${empty c }">
+				<c:if test="${empty sessionScope.person }">
 					<button type="button" class="btn btn-primary" onclick="check()">회원정보등록</button>
 				</c:if>
 			</div>
