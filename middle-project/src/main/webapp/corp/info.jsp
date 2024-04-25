@@ -33,7 +33,10 @@
                 </li>
 				<li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/person/list.do">인재추천</a>
-                </li>                
+                </li>
+                <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath }/recruit/recruitlist.do">공고 목록</a>
+                </li>  
               </ul>
             </div>
             <div class="collapse navbar-collapse" id="navUser">
@@ -73,9 +76,9 @@
           </ul>
           <h4 class="topic">공고정보</h4>
           <ul>
-            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">지원자 목록</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitapplylist.jsp">지원자 목록</a></li>
             <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a></li>
-            <li class="info_title"><a href="">내 공고 확인</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">내 공고 확인</a></li>
             <li class="info_title"><a href="">내 정보 수정</a></li>
           </ul>    
         </div>

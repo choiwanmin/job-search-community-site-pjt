@@ -23,7 +23,8 @@ public class RecruitAddHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view = "/index.jsp";
+		String view = "/corp/info.jsp";
+		
 		if (request.getMethod().equals("POST")) {
 			String corpid = (String) request.getSession().getAttribute("loginId");
 
@@ -64,6 +65,7 @@ public class RecruitAddHandler implements Handler {
 					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, true));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
 					null, contactTelNo, 0, 1));
+			
 			view = "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
 		} else {
 			String path = request.getServletContext().getRealPath("/WEB-INF/recruit_files/jobcdnm.csv");
@@ -96,8 +98,7 @@ public class RecruitAddHandler implements Handler {
 				e.printStackTrace();
 			}
 
-			view = "/recruit/recruitadd.jsp";
-			request.setAttribute("view", view);
+			request.setAttribute("view", "/recruit/recruitadd.jsp");
 		}
 		return view;
 	}

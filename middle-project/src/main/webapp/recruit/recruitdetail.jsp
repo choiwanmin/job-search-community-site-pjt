@@ -35,40 +35,26 @@ const scrap = () => {
 <body>
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>${rl.wantedTitle }</h3>
-</c:if>
-
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<h3>${corpid }(사업자등록번호:${busiNo })님의 공고 번호:${wantedAuthNo } 상세</h3>
-<table border="1">
-<tr><th>공고번호</th><td>${wantedAuthNo }</td></tr>
-<tr><th>공고제목</th><td>${rl.wantedTitle }</td></tr>
-</table>
-</c:if>
-
-<c:if test = "${sessionScope.loginType.equals('구직자')}">
 <h3>공고 번호:${wantedAuthNo } 상세</h3>
 <h4>기업정보</h4>
 <table >
 <tr><th>기업명</th><td>${corp_nm }</td></tr>
 <tr><th>기업주소</th><td>${corp_addr }</td></tr>
 </table>
-</c:if>
 <table border="1">
-<tr><th>공고상세내용</th><td><textarea name="content" rows="10" style="width:100%;border:0;resize:none;" readonly>${rd.jobCont }</textarea></td></tr>
-
-<tr><th>(임금조건)임금</th><td>(${salTpCd })${rl.sal }</td></tr>
-<tr><th>최소학력</th><td>${minEdubgIcd }</td></tr>
-<tr><th>경력</th><td>${enterTpCd }</td></tr>
-<tr><th>직종</th><td>${rl.jobsNm }</td></tr>
-<tr><th>공고등록일</th><td>${rl.regDt }</td></tr>
-<tr><th>공고마감일</th><td>${rl.closeDt }</td></tr>
-<tr><th>공고근무지역</th><td>${rl.workRegion }</td></tr>
-<tr><th>공고담당자전화번호</th><td>${rd.contactTelNo }</td></tr>
-<tr><th>공고상태</th><td>${detailType }</td></tr>
-</table>
-<input type="hidden" name="corpid" value="${corpid }">
-<input type="hidden" name="busiNo" value="${busi_no }">
-<!-- kakao api map 시작 -->
+    <tr><th>공고상세내용</th><td><textarea name="content" rows="10" style="width:100%;border:0;resize:none;" readonly>${rd.jobCont }</textarea></td></tr>
+    
+    <tr><th>(임금조건)임금</th><td>(${salTpCd })${rl.sal }</td></tr>
+    <tr><th>최소학력</th><td>${minEdubgIcd }</td></tr>
+    <tr><th>경력</th><td>${enterTpCd }</td></tr>
+    <tr><th>직종</th><td>${rl.jobsNm }</td></tr>
+    <tr><th>공고등록일</th><td>${rl.regDt }</td></tr>
+    <tr><th>공고마감일</th><td>${rl.closeDt }</td></tr>
+    <tr><th>공고근무지역</th><td>${rl.workRegion }</td></tr>
+    <tr><th>공고담당자전화번호</th><td>${rd.contactTelNo }</td></tr>
+    <tr><th>공고상태</th><td>${detailType }</td></tr>
+    </table>
+    <!-- kakao api map 시작 -->
 <div id="map" style="width:500px;height:400px;">
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=751a4a007c37d37278bb88b5575faa4a&libraries=services"></script>
@@ -125,16 +111,149 @@ geocoder.addressSearch('${rl.workRegion }', function(result, status) {
 
 </script>
 <!-- kakao api map 끝 -->
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<input type="button" value="공고 목록" onclick="mylist()">
-<input type="button" value="수정" onclick="edit()">
-<input type="button" value="삭제" onclick="del()">
-</c:if>
-
-<c:if test = "${sessionScope.loginType.equals('구직자')}">
 <input type="button" value="공고 목록" onclick="recruitlist()">
 <input type="button" value="지원" onclick="apply()">
 <input type="button" value="스크랩" onclick="scrap()">
 </c:if>
+
+<c:if test = "${sessionScope.loginType.equals('기업')}">
+<h3 class="form_title text-center">${corpid }(사업자등록번호:${busi_no })님의 공고<br/> 공고 번호:[${wantedAuthNo }] 상세 페이지</h3>
+<div class="w800 p40">
+	<div class="form_Wrap">
+		<form class="" name="f">
+			<div class="row mb-3">
+				<label for="writer" class="col-sm-2 col-form-label">작성자</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="writer" name="writer" value="${sessionScope.loginId }" readonly>
+				</div>
+			</div>
+            <div class="row mb-3">
+				<label for="wantedAuthNo" class="col-sm-2 col-form-label">공고번호</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="wantedAuthNo" name="wantedAuthNo" value="${wantedAuthNo }" readonly>
+				</div>
+			</div>
+            <div class="row mb-3">
+				<label for="wantedTitle" class="col-sm-2 col-form-label">공고 제목</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="wantedTitle" name="wantedTitle" value="${rl.wantedTitle }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="jobCont" class="col-sm-2 col-form-label">공고 직무 내용</label>
+				<div class="col-sm-10">
+					<textarea class="form-control" style="resize: none;" id="jobCont" name="jobCont" readonly>"${rd.jobCont }"</textarea>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="salTpCd" class="col-sm-2 col-form-label">공고 임금 조건</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="salTpCd" name="salTpCd" value="${salTpCd }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="sal" class="col-sm-2 col-form-label">임금액</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="number" id="sal" name="sal" min="0" value="${rl.sal}" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="minSal" class="col-sm-2 col-form-label">최소임금액</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="number" id="minSal" name="minSal" min="0" value="${rd.minSal }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="maxSal" class="col-sm-2 col-form-label">최대임금액</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="number" id="maxSal" name="maxSal" min="0" value="${rd.maxSal }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="minEdubgIcd" class="col-sm-2 col-form-label">공고 최소학력</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="minEdubgIcd" name="minEdubgIcd" value="${minEdubgIcd }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="enterTpCd" class="col-sm-2 col-form-label">공고 경력</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="enterTpCd" name="enterTpCd" value="${enterTpCd }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text"
+						id="workRegion" name="workRegion" value="${rl.workRegion }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="jobsNm" class="col-sm-2 col-form-label">채용 직무</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" list="jobsNmList" id="jobsNm" name="jobsNm" value="${rl.jobsNm }" readonly>
+					<datalist id="jobsNmList">
+						<c:forEach var="j" items="${jobList }">
+							<option value="${j.depth3Nm }"></option>
+						</c:forEach>
+					</datalist>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="currentDate" class="col-sm-2 col-form-label">공고등록일</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="date" id="currentDate" name="regDt" value="${rl.regDt }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="currentDate" class="col-sm-2 col-form-label">공고마감일</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="date" id="currentDate" name="closeDt" value="${rl.closeDt }" readonly>
+				</div>
+			</div>
+			<div class="row mb-3">
+				<label for="contactTelNo" class="col-sm-2 col-form-label">공고담당자전화번호</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="tel" id="contactTelNo" name="contactTelNo" value="${rd.contactTelNo }"
+						pattern="[0-9]{2,3}-[0-9]{3,4}-[0-9]{4}" readonly>
+				</div>
+			</div>
+            <div class="row mb-3">
+				<label for="saveStatusStr" class="col-sm-2 col-form-label">공고 저장 상태</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="saveStatusStr" name="saveStatusStr" value="${saveStatusStr }" readonly>
+				</div>
+			</div>
+            <div class="row mb-3">
+				<label for="listTypeStr" class="col-sm-2 col-form-label">공고 종류</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="listTypeStr" name="listTypeStr" value="${listTypeStr }" readonly>
+				</div>
+			</div>
+            <div class="row mb-3">
+				<label for="detailTypeStr" class="col-sm-2 col-form-label">공고 상태</label>
+				<div class="col-sm-10">
+					<input class="form-control" type="text" id="detailTypeStr" name="detailTypeStr" value="${detailTypeStr }" readonly>
+				</div>
+			</div>
+			<div class="btn_wrap">
+                <input type="hidden" name="corpid" value="${corpid }">
+                <input type="hidden" name="busiNo" value="${busi_no }">
+
+                <input class="btn btn-primary" type="button" value="공고 목록" onclick="mylist()">
+                <input class="btn btn-primary" type="button" value="수정" onclick="edit()">
+                <input class="btn btn-primary" type="button" value="삭제" onclick="del()">
+			</div>
+		</form>
+	</div>
+</div>
+</c:if>
+</body>
+<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
+<script src="../js/map.js"></script>
+
+
+
+
 </body>
 </html>

@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import corp.CorpService;
 import handlers.Handler;
+import mem.MemService;
 import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;
 import recruit.recruitlist.RecruitList;
@@ -17,14 +18,22 @@ public class RecruitDetailHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view = "/index.jsp";
+		String view = null;
 		if (request.getMethod().equals("GET")) {
 			// detail
+			String id = (String) request.getSession().getAttribute("loginId");
+			MemService mservice = new MemService();
 			String wantedAuthNo = request.getParameter("wantedAuthNo");
 
 			CorpService cservice = new CorpService();
 			RecruitListService rlservice = new RecruitListService();
 			RecruitDetailService rdservice = new RecruitDetailService();
+
+			if(mservice.getMem(id).getType() == 1) {
+				view = "/index.jsp";
+			} else {
+				view = "/corp/info.jsp";
+			}
 
 			String busi_no = rlservice.getByWantedAuthNo(wantedAuthNo).getBusiNo();
 			String corpid = cservice.getByBusiNo(busi_no).getCorpid();
@@ -41,7 +50,6 @@ public class RecruitDetailHandler implements Handler {
 			request.setAttribute("rl", rl);
 			request.setAttribute("rd", rd);
 
-			String id = (String) request.getSession().getAttribute("loginId");
 			String salTpCd = rl.getSalTpCd();
 			switch (salTpCd) {
 			case "h":
@@ -113,29 +121,50 @@ public class RecruitDetailHandler implements Handler {
 				enterTpCd = "관계없음";
 				break;
 			}
-
-			String detailType = null;
-			int type = rd.getType();
-			System.out.println(rd);
-			switch (type) {
+			String saveStatusStr = null; 
+			int saveStatus = rl.getSaveStatus();
+			switch (saveStatus) {
 			case 0:
-				detailType = "마감";
+				saveStatusStr = "임시 저장";
 				break;
 			case 1:
-				detailType = "진행";
+				saveStatusStr = "등록";
+				break;
+			}
+
+			
+			String listTypeStr = null;
+			boolean listType = rl.isType();
+			if(listType) {
+				listTypeStr = "api공고";
+			} else {
+				listTypeStr = "사용자공고";				
+			}
+			
+			String detailTypeStr = null;
+			int detailType = rd.getType();
+			System.out.println(rd);
+			switch (detailType) {
+			case 0:
+				detailTypeStr = "마감";
+				break;
+			case 1:
+				detailTypeStr = "진행";
 				break;
 			case 2:
-				detailType = "삭제";
+				detailTypeStr = "삭제";
 				break;
 			default:
-				detailType = "진행";
+				detailTypeStr = "진행";
 				break;
 			}
 
 			request.setAttribute("salTpCd", salTpCd);
 			request.setAttribute("minEdubgIcd", minEdubgIcd);
-			request.setAttribute("enterTpCd", enterTpCd);
-			request.setAttribute("detailType", detailType);
+			request.setAttribute("enterTpCd", enterTpCd);			
+			request.setAttribute("saveStatusStr", saveStatusStr);
+			request.setAttribute("listTypeStr", listTypeStr);
+			request.setAttribute("detailTypeStr", detailTypeStr);
 			request.setAttribute("view", "/recruit/recruitdetail.jsp");
 
 		} else {

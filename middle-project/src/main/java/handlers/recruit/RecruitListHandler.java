@@ -17,33 +17,30 @@ public class RecruitListHandler implements Handler {
 		// TODO Auto-generated method stub
 		String view = "/index.jsp";
 		String id = (String) request.getSession().getAttribute("loginId");
-		
+
 		MemService mservice = new MemService();
 		RecruitListService rlservice = new RecruitListService();
 		ArrayList<RecruitList> rlList = new ArrayList<RecruitList>();
-		GeneralPage<RecruitList> page=new GeneralPage<>();
-		ArrayList<ArrayList<RecruitList>> paging=null;
-		String num=request.getParameter("num");
-		int rnum=1;
-		if(num!=null) {
-			rnum=Integer.parseInt(num);
+		GeneralPage<RecruitList> page = new GeneralPage<>();
+		ArrayList<ArrayList<RecruitList>> paging = null;
+		String num = request.getParameter("num");
+		int rnum = 1;
+		if (num != null) {
+			rnum = Integer.parseInt(num);
 		}
-		int pnum=rnum;
-		if(pnum>=3) {
-			pnum=pnum-2;
-		}
-		else {
-			pnum=1;
+		int pnum = rnum;
+		if (pnum >= 3) {
+			pnum = pnum - 2;
+		} else {
+			pnum = 1;
 		}
 		int saveStatus = 1;
-		
-		if(mservice.getMem(id).getType() == 1) {
-			rlList = rlservice.getAll(saveStatus);
-		}
-		paging=page.paging(rlList, 10);
-		request.setAttribute("pnum", pnum-1);
-		request.setAttribute("pnume", pnum+3);
-		request.setAttribute("rlList", paging.get(rnum-1));
+
+		rlList = rlservice.getAll(saveStatus);
+		paging = page.paging(rlList, 10);
+		request.setAttribute("pnum", pnum - 1);
+		request.setAttribute("pnume", pnum + 3);
+		request.setAttribute("rlList", paging.get(rnum - 1));
 		request.setAttribute("view", "/recruit/recruitlist.jsp");
 		request.setAttribute("paging", paging);
 		return view;

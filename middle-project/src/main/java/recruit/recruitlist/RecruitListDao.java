@@ -117,9 +117,10 @@ public class RecruitListDao {
 	// 사업자등록번호와 공고번호로 찾아서 공고목록 수정
 	public int update(RecruitList rl) {
 		Connection conn = db.conn();
-		String sql = "update recruit_list set " + "wantedTitle=? " + "salTpCd=? " + "sal=? " + "minEdubgIcd=? "
-				+ "enterTpCd=? " + "workRegion=? " + "regionCd=? " + "jobsNm=? " + "jobsCd=? " + "regDt=? "
-				+ "closeDt=? " + "saveStatus=? " + "homePg=? " + "type=? " + "where busi_no=? and wanted_auth_no=?";
+		String sql = "update recruit_list set " + "wanted_title=? " + ",sal_tp_cd=? " + ",sal=? " + ",min_edubg_icd=? "
+				+ ",enter_tp_cd=? " + ",work_region=? " + ",region_cd=? " + ",jobs_nm=? " + ",jobs_cd=? " + ",reg_dt=? "
+				+ ",close_dt=? " + ",save_status=? " + ",homepg=? " + ",type=? "
+				+ "where busi_no=? and wanted_auth_no=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -247,7 +248,7 @@ public class RecruitListDao {
 		}
 		return null;
 	}
-	
+
 	//
 	// 사업자등록번호로 찾아서 공고목록 반환
 	public ArrayList<RecruitList> selectByBusiNo(String busiNo) {

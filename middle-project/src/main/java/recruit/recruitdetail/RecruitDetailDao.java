@@ -91,9 +91,9 @@ public class RecruitDetailDao {
 	// 공고번호로 찾아서 공고상세 수정
 	public int update(RecruitDetail rd) {
 		Connection conn = db.conn();
-		String sql = "update recruit_detail set " + "min_sal=? " + "max_sal=? " + "rel_job_nm=? "
-				+ "srch_key_word_nm=? " + "job_cont=? " + "smodify_dtm=sysdate " + "basic_addr=? " + "detail_addr=? "
-				+ "contact_tel_no=? " + "type=? " + "where wanted_auth_no=?";
+		String sql = "update recruit_detail set " + "min_sal=? " + ",max_sal=? " + ",rel_job_nm=? "
+				+ ",srch_key_word_nm=? " + ",job_cont=? " + ",smodify_dtm=sysdate " + ",basic_addr=? "
+				+ ",detail_addr=? " + ",contact_tel_no=? " + ",type=? " + "where wanted_auth_no=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
