@@ -27,7 +27,7 @@ public class AppformAddHandler implements Handler {
 		if(request.getMethod().equals("GET")){
 			return "/index.jsp";
 		}
-		String iopath=request.getServletContext().getRealPath("/app/");
+		String iopath=AppFormService.path;
 		System.out.println(iopath);
 		int size = 100 * 1024 * 1024;
 		MultipartRequest multipart;

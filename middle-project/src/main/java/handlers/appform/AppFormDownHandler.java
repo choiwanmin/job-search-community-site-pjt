@@ -9,6 +9,8 @@ import java.io.UnsupportedEncodingException;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import appform.AppFormService;
 import handlers.Handler;
 
 public class AppFormDownHandler implements Handler {
@@ -18,7 +20,8 @@ public class AppFormDownHandler implements Handler {
 		// TODO Auto-generated method stub
 		String fname=request.getParameter("fname");
 		String type=request.getParameter("type");
-		String path=request.getServletContext().getRealPath("/app/");
+		String path=AppFormService.path;
+		System.out.println(path);
 		File f=null;
 		if(type.equals("pofol")) {
 			f=new File(path+"\\popol\\"+fname);
