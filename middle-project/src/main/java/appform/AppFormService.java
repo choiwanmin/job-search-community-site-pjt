@@ -1,12 +1,11 @@
 package appform;
 
+
 import java.util.ArrayList;
 
 public class AppFormService {
 private AppFormDao dao;
-public static String path=	"C:\\app\\";
-	
-	public AppFormService() {
+		public AppFormService() {
 		
 		dao = new AppFormDao();
 	}

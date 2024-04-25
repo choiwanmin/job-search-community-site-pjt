@@ -129,7 +129,10 @@ public class DispatcherServlet extends HttpServlet {
 					response.setContentType("text/html; charset=UTF-8");
 					String[] path = view.split("/");
 					response.getWriter().append(path[1]);//{flag:true}
-				} else {
+				} else if(view.startsWith("none")) {
+					
+				}
+				else {
 					RequestDispatcher dis = request.getRequestDispatcher(view);
 					dis.forward(request, response);
 				}

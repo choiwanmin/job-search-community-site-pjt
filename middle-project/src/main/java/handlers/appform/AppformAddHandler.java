@@ -23,40 +23,41 @@ public class AppformAddHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
+		request.setAttribute("view", "appform/add.jsp");
+		if(request.getMethod().equals("GET")){
+			return "/index.jsp";
+		}
+		String iopath=request.getServletContext().getRealPath("/app/");
+		System.out.println(iopath);
 		int size = 100 * 1024 * 1024;
 		MultipartRequest multipart;
-		if (request.getMethod().equals("POST")) {
-			try {
-				multipart = new MultipartRequest(request, AppFormService.path, size, "utf-8",
-						new DefaultFileRenamePolicy());
-				String id = multipart.getParameter("userid");
-				PersonService pservice=new PersonService();
-				int num=pservice.getPerson(id).getNum();
-				File coverletter = multipart.getFile("coverletter");
-				Path path1=Paths.get(AppFormService.path+coverletter.getName());
-				Path pathCoverletter=Paths.get(AppFormService.path+"\\appform\\"+coverletter.getName());
-				Files.move(path1,pathCoverletter, StandardCopyOption.REPLACE_EXISTING);
-				File pofol = multipart.getFile("pofol");
-				Path pathPofol=Paths.get(AppFormService.path+"\\popol\\"+pofol.getName());
-				Path path2=Paths.get(AppFormService.path+pofol.getName());
-				Files.move(path2,pathPofol, StandardCopyOption.REPLACE_EXISTING);
-				File picture = multipart.getFile("picture");
-				Path pathPicture=Paths.get(AppFormService.path+"\\image\\"+picture.getName());
-				Path path3=Paths.get(AppFormService.path+picture.getName());
-				Files.move(path3,pathPicture, StandardCopyOption.REPLACE_EXISTING);
-				String cNm = coverletter.getName();
-				String pofolNm = pofol.getName();
-				String pNm = picture.getName();
-				AppFormService service = new AppFormService();
-				service.addForm(new AppForm(0, num, cNm, pofolNm, pNm));
-			} catch (IOException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
-		}else {
-			request.setAttribute("view", "/appform/add.jsp");
+		try {
+			multipart = new MultipartRequest(request, iopath, size, "utf-8",
+					new DefaultFileRenamePolicy());
+			String id = multipart.getParameter("userid");
+			PersonService pservice=new PersonService();
+			int num=pservice.getPerson(id).getNum();
+			File coverletter = multipart.getFile("coverletter");
+			Path path1=Paths.get(iopath+coverletter.getName());
+			Path pathCoverletter=Paths.get(iopath+"\\appform\\"+coverletter.getName());
+			Files.move(path1,pathCoverletter, StandardCopyOption.REPLACE_EXISTING);
+			File pofol = multipart.getFile("pofol");
+			Path pathPofol=Paths.get(iopath+"\\popol\\"+pofol.getName());
+			Path path2=Paths.get(iopath+pofol.getName());
+			Files.move(path2,pathPofol, StandardCopyOption.REPLACE_EXISTING);
+			File picture = multipart.getFile("picture");
+			Path pathPicture=Paths.get(iopath+"\\image\\"+picture.getName());
+			Path path3=Paths.get(iopath+picture.getName());
+			Files.move(path3,pathPicture, StandardCopyOption.REPLACE_EXISTING);
+			String cNm = coverletter.getName();
+			String pofolNm = pofol.getName();
+			String pNm = picture.getName();
+			AppFormService service = new AppFormService();
+			service.addForm(new AppForm(0, num, cNm, pofolNm, pNm));
+		} catch (IOException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
-		return "/index.jsp";
+		return "redirect:/index.jsp";
 	}
 }
