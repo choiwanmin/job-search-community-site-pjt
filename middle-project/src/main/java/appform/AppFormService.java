@@ -1,10 +1,14 @@
 package appform;
 
 
+import java.io.File;
 import java.util.ArrayList;
 
 public class AppFormService {
 private AppFormDao dao;
+public static File f=new File("");
+public static String lpath=f.getAbsolutePath().replace("Desktop","");
+public static String path=lpath+"\\git\\Recruit_ProjectMM\\middle-project\\src\\main\\webapp\\app\\";
 		public AppFormService() {
 		
 		dao = new AppFormDao();
