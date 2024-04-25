@@ -19,6 +19,20 @@
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <title>Insert title here</title>
+<script type="text/javascript">
+window.onload=()=>{
+	listLoad()
+	}
+const listLoad=()=>{
+    const req = new XMLHttpRequest();
+    req.onload = () => {
+    	console.log("test");
+	}
+	req.open('get', '${pageContext.request.contextPath }/main/index.do');
+	req.send();
+}
+</script>
+
 </head>
 <body>
     <nav class="navbar navbar-expand-lg">
@@ -79,16 +93,132 @@
           </div>
           
     </nav>
-<td style = "width:150px; height:400px">
-</td>
-<td style = "width:450px;height:400px">
-	<center>
-		<c:if test="${not empty view }">
-			<jsp:include page="${view }"></jsp:include>
-		</c:if>
-	</center>
-</td>
-</tr>
-</table>
+<!-- main index body -->
+  <section class="w1200 p40">
+    <div class="title_wrap">
+      <h2>최신 공고</h2>
+    </div>
+    <ul class="job_rec_wrap">
+      <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+            <li>
+        <a href="#">
+          <div class="rec_main_wrap">
+            <p class="job_title">장기동 재가요양보호사 모집</p> 
+            <p class="corp_nm">A+두손방문요양센터</p>
+
+          </div>
+          <div class="rec_sub_wrap">
+            <span class="rec_addr rec_sub">경기 김포시</span>
+            <span class="rec_date rec_sub">마감 D-3</span>
+          </div>
+        </a>
+      </li>
+      
+    </ul>
+</section>  
+
 </body>
 </html>

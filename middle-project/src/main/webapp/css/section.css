@@ -23,7 +23,7 @@ section{
 }
 
 .job_rec_wrap>li{
-    max-width: 23%;
+    min-width: 23%;
     padding-top: 10px;
     height: 150px;
     box-sizing: border-box;
