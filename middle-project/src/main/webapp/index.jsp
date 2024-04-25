@@ -14,20 +14,44 @@
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
   <!-- css Style -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
-  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
   <link rel="stylesheet"  href="${pageContext.request.contextPath }/css/form.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
+    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
+  
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 window.onload=()=>{
 	listLoad()
-	}
+}
+
+
 const listLoad=()=>{
     const req = new XMLHttpRequest();
+    let job_rec_wrap = document.querySelectorAll(".job_rec_wrap")[0];
+    let index_recr="";
     req.onload = () => {
-    	console.log("test");
+    	let arr = JSON.parse(req.responseText);
+    	for(let a of arr){
+    		index_recr = `
+        	      <li class="main_job_cont">
+                <a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=\${a.authNo }">
+                  <div class="rec_main_wrap">
+                    <p class="job_title title_lim"> \${a.title}</p> 
+                    <p class="corp_nm">\${a.corp}</p>
+
+                  </div>
+                  <div class="rec_sub_wrap">
+                    <span class="rec_addr rec_sub">\${a.addr}</span>
+                    <span class="rec_date rec_sub">\${a.date}</span>
+                  </div>
+                </a>
+              </li>
+        	`;
+    		job_rec_wrap.innerHTML += index_recr;
+    	}
 	}
+
 	req.open('get', '${pageContext.request.contextPath }/main/index.do');
 	req.send();
 }
@@ -91,134 +115,21 @@ const listLoad=()=>{
 		</c:if>
               </div>
           </div>
-          
     </nav>
 <!-- main index body -->
-  <section class="w1200 p40">
+		<center>
+			<c:if test="${not empty view }">
+				<jsp:include page="${view }"/>
+			</c:if>
+		</center>
+<c:if test="${empty view }">
+		 <section class="w1200 p40">
     <div class="title_wrap">
       <h2>최신 공고</h2>
     </div>
-    <ul class="job_rec_wrap">
-      <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-            <li>
-        <a href="#">
-          <div class="rec_main_wrap">
-            <p class="job_title">장기동 재가요양보호사 모집</p> 
-            <p class="corp_nm">A+두손방문요양센터</p>
-
-          </div>
-          <div class="rec_sub_wrap">
-            <span class="rec_addr rec_sub">경기 김포시</span>
-            <span class="rec_date rec_sub">마감 D-3</span>
-          </div>
-        </a>
-      </li>
-      
+    <ul class="job_rec_wrap"> 
     </ul>
-</section>  
-
+</section>  		
+</c:if>
 </body>
 </html>

@@ -22,14 +22,16 @@ section{
     gap: 16px;
 }
 
-.job_rec_wrap>li{
-    min-width: 23%;
+.main_job_cont{
+    min-width: 24%;
     padding-top: 10px;
     height: 150px;
     box-sizing: border-box;
-    /* border: 1px solid #dadada; */
     background: #fff;
     border-radius: 0 0 5px 5px;
+}
+.title_wrap{
+	padding-bottom:10px;
 }
 
 .job_title{
@@ -47,6 +49,7 @@ section{
     color: #999aa0;
 }
 .title_lim{
+	max-width: 280px;
     padding:0 5px;
     overflow:hidden;
     text-overflow:ellipsis;
@@ -57,6 +60,7 @@ section{
 }
 /* -------------------info----------------------- */
 .info_wrap{
+	
     display: flex;
     width: 100%;
     min-height: 800px;
