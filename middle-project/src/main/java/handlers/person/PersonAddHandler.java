@@ -2,6 +2,7 @@ package handlers.person;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 import handlers.Handler;
 import person.Person;
@@ -12,9 +13,11 @@ public class PersonAddHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		String view = "/index.jsp"; // get 방식일때 이동할 뷰페이지경로
-		String msg = "";
+		HttpSession session = request.getSession(false);
+		String loginId = (String) session.getAttribute("loginId");
+		PersonService service = new PersonService();
+		Person p = service.getPerson(loginId);
 		if (request.getMethod().equals("POST")) {// 전송방식이 post냐?
-			PersonService service = new PersonService();
 			String userid = request.getParameter("userid");
 			if(service.getPerson(userid) == null) {
 				String jcd = "";
@@ -27,7 +30,6 @@ public class PersonAddHandler implements Handler {
 				String skill = request.getParameter("skill");
 				String gender = request.getParameter("gender");// "1"
 				String age = request.getParameter("age");// "1"
-				
 				String[] jobCd =request.getParameterValues("jobCd");// "1"
 				if(jobCd!=null) {
 					for(int i =0; i<jobCd.length; i++) {
@@ -38,9 +40,10 @@ public class PersonAddHandler implements Handler {
 					}
 				service.addPerson(new Person(0,userid,usertel,email,education,career,skill,gender,age,jcd,jNm));
 			}else {
-				System.out.println("이미 정보를 등록하셧습니다, 내정보보기에서 정보를 수정해주세요");
-				msg = "이미 정보를 등록하셧습니다, 내정보보기에서 정보를 수정해주세요";
-				request.setAttribute("msg", msg);
+				request.setAttribute("p", p);
+				if (p != null) {
+					session.setAttribute("person", p);
+				}
 			}
 			
 		}else {
