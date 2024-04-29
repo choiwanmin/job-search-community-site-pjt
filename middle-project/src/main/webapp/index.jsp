@@ -27,13 +27,12 @@
 window.onload=()=>{
 	listLoad()
 }
-
-
 const listLoad=()=>{
     const req = new XMLHttpRequest();
     let job_rec_wrap = document.querySelectorAll(".job_rec_wrap")[0];
     let index_recr="";
     req.onload = () => {
+    	console.log(req.responseText)
     	let arr = JSON.parse(req.responseText);
     	for(let a of arr){
     		index_recr = `
