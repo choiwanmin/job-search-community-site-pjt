@@ -131,4 +131,23 @@ public class RecruitApplyDao {
 			catch (SQLException e) {e.printStackTrace();}
 		}
 	}
+	//통계용(sql 설정)
+	public RecruitApply count(String wanted_auth_no) {
+		Connection conn = db.conn();
+		String sql = "select count(),count() from recruit_apply where applycant_num=? and wanted_auth_no=?";
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setString(1,wanted_auth_no);
+			ResultSet rs = pstmt.executeQuery();
+			//ResultSet 읽을 줄로 이동
+			if(rs.next()) {
+				return new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5));
+			}
+		} catch (SQLException e) {e.printStackTrace();} 
+		finally {
+			try {conn.close();} 
+			catch (SQLException e) {e.printStackTrace();}
+		}
+		return null;
+	}
 }

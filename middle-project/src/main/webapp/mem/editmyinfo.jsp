@@ -44,7 +44,7 @@ const check = () => {
 		<p class="form_sub text-center">수정할 정보를 입력하세요</p>
 <div class="form_Wrap">
 <form class=""
-			action="${pageContext.request.contextPath }/mem/editmyinfo.do" "
+			action="${pageContext.request.contextPath }/mem/editmyinfo.do" 
 			method="post" name="f">
 <div class="row mb-3">
 				<label for="inputEmail3" class="col-sm-2 col-form-label">사용자
@@ -191,7 +191,9 @@ const check = () => {
 					</select>
 				</div>
 			</div>
-<button type="button" class="btn btn-primary" onclick="check()">수정완료</button>
+			<div class="btn_wrap">
+				<button type="button" class="btn btn-primary" onclick="check()">수정완료</button>
+			</div>
 </form>
 </div>
 </div>
