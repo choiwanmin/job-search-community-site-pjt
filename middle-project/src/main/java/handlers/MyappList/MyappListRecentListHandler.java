@@ -44,6 +44,7 @@ public class MyappListRecentListHandler implements Handler {
 		session.setAttribute("recent", list);
 		for(MyappList m:list) {
 			System.out.println(m.getWanted_auth_no());
+			System.out.println(m.getWanted_title());
 		} // list 확인
 		return view;
 	}
