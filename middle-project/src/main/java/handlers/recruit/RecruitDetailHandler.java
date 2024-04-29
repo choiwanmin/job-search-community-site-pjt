@@ -18,7 +18,7 @@ public class RecruitDetailHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view = null;
+		String view = "/index.jsp";
 		if (request.getMethod().equals("GET")) {
 			// detail
 			String id = (String) request.getSession().getAttribute("loginId");
@@ -29,11 +29,11 @@ public class RecruitDetailHandler implements Handler {
 			RecruitListService rlservice = new RecruitListService();
 			RecruitDetailService rdservice = new RecruitDetailService();
 
-			if(mservice.getMem(id).getType() == 1) {
-				view = "/index.jsp";
-			} else {
-				view = "/corp/info.jsp";
-			}
+//			if(mservice.getMem(id).getType() == 1) {
+//				view = "/index.jsp";
+//			} else {
+//				view = "/corp/info.jsp";
+//			}
 
 			String busi_no = rlservice.getByWantedAuthNo(wantedAuthNo).getBusiNo();
 			String corpid = cservice.getByBusiNo(busi_no).getCorpid();
@@ -52,16 +52,16 @@ public class RecruitDetailHandler implements Handler {
 
 			String salTpCd = rl.getSalTpCd();
 			switch (salTpCd) {
-			case "h":
+			case "H":
 				salTpCd = "시급";
 				break;
-			case "d":
+			case "D":
 				salTpCd = "일급";
 				break;
-			case "m":
+			case "M":
 				salTpCd = "월급";
 				break;
-			case "y":
+			case "Y":
 				salTpCd = "연급";
 				break;
 			default:
@@ -158,7 +158,7 @@ public class RecruitDetailHandler implements Handler {
 				detailTypeStr = "진행";
 				break;
 			}
-
+			System.out.println(rl.getSal());
 			request.setAttribute("salTpCd", salTpCd);
 			request.setAttribute("minEdubgIcd", minEdubgIcd);
 			request.setAttribute("enterTpCd", enterTpCd);			

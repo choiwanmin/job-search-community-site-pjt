@@ -65,6 +65,15 @@ const chageLangSelect=()=>{
 <th>공고마감일</th>
 <th>공고저장상태</th>
 </tr>
+<c:forEach var="rllist" items="${rlList }">
+<tr>
+<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
+<td>${rllist.jobsNm }</td>
+<td>${rllist.regDt }</td>
+<td>${rllist.closeDt }</td>
+<td>${rllist.saveStatus }</td>
+</tr>
+</c:forEach>
 </table>
 
 </body>

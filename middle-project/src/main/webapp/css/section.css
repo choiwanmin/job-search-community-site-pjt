@@ -11,7 +11,7 @@ p{
 
 /* ------------------section----------------------- */
 section{
-    padding: 100px 0;
+    padding: 50px 0;
 }
 .job_rec_wrap{
     padding: 0;
@@ -100,4 +100,17 @@ section{
 }
 .topic:nth-last-of-type(1){
     margin-top: 35px;
+}
+/* -------------------swiper----------------------- */
+.mySwiper{
+	height:170px;
+}
+.sw-wrap{
+	background-color: white;
+	padding-top:100px
+}
+.sw-img{
+	width:100%;
+	top:0;
+	opacity:1;
 }

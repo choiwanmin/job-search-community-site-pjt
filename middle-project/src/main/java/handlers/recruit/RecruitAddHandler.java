@@ -36,7 +36,8 @@ public class RecruitAddHandler implements Handler {
 			String sal = request.getParameter("sal"); // 공고-임금조건에 따른 임금
 			String minEdubgIcd = request.getParameter("minEdubgIcd"); // 공고-최소학력
 			String enterTpCd = request.getParameter("enterTpCd"); // 공고-경력
-			String workRegion = request.getParameter("workRegion"); // 공고-근무지역 전체 주소
+			String workRegion = "(" + request.getParameter("p_code") + ")" + " " + request.getParameter("addr") + ", "
+					+ request.getParameter("addrdet"); // 공고-근무지역 전체 주소
 //			int regionCd =  O// 공고-근무지역코드(ex.경기도 성남시)
 
 			String jobsNm = request.getParameter("jobsNm"); // 공고-직종이름
@@ -62,11 +63,11 @@ public class RecruitAddHandler implements Handler {
 			RecruitDetailService rdservice = new RecruitDetailService();
 
 			rlservice.addNewRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, true));
+					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, false));
 			rdservice.addNewRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 1));
+					null, contactTelNo, 1, 0));
 			
-			view = "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
+			view = "redirect:/recruit/recruitmylist.do?mylist=0&id=" + corpid + "&busiNo=" + busiNo;
 		} else {
 			String path = request.getServletContext().getRealPath("/WEB-INF/recruit_files/jobcdnm.csv");
 

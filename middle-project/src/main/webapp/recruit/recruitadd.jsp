@@ -66,7 +66,7 @@ const save = () => {
 			<div class="row mb-3">
 				<label for="sal" class="col-sm-2 col-form-label">임금액</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="number" id="sal" name="sal" min="0" value="0" required>
+					<input class="form-control" type="text" id="sal" name="sal" value="0" required>
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -104,14 +104,20 @@ const save = () => {
 					</select>
 				</div>
 			</div>
-			<div class="row mb-3">
-				<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
-				<div class="col-sm-10">
-					<input class="form-control" type="text"
-						id="workRegion" name="workRegion" required>
+				<div class="row mb-3">
+					<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
+					<div class="col-sm-10">
+						<input type="button" onclick="sample6_execDaumPostcode()"
+							value="우편번호 찾기"><br>
+						<input type="text"
+							id="sample6_address" placeholder="주소" name="addr" required><br>
+						<span class="post-wrap">
+						<input type="text" id="sample6_postcode" placeholder="우편번호" name="p_code" required>
+						<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="addrdet" required>
+						</span>
+					</div>
 				</div>
-			</div>
-			<div class="row mb-3">
+				<div class="row mb-3">
 				<label for="jobsNm" class="col-sm-2 col-form-label">공고 직무</label>
 				<div class="col-sm-10">
 					<input class="form-control" type="text" list="jobsNmList" id="jobsNm" name="jobsNm" required>

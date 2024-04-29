@@ -12,12 +12,15 @@
   <!-- bootstrap -->
   <scrpt src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.js"></script> 
   <!-- css Style -->
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/style.css">
   <link rel="stylesheet"  href="${pageContext.request.contextPath }/css/form.css">
   <link rel="stylesheet" href="${pageContext.request.contextPath }/css/list.css">
-    <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
-  
+  <link rel="stylesheet" href="${pageContext.request.contextPath }/css/section.css">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/swiper@9/swiper-bundle.min.css"/>
+        
+       
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
@@ -117,13 +120,25 @@ const listLoad=()=>{
           </div>
     </nav>
 <!-- main index body -->
-		<center>
 			<c:if test="${not empty view }">
 				<jsp:include page="${view }"/>
 			</c:if>
-		</center>
 <c:if test="${empty view }">
-		 <section class="w1200 p40">
+
+<section class="sw-wrap">
+<div class="w1200 p40">
+<!-- Swiper -->
+   <div class="swiper mySwiper">
+    <div class="swiper-wrapper">
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/54_3_PC_00ARPih.png"></div>
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/56_3_PC_OmhsnRO.png"></div>
+      <div class="swiper-slide"><img class="sw-img" src="${pageContext.request.contextPath }/img/58_3_PC_wmhMSI3.png"></div>
+    </div>
+    <div class="swiper-pagination"></div>
+  </div>
+</div>
+</section>
+<section class="w1200 p40">
     <div class="title_wrap">
       <h2>최신 공고</h2>
     </div>
@@ -132,4 +147,23 @@ const listLoad=()=>{
 </section>  		
 </c:if>
 </body>
+<!-- Swiper JS -->
+    <script src="https://unpkg.com/swiper/swiper-bundle.min.js"></script>
+
+    <!-- Initialize Swiper -->
+    <script>
+      var swiper = new Swiper(".mySwiper", {
+        spaceBetween: 30,
+        centeredSlides: true,
+        autoplay: {
+          delay: 2500,
+          disableOnInteraction: false,
+        },
+        pagination: {
+          el: ".swiper-pagination",
+          clickable: true,
+        },
+      });
+
+    </script>
 </html>

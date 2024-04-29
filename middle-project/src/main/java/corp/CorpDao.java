@@ -38,7 +38,7 @@ public class CorpDao {
 	public void insertApi(Corp o, int num) {
 		Connection conn = db.conn();
 		// member(id)와 corp(corp_id) 무결성 제약 조건 만족을 위한 기업 회원 정보 자동 할당
-		String sql1 = "insert into member values(concat('auto_corp_id',?),'0000',1)";
+		String sql1 = "insert into member values(concat('auto_corp_id',?),'0000',2)";
 		String sql2 = "insert into corp values(seq_corp.nextval,concat('auto_corp_id',?),?,?,?)";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql1);

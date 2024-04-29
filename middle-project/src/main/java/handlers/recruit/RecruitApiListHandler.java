@@ -165,11 +165,11 @@ public class RecruitApiListHandler implements Handler {
 //				if (rlservice.getByWantedAuthNo(busino, wantedAuthNo) == null) {
 //					rlservice.addApiRecruitList(new RecruitList(busino, wantedAuthNo, wantedTitle, salTpCd, sal,
 //							minEdubgIcd, enterTpCd, workRegion, Integer.parseInt(regionCd), jobsNmArr[0],
-//							Integer.parseInt(jobsCd), regDate, closeDate, 0, homePg, true));
+//							Integer.parseInt(jobsCd), regDate, closeDate, 1, homePg, true));
 //					if (rdservice.getByWantedAuthNo(wantedAuthNo) == null) {
 //						rdservice.addApiRecruitDetail(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal),
 //								Integer.parseInt(maxSal), jobsNmArr[0], srchKeywordNm, jobCont, smodifyDatetime, basicAddr,
-//								detailAddr, contactTelno, 0, 1));
+//								detailAddr, contactTelno, 1, 0));
 //						saveCntRecruit++;
 //					}
 //				}

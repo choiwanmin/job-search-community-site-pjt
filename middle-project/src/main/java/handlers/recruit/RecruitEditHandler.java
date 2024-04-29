@@ -62,9 +62,9 @@ public class RecruitEditHandler implements Handler {
 			RecruitDetailService rdservice = new RecruitDetailService();
 
 			rlservice.editRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, true));
+					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, false));
 			rdservice.editRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 1));
+					null, contactTelNo, 1, 0));
 
 			view = "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
 		} else {
@@ -160,7 +160,20 @@ public class RecruitEditHandler implements Handler {
 				enterTpCd = "관계없음";
 				break;
 			}
-			String saveStatusStr = null; 
+
+			String workRegion = rl.getWorkRegion();
+//			String addr = workRegion.replaceAll("\\(.[^0-9]s*\\)", workRegion);
+
+			String[] addrArr1 = workRegion.split(" ");
+			String p_code = addrArr1[0].replaceAll("[\\('\\)]", "");
+			String addrProcess1 = workRegion.replaceAll(addrArr1[0], "");
+			String addrProcess2 = addrProcess1.replaceFirst("[\\(]", "");
+			String addrProcess3 = addrProcess2.replaceFirst("[\\)]", "").trim();
+			String[] addrArr2 = addrProcess3.split(",");
+			String addr = addrArr2[0].trim();
+			String addrdet = addrArr2[1].trim();
+
+			String saveStatusStr = null;
 			int saveStatus = rl.getSaveStatus();
 			switch (saveStatus) {
 			case 0:
@@ -171,15 +184,14 @@ public class RecruitEditHandler implements Handler {
 				break;
 			}
 
-			
 			String listTypeStr = null;
 			boolean listType = rl.isType();
-			if(listType) {
+			if (listType) {
 				listTypeStr = "api공고";
 			} else {
-				listTypeStr = "사용자공고";				
+				listTypeStr = "사용자공고";
 			}
-			
+
 			String detailTypeStr = null;
 			int detailType = rd.getType();
 			System.out.println(rd);
@@ -200,13 +212,15 @@ public class RecruitEditHandler implements Handler {
 
 			request.setAttribute("salTpCd", salTpCd);
 			request.setAttribute("minEdubgIcd", minEdubgIcd);
-			request.setAttribute("enterTpCd", enterTpCd);			
+			request.setAttribute("enterTpCd", enterTpCd);
+			request.setAttribute("p_code", p_code);
+			request.setAttribute("addr", addr);
+			request.setAttribute("addrdet", addrdet);
 			request.setAttribute("saveStatusStr", saveStatusStr);
 			request.setAttribute("listTypeStr", listTypeStr);
 			request.setAttribute("detailTypeStr", detailTypeStr);
 			request.setAttribute("view", "/recruit/recruitedit.jsp");
-			
-			
+
 			String path = request.getServletContext().getRealPath("/WEB-INF/recruit_files/jobcdnm.csv");
 
 			String[] keys = null;

@@ -53,25 +53,25 @@
 			<div class="row mb-3">
 				<label for="sal" class="col-sm-2 col-form-label">임금액</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="number" id="sal" name="sal" min="0" value="${rl.sal}" required>
+					<input class="form-control" type="text" id="sal" name="sal" value="${rl.sal}" required>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<label for="minSal" class="col-sm-2 col-form-label">최소임금액</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="number" id="minSal" name="minSal" min="0" value="${rd.minSal }" required>
+					<input class="form-control" type="number" id="minSal" name="minSal" min="0" value="${rd.minSal }">
 				</div>
 			</div>
 			<div class="row mb-3">
 				<label for="maxSal" class="col-sm-2 col-form-label">최대임금액</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="number" id="maxSal" name="maxSal" min="0" value="${rd.maxSal }" required>
+					<input class="form-control" type="number" id="maxSal" name="maxSal" min="0" value="${rd.maxSal }">
 				</div>
 			</div>
 			<div class="row mb-3">
 				<label for="minEdubgIcd" class="col-sm-2 col-form-label">공고 최소학력</label>
 				<div class="col-sm-10">
-					<select class="form-select" id="minEdubgIcd" name="minEdubgIcd" required>
+					<select class="form-select" id="minEdubgIcd" name="minEdubgIcd">
 					<c:if test="${minEdubgIcd }">
 						<option selected>${minEdubgIcd }</option>
 					</c:if>
@@ -87,7 +87,7 @@
 			<div class="row mb-3">
 				<label for="enterTpCd" class="col-sm-2 col-form-label">공고 경력</label>
 				<div class="col-sm-10">
-					<select class="form-select" id="enterTpCd" name="enterTpCd" required>
+					<select class="form-select" id="enterTpCd" name="enterTpCd">
 					<c:if test="${enterTpCd }">
 						<option selected>${enterTpCd }</option>
 					</c:if>
@@ -98,12 +98,18 @@
 				</div>
 			</div>
 			<div class="row mb-3">
-				<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
-				<div class="col-sm-10">
-					<input class="form-control" type="text"
-						id="workRegion" name="workRegion" value="${rl.workRegion }" required>
+					<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
+					<div class="col-sm-10">
+						<input type="button" onclick="sample6_execDaumPostcode()"
+							value="우편번호 찾기"><br>
+						<input type="text"
+							id="sample6_address" placeholder="주소" name="addr" value="${addr }" required><br>
+						<span class="post-wrap">
+						<input type="text" id="sample6_postcode" placeholder="우편번호" name="p_code" value="${p_code }" required>
+						<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="addrdet" value="${addrdet }" required>
+						</span>
+					</div>
 				</div>
-			</div>
 			<div class="row mb-3">
 				<label for="jobsNm" class="col-sm-2 col-form-label">채용 직무</label>
 				<div class="col-sm-10">

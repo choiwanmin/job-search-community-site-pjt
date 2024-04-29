@@ -18,6 +18,7 @@ public class RecruitMyListHandler implements Handler {
 		// TODO Auto-generated method stub
 		// 저장상태가(임시저장:0, 등록:1) 1인 공고만 전달
 		String view = "/corp/info.jsp";
+		int myList = Integer.parseInt(request.getParameter("mylist"));
 		String id = (String) request.getSession().getAttribute("loginId");
 
 		MemService mservice = new MemService();
@@ -27,28 +28,23 @@ public class RecruitMyListHandler implements Handler {
 
 		String busiNo = "";
 
-		String saveStatusStr = "";
+		ArrayList<String> saveStatusStrLst = new ArrayList<String>();
 		if (mservice.getMem(id).getType() == 2) {
 			busiNo = (cservice.getByCorpId(id)).getBusi_no();
 			rlList = rlservice.getByBusiNo(busiNo);
-//			for(RecruitList rl : rlList) {
-//				int saveStatus = rl.getSaveStatus();
-//				switch(saveStatus) {
-//				case 0:
-//					saveStatusStr = "임시 저장";
-//					break;
-//				case 1:
-//					saveStatusStr = "공고 등록";
-//					break;
-//				}
-			}
-		
+		}
+
 		request.setAttribute("id", id);
 		request.setAttribute("busiNo", busiNo);
 		request.setAttribute("rlList", rlList);
+		request.setAttribute("saveStatusStrLst", saveStatusStrLst);
 //		request.setAttribute("saveStatusStr", saveStatusStr);
-		request.setAttribute("view", "/recruit/recruitmylist.jsp");
+		
+		if (myList == 0) {
+			request.setAttribute("view", "/recruit/recruitmylist.jsp");
+		} else {
+			request.setAttribute("view", "/recruit/recruitapplylist.jsp");
+		}
 		return view;
 	}
-
 }

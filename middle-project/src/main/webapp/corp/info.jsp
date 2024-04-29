@@ -76,9 +76,9 @@
           </ul>
           <h4 class="topic">공고정보</h4>
           <ul>
-            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitapplylist.jsp">지원자 목록</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=1">지원자 목록</a></li>
             <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a></li>
-            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do">내 공고 확인</a></li>
+            <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=0">내 공고 확인</a></li>
             <li class="info_title"><a href="">내 정보 수정</a></li>
           </ul>    
         </div>
