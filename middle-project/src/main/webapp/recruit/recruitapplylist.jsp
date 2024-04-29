@@ -41,6 +41,7 @@ const chageLangSelect=()=>{
 	}
 	req.open('get', '${pageContext.request.contextPath }/mem/applyDetail.do?wanted_auth_no='+selectValue);
 	req.send();
+	
 }
 </script>
 </head>

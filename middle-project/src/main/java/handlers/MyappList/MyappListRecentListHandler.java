@@ -19,6 +19,8 @@ public class MyappListRecentListHandler implements Handler {
 		String num = request.getParameter("num");
 		String dnum=request.getParameter("dnum");
 		String title = request.getParameter("title");
+		System.out.println("title  =========" +title);
+		System.out.println(num);
 		ArrayList<MyappList> list = (ArrayList<MyappList>) session.getAttribute("recent");
 		if(list==null) {
 			list=new ArrayList<MyappList>();
@@ -44,6 +46,7 @@ public class MyappListRecentListHandler implements Handler {
 		session.setAttribute("recent", list);
 		for(MyappList m:list) {
 			System.out.println(m.getWanted_auth_no());
+			System.out.println(m.getWanted_title());
 		} // list 확인
 		return view;
 	}

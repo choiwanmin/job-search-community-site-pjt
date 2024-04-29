@@ -20,7 +20,7 @@ public class applyHandler implements Handler {
 		//공고 최초 지원하기
 		String view = "/index.jsp";
 		//post=처음 회사 정보 등록(db에 추가)
-		if(request.getMethod().equals("POST")) {
+		if(request.getMethod().equals("GET")) {
 			//지원자 ID
 			String userid = (String)request.getSession().getAttribute("loginId");
 			PersonService pservice = new PersonService();
@@ -45,7 +45,7 @@ public class applyHandler implements Handler {
 			ArrayList<RecruitApply> list = rservice.getUserList(userid);
 			
 			
-			request.setAttribute("view", "/dataroom/list.jsp");
+			request.setAttribute("view", "/recruit/recruitdetail.jsp");
 			request.setAttribute("list", list);
 		}
 		return view;
