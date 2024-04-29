@@ -12,7 +12,7 @@ public class PersonAddHandler implements Handler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
-		String view = "/index.jsp"; // get 방식일때 이동할 뷰페이지경로
+		String view = "/person/info.jsp"; // get 방식일때 이동할 뷰페이지경로
 		HttpSession session = request.getSession(false);
 		String loginId = (String) session.getAttribute("loginId");
 		PersonService service = new PersonService();

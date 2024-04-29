@@ -23,9 +23,9 @@ public class AppformAddHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		request.setAttribute("view", "appform/add.jsp");
+		request.setAttribute("view", "/appform/add.jsp");
 		if(request.getMethod().equals("GET")){
-			return "/index.jsp";
+			return "/person/info.jsp";
 		}
 		String iopath=AppFormService.path+"\\src\\main\\webapp\\app\\";
 		System.out.println(iopath);
@@ -58,6 +58,6 @@ public class AppformAddHandler implements Handler {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		return "redirect:/index.jsp";
+		return "redirect:/person/info.jsp";
 	}
 }

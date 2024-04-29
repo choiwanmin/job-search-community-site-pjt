@@ -16,18 +16,20 @@ public class ScrapListHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view="";
-		String id=request.getParameter("userid");
+		String view="/person/info.jsp";
+		String id=(String) request.getSession().getAttribute("loginId");
 		ScrapService service =new ScrapService();
 		RecruitListService rservice=new RecruitListService();
 		ArrayList<Scrap> list=service.getById(id);
 		ArrayList<RecruitList> rlist=new ArrayList<>();
 		for(Scrap s:list) {
 			rlist.add(rservice.getByWantedAuthNo(s.getWanted_auth_no()));
+			System.out.println(s.getWanted_auth_no());
 		}
 		
 		
-		request.setAttribute("rlist", list);
+		request.setAttribute("list", rlist);
+		request.setAttribute("view", "/scrap/list.jsp");
 		return view;
 	}
 

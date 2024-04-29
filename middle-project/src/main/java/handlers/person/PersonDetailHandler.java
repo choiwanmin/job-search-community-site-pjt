@@ -14,7 +14,7 @@ public class PersonDetailHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view="/index.jsp";
+		String view="/person/info.jsp";
 		PersonService pservice=new PersonService();
 		AppFormService aservice=new AppFormService();
 		String id=request.getParameter("id");

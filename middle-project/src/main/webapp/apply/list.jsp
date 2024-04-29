@@ -12,14 +12,10 @@
 <thead>
 <tr class="thead-dark"><th>공고 제목</th></tr>
 </thead>
-<c:forEach var="ds" items="${list }">
-<form action="${pageContext.request.contextPath }/scrap/delete.do?num=${ds.wantedAuthNo }" method="get" >
+<c:forEach var="q" items="${list }">
 <tr>
-	<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wanted_auth_no=${ds.wantedAuthNo}"> ${ds.wantedTitle} </a></td>
-	<td><input type="hidden" name="num" value="${ds.wantedAuthNo }"> </td>
-	<td><input type="submit" value="삭제"></td>
+	<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wanted_auth_no=${q.wanted_auth_no}"> ${q.wanted_title} </a></td>
 </tr>    
-</form>
 </c:forEach>
 </table>
 </body>

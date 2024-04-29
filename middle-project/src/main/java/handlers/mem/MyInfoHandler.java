@@ -16,7 +16,7 @@ public class MyInfoHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 
-		String view = "/index.jsp";
+		String view = "/person/info.jsp";
 
 		if (request.getMethod().equals("GET")) {// get 요청 id로 검색
 			HttpSession session = request.getSession(false);
@@ -71,7 +71,7 @@ public class MyInfoHandler implements Handler {
 			String pwd = request.getParameter("pwd");
 			MemService service = new MemService();
 			service.editMem(new Mem(id, pwd, 0));
-			view = "redirect:/index.jsp";
+			view = "redirect:/person/info.jsp";
 		}
 		return view;
 	}

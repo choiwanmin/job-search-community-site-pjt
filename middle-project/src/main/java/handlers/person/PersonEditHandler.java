@@ -11,7 +11,7 @@ public class PersonEditHandler implements Handler {
 
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
-		String view = "/index.jsp"; // get 방식일때 이동할 뷰페이지경로
+		String view = "/person/info.jsp"; // get 방식일때 이동할 뷰페이지경로
 		PersonService service = new PersonService();
 		String msg = "";
 		String userid = (String) request.getSession().getAttribute("loginId");
