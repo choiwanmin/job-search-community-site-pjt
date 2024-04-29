@@ -135,6 +135,40 @@ public class AppFormDao {
 		}
 		return app;
 	}
+	public ArrayList<AppForm> select2(int userid) {
+		Connection conn = db.conn();
+		String sql = "select * from appform where userid=?";
+		ArrayList<AppForm> list = new ArrayList<>();
+		try {
+			PreparedStatement pstmt = conn.prepareStatement(sql);
+			pstmt.setInt(1, userid);
+			//select는 executeQuery()로 실행
+			//executeQuery()는 select를 실행하고 검색 결과를 ResultSet에 담아서 반환
+			ResultSet rs = pstmt.executeQuery();
+			//rs.next(): 읽을 다음 줄로 이동. 읽을 것이 있으면 true, 없으면 false반환
+			while(rs.next()) {
+				AppForm app = new AppForm();
+				app.setNum(rs.getInt(1));
+				app.setUserid(rs.getInt(2));
+				app.setCoverletter(rs.getString(3));
+				app.setPofol(rs.getString(4));
+				app.setPicture(rs.getString(5));
+				list.add(app);
+
+			}
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		} finally {
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		return list;
+	}
 	
 	public ArrayList<AppForm> selectAll(){
 		//db 연결

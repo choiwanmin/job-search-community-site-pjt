@@ -7,9 +7,9 @@
 <meta charset="EUC-KR">
 <title>Insert title here</title>
 <script type="text/javascript">
-const a=(val)=>{
+const a=(val,ti)=>{
 	let req=new XMLHttpRequest()
-	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val)
+	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val+"&title="+ti)
 	req.send()
 	req.onload=()=>{
 	}
@@ -31,7 +31,7 @@ window.onload()
 </tr>
 <c:forEach var="rllist" items="${rlList }">
 <tr>
-<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }')">${rllist.wantedTitle }</a></td>
+<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${rllist.wantedAuthNo }" onclick="a('${rllist.wantedAuthNo }','${rllist.wantedTitle }')">${rllist.wantedTitle }</a></td>
 <td>${rllist.jobsNm }</td>
 <td >${rllist.regDt }</td>
 <td>${rllist.closeDt }</td>

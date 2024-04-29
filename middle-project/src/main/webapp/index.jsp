@@ -146,6 +146,17 @@ const listLoad=()=>{
     </div>
     <ul class="job_rec_wrap"> 
     </ul>
+    <div>
+    <c:if test="${sessionScope.loginType.equals('구직자') }">
+    	<div style="position:fixed; top:350px; right:50px; ">
+   		<h4>최근 본 공고</h4>
+    		<br/>
+    		<c:forEach var="d" items="${recent }">
+			<a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${d.wanted_auth_no }">${d.wanted_title } </a><br>    
+			</c:forEach>
+    	</div>
+    </c:if>
+    </div>
 </section>  		
 </c:if>
 </body>
