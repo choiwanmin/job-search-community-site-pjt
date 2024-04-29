@@ -40,13 +40,10 @@
 				<label for="salTpCd" class="col-sm-2 col-form-label">공고 임금 조건</label>
 				<div class="col-sm-10">
 					<select class="form-select" id="salTpCd" name="salTpCd" required>
-					<c:if test="${salTpCd }">
-						<option selected>${salTpCd }</option>
-					</c:if>
-						<option value="h">시급</option>
-						<option value="d">일급</option>
-						<option value="m">월급</option>
-						<option value="y">연봉</option>
+						<option value="H" <c:if test="${rl.salTpCd == 'H' }">selected</c:if>>시급</option>
+						<option value="D" <c:if test="${rl.salTpCd == 'D' }">selected</c:if>>일급</option>
+						<option value="M" <c:if test="${rl.salTpCd == 'M' }">selected</c:if>>월급</option>
+						<option value="Y" <c:if test="${rl.salTpCd == 'Y' }">selected</c:if>>연봉</option>
 					</select>
 				</div>
 			</div>
@@ -72,15 +69,12 @@
 				<label for="minEdubgIcd" class="col-sm-2 col-form-label">공고 최소학력</label>
 				<div class="col-sm-10">
 					<select class="form-select" id="minEdubgIcd" name="minEdubgIcd">
-					<c:if test="${minEdubgIcd }">
-						<option selected>${minEdubgIcd }</option>
-					</c:if>
-						<option value="0">학력무관</option>
-						<option value="3">고졸</option>
-						<option value="4">대졸(2년제)</option>
-						<option value="5">대졸(4년제)</option>
-						<option value="6">석사</option>
-						<option value="7">박사</option>
+						<option value="0" <c:if test="${rl.minEdubgIcd == '0' }">selected</c:if>>학력무관</option>
+						<option value="3" <c:if test="${rl.minEdubgIcd == '3' }">selected</c:if>>고졸</option>
+						<option value="4" <c:if test="${rl.minEdubgIcd == '4' }">selected</c:if>>대졸(2년제)</option>
+						<option value="5" <c:if test="${rl.minEdubgIcd == '5' }">selected</c:if>>대졸(4년제)</option>
+						<option value="6" <c:if test="${rl.minEdubgIcd == '6' }">selected</c:if>>석사</option>
+						<option value="7" <c:if test="${rl.minEdubgIcd == '7' }">selected</c:if>>박사</option>
 					</select>
 				</div>
 			</div>
@@ -88,12 +82,9 @@
 				<label for="enterTpCd" class="col-sm-2 col-form-label">공고 경력</label>
 				<div class="col-sm-10">
 					<select class="form-select" id="enterTpCd" name="enterTpCd">
-					<c:if test="${enterTpCd }">
-						<option selected>${enterTpCd }</option>
-					</c:if>
-						<option value="Z">관계없음</option>
-						<option value="N">신입</option>
-						<option value="E">경력</option>
+						<option value="Z" <c:if test="${rl.enterTpCd == 'Z' }">selected</c:if>>관계없음</option>
+						<option value="N" <c:if test="${rl.enterTpCd == 'N' }">selected</c:if>>신입</option>
+						<option value="E" <c:if test="${rl.enterTpCd == 'E' }">selected</c:if>>경력</option>
 					</select>
 				</div>
 			</div>
@@ -141,14 +132,11 @@
 				</div>
 			</div>
             <div class="row mb-3">
-				<label for="saveStatusStr" class="col-sm-2 col-form-label">공고 저장 상태</label>
+				<label for="saveStatus" class="col-sm-2 col-form-label">공고 저장 상태</label>
 				<div class="col-sm-10">
-					<select class="form-select" id="saveStatusStr" name="saveStatus" required>
-					<c:if test="${saveStatusStr }">
-						<option selected>${saveStatus }</option>
-					</c:if>
-						<option value="0">임시저장</option>
-						<option value="1">등록</option>
+					<select class="form-select" id="saveStatus" name="saveStatus" required>
+						<option value="0" <c:if test="${rl.saveStatus == '0' }">selected</c:if>>임시저장</option>
+						<option value="1" <c:if test="${rl.saveStatus == '1' }">selected</c:if>>등록</option>
 					</select>
 				</div>
 			</div>
@@ -165,9 +153,9 @@
 					<c:if test="${detailTypeStr }">
 						<option selected>${detailTypeStr }</option>
 					</c:if>
-						<option value="0">마감</option>
-						<option value="1">진행</option>
-						<option value="2">삭제</option>
+						<option value="0" <c:if test="${rd.type == '0' }">selected</c:if>>마감</option>
+						<option value="1" <c:if test="${rd.type == '1' }">selected</c:if>>진행</option>
+						<option value="2" <c:if test="${rd.type == '2' }">selected</c:if>>삭제</option>
 					</select>
 				</div>
 			</div>

@@ -117,10 +117,7 @@ public class RecruitListDao {
 	// 사업자등록번호와 공고번호로 찾아서 공고목록 수정
 	public int update(RecruitList rl) {
 		Connection conn = db.conn();
-		String sql = "update recruit_list set " + "wanted_title=? " + ",sal_tp_cd=? " + ",sal=? " + ",min_edubg_icd=? "
-				+ ",enter_tp_cd=? " + ",work_region=? " + ",region_cd=? " + ",jobs_nm=? " + ",jobs_cd=? " + ",reg_dt=? "
-				+ ",close_dt=? " + ",save_status=? " + ",homepg=? " + ",type=? "
-				+ "where busi_no=? and wanted_auth_no=?";
+		String sql = "update recruit_list set wanted_title=?,sal_tp_cd=?,sal=?,min_edubg_icd=?,enter_tp_cd=?,work_region=?,region_cd=?,jobs_nm=?,jobs_cd=?,reg_dt=?,close_dt=?,save_status=?,homepg=? where busi_no=? and wanted_auth_no=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -137,9 +134,8 @@ public class RecruitListDao {
 			pstmt.setDate(11, rl.getCloseDt());
 			pstmt.setInt(12, rl.getSaveStatus());
 			pstmt.setString(13, rl.getHomePg());
-			pstmt.setBoolean(14, rl.isType());
-			pstmt.setString(15, rl.getBusiNo());
-			pstmt.setString(16, rl.getWantedAuthNo());
+			pstmt.setString(14, rl.getBusiNo());
+			pstmt.setString(15, rl.getWantedAuthNo());
 
 			cnt = pstmt.executeUpdate();
 			System.out.println(cnt + "줄 수정");
@@ -311,9 +307,9 @@ public class RecruitListDao {
 		}
 		return list;
 	}
-	
+
 	//
-	//등록된 최신 공고 상위 12개 목록 반환
+	// 등록된 최신 공고 상위 12개 목록 반환
 	public ArrayList<RecruitList> selectByRegDt() {
 		Connection conn = db.conn();
 		String sql = "select * from (select * from recruit_list where save_status='1' order by reg_dt desc) where rownum <= 12";

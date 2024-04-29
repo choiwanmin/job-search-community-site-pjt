@@ -70,7 +70,7 @@ public class RecruitDetailHandler implements Handler {
 				salTpCd = "월급";
 				break;
 			case "Y":
-				salTpCd = "연급";
+				salTpCd = "연봉";
 				break;
 			default:
 				salTpCd = "-";
@@ -176,45 +176,6 @@ public class RecruitDetailHandler implements Handler {
 			request.setAttribute("view", "/recruit/recruitdetail.jsp");
 
 		} else {
-			// update
-			RecruitListService rlservice = new RecruitListService();
-			RecruitDetailService rdservice = new RecruitDetailService();
-
-			String corpid = (String) request.getSession().getAttribute("loginId");
-
-			CorpService cservice = new CorpService();
-			String busiNo = (cservice.getByCorpId(corpid)).getBusi_no();
-			String wantedTitle = request.getParameter("wantedTitle");
-			String salTpCd = request.getParameter("salTpCd");
-			String sal = request.getParameter("sal");
-			String minEdubgIcd = request.getParameter("minEdubgIcd");
-			String enterTpCd = request.getParameter("enterTpCd");
-			String workRegion = request.getParameter("workRegion");
-//			int regionCd;
-
-			String jobsNm = request.getParameter("jobsNm");
-//			int jobsCd;
-
-			String regDt = request.getParameter("regDt");
-			String closeDt = request.getParameter("closeDt");
-
-			Date regDate = Date.valueOf(regDt);
-			Date closeDate = Date.valueOf(closeDt);
-
-//			int saveStatus = Integer.parseInt(request.getParameter("saveStatus"));
-//			String saveStatus = request.getParameter("saveStatus");
-
-			int minSal = Integer.parseInt(request.getParameter("minSal"));
-			int maxSal = Integer.parseInt(request.getParameter("maxSal"));
-			String jobCont = request.getParameter("jobCont");
-//			Date smodifyDtm;
-			String contactTelNo = request.getParameter("contactTelNo");
-//			int detailType = Integer.parseInt(request.getParameter("detailType"));
-
-			rlservice.editRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
-			rdservice.editRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 1));
 			view = "redirect:/recruit/recruitmylist.jsp";
 		}
 		return view;
