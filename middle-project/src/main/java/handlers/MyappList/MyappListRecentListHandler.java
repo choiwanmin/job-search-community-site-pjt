@@ -19,6 +19,8 @@ public class MyappListRecentListHandler implements Handler {
 		String num = request.getParameter("num");
 		String dnum=request.getParameter("dnum");
 		String title = request.getParameter("title");
+		System.out.println("title  =========" +title);
+		System.out.println(num);
 		ArrayList<MyappList> list = (ArrayList<MyappList>) session.getAttribute("recent");
 		if(list==null) {
 			list=new ArrayList<MyappList>();
