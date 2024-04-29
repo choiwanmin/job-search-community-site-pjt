@@ -38,7 +38,7 @@ const listLoad=()=>{
     	for(let a of arr){
     		index_recr = `
         	      <li class="main_job_cont">
-                <a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=\${a.authNo }">
+    			 <a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=\${a.authNo }" onclick="ae('\${a.authNo }','\${a.title }')">
                   <div class="rec_main_wrap">
                     <p class="job_title title_lim"> \${a.title}</p> 
                     <p class="corp_nm">\${a.corp}</p>
@@ -58,6 +58,14 @@ const listLoad=()=>{
 	req.open('get', '${pageContext.request.contextPath }/main/index.do');
 	req.send();
 }
+const ae=(val,ti)=>{
+	let req=new XMLHttpRequest()
+	req.open('get',"${pageContext.request.contextPath }/myapplist/recent.do?num="+val+"&title="+ti)
+	req.send()
+	req.onload=()=>{
+	}
+}
+
 </script>
 
 </head>
