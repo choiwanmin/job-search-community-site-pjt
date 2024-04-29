@@ -7,6 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+const edit = () => {
+	location.href = '${pageContext.request.contextPath}/recruit/recruitedit.do?wantedAuthNo=${wantedAuthNo }';
+}
+
+const del = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitdel.do?wantedAuthNo=${wantedAuthNo }';
+}
+
+const recruitmylist = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=0&id=${corpid }&busiNo=${busi_no }';
+}
+
 const recruitlist = () => {
 	location.href = '${pageContext.request.contextPath }/recruit/recruitlist.do';
 }
@@ -21,34 +33,64 @@ const scrap = () => {
 </script>
 </head>
 <body>
-<c:if test = "${sessionScope.loginType.equals('기업')}">
-<h3 class="form_title text-center">${corpid }(사업자등록번호:${busi_no })님의 공고<br/> 공고 번호:[${wantedAuthNo }] 상세 페이지</h3>
+
+<div class="w1200">
+<h3 class="form_title text-center">${rl.wantedTitle }</h3>
+<div class="w800 rec_detail_wrap w-bg">
+	<div class="rec_condition">
+	<table>
+	<tr><th class="con_icon"><i class="fa-solid fa-money-bill"></i><span class="con_title">임금</span></th><td>(${salTpCd })${rl.sal }</td></tr>
+	<tr><th class="con_icon"><i class="fa-solid fa-school"></i><span class="con_title">학력</span></th><td>${minEdubgIcd }</td></tr>
+	<tr><th class="con_icon"><i class="fa-solid fa-business-time"></i><span class="con_title">경력</span></th><td>${enterTpCd }</td></tr>
+	<tr><th class="con_icon"><i class="fa-regular fa-hand"></i><span class="con_title">직종</span> </th><td>${rl.jobsNm }</td></tr>
+	<tr><th class="con_icon"><i class="fa-solid fa-calendar-days"></i><span class="con_title">마감</span></th><td>${rl.closeDt }</td></tr>
+	</table>	
+	</div>
+	<div class="rec_info">
+	<div class="rec_info_det">
+		<div class="info_icon_wrap"><img class="info_img" src="${pageContext.request.contextPath }/img/book.png"></div>
+	모집 요강</div>
+		<textarea name="content" rows="10" style="width:100%;border:0;resize:none;padding-top: 30px;" readonly>${rd.jobCont }</textarea>
+	</div>
+	<div class="rec_info">
+	<div class="rec_info_det">
+		<div class="info_icon_wrap"><img class="info_img" src="${pageContext.request.contextPath }/img/paper.png"></div>
+	모집 정보</div>
+		<div style="margin-top:20px">
+			<table>
+				<tr><th ><span class="con_title">기업명</span></th><td>${corp_nm }</td></tr>
+				<tr><th ><span class="con_title">기업주소</span></th><td>${corp_addr }</td></tr>
+				<tr><th ><span class="con_title">공고담당자전화번호</span></th><td>${rd.contactTelNo }</td></tr>
+				<tr><th ><span class="con_title">근무지역</span></th><td>${rl.workRegion }</td></tr>
+				<tr><th ><span class="con_title"></span></th><td><div id="map" style="width:500px;height:400px;">
+					</div></td></tr>
+			</table>	
+		</div>
+	</div>
+	<c:if test = "${empty sessionScope.loginId}">
+<input type="button" class="btn" value="공고 목록" onclick="recruitlist()">
 </c:if>
 
+<c:if test = "${not empty sessionScope.loginId}">
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
-<h3 class="form_title text-center">${rl.wantedTitle }</h3>
-<h3>공고 번호:${wantedAuthNo } 상세</h3>
-<h4>기업정보</h4>
-<table >
-<tr><th>기업명</th><td>${corp_nm }</td></tr>
-<tr><th>기업주소</th><td>${corp_addr }</td></tr>
-</table>
+
+<input type="button" class="btn btn-w" value="공고 목록" onclick="recruitlist()">
+<c:if test = "${empty msg2 }">
+<input type="button" class="btn btn-g" value="지원" onclick="apply()">
 </c:if>
-<table border="1">
-    <tr><th>공고상세내용</th><td><textarea name="content" rows="10" style="width:100%;border:0;resize:none;" readonly>${rd.jobCont }</textarea></td></tr>
-    
-    <tr><th>(임금조건)임금</th><td>(${salTpCd })${rl.sal }</td></tr>
-    <tr><th>최소학력</th><td>${minEdubgIcd }</td></tr>
-    <tr><th>경력</th><td>${enterTpCd }</td></tr>
-    <tr><th>직종</th><td>${rl.jobsNm }</td></tr>
-    <tr><th>공고등록일</th><td>${rl.regDt }</td></tr>
-    <tr><th>공고마감일</th><td>${rl.closeDt }</td></tr>
-    <tr><th>공고근무지역</th><td>${rl.workRegion }</td></tr>
-    <tr><th>공고담당자전화번호</th><td>${rd.contactTelNo }</td></tr>
-    <tr><th>공고상태</th><td>${detailType }</td></tr>
-    </table>
-    <!-- kakao api map 시작 -->
-<div id="map" style="width:500px;height:400px;">
+<c:if test = "${not empty msg2 }">
+${msg2 }
+</c:if>
+<input type="button" class="btn btn-y" value="스크랩" onclick="scrap()">
+</c:if>
+<c:if test = "${sessionScope.loginId eq corpid}">
+<input type="hidden" class="btn" name="corpid" value="${corpid }">
+<input type="hidden" class="btn" name="busiNo" value="${busi_no }">
+<input type="button" class="btn" value="공고 목록" onclick="recruitmylist()">
+<input type="button" class="btn" value="공고 수정" onclick="edit()">
+<input type="button" class="btn" value="공고 삭제" onclick="del()">
+</c:if>
+</c:if>
 </div>
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=751a4a007c37d37278bb88b5575faa4a&libraries=services"></script>
 <script>
@@ -101,20 +143,9 @@ geocoder.addressSearch('${rl.workRegion }', function(result, status) {
 }
 
 );
-
 </script>
 <!-- kakao api map 끝 -->
-<input type="button" value="공고 목록" onclick="recruitlist()">
-<c:if test = "${sessionScope.loginType.equals('구직자')}">
-<c:if test = "${empty msg2 }">
-<input type="button" value="지원" onclick="apply()">
-</c:if>
-<c:if test = "${not empty msg2 }">
-${msg2 }
-</c:if>
-<input type="button" value="스크랩" onclick="scrap()">
-</c:if>
-<script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
-<script src="../js/map.js"></script>
+</div>
+
 </body>
 </html>

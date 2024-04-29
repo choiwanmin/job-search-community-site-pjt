@@ -1,7 +1,5 @@
 package handlers.recruit;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,24 +22,24 @@ public class RecruitDetailHandler implements Handler {
 		if (request.getMethod().equals("GET")) {
 			// detail
 			String id = (String) request.getSession().getAttribute("loginId");
-			PersonService pservice=new PersonService();
-			int usernum = pservice.getPerson(id).getNum();
-			RecruitApplyService aservice=new RecruitApplyService();			
+
 			MemService mservice = new MemService();
+			PersonService pservice = new PersonService();
+
 			String wantedAuthNo = request.getParameter("wantedAuthNo");
-			if(aservice.getApply(usernum, wantedAuthNo)!=null) {
-				request.setAttribute("msg2", "이미 지원한 공고");
+			if (mservice.getMem(id) != null) {
+				if (pservice.getPerson(id) != null) {
+					int usernum = pservice.getPerson(id).getNum();
+					RecruitApplyService aservice = new RecruitApplyService();
+					if (aservice.getApply(usernum, wantedAuthNo) != null) {
+						request.setAttribute("msg2", "이미 지원한 공고");
+					}
+				}
 			}
 
 			CorpService cservice = new CorpService();
 			RecruitListService rlservice = new RecruitListService();
 			RecruitDetailService rdservice = new RecruitDetailService();
-
-//			if(mservice.getMem(id).getType() == 1) {
-//				view = "/index.jsp";
-//			} else {
-//				view = "/corp/info.jsp";
-//			}
 
 			String busi_no = rlservice.getByWantedAuthNo(wantedAuthNo).getBusiNo();
 			String corpid = cservice.getByBusiNo(busi_no).getCorpid();
@@ -70,7 +68,7 @@ public class RecruitDetailHandler implements Handler {
 				salTpCd = "월급";
 				break;
 			case "Y":
-				salTpCd = "연급";
+				salTpCd = "연봉";
 				break;
 			default:
 				salTpCd = "-";
@@ -129,7 +127,7 @@ public class RecruitDetailHandler implements Handler {
 				enterTpCd = "관계없음";
 				break;
 			}
-			String saveStatusStr = null; 
+			String saveStatusStr = null;
 			int saveStatus = rl.getSaveStatus();
 			switch (saveStatus) {
 			case 0:
@@ -140,15 +138,14 @@ public class RecruitDetailHandler implements Handler {
 				break;
 			}
 
-			
 			String listTypeStr = null;
 			boolean listType = rl.isType();
-			if(listType) {
+			if (listType) {
 				listTypeStr = "api공고";
 			} else {
-				listTypeStr = "사용자공고";				
+				listTypeStr = "사용자공고";
 			}
-			
+
 			String detailTypeStr = null;
 			int detailType = rd.getType();
 			System.out.println(rd);
@@ -166,55 +163,16 @@ public class RecruitDetailHandler implements Handler {
 				detailTypeStr = "진행";
 				break;
 			}
-			System.out.println(rl.getSal());
+
 			request.setAttribute("salTpCd", salTpCd);
 			request.setAttribute("minEdubgIcd", minEdubgIcd);
-			request.setAttribute("enterTpCd", enterTpCd);			
+			request.setAttribute("enterTpCd", enterTpCd);
 			request.setAttribute("saveStatusStr", saveStatusStr);
 			request.setAttribute("listTypeStr", listTypeStr);
 			request.setAttribute("detailTypeStr", detailTypeStr);
 			request.setAttribute("view", "/recruit/recruitdetail.jsp");
 
 		} else {
-			// update
-			RecruitListService rlservice = new RecruitListService();
-			RecruitDetailService rdservice = new RecruitDetailService();
-
-			String corpid = (String) request.getSession().getAttribute("loginId");
-
-			CorpService cservice = new CorpService();
-			String busiNo = (cservice.getByCorpId(corpid)).getBusi_no();
-			String wantedTitle = request.getParameter("wantedTitle");
-			String salTpCd = request.getParameter("salTpCd");
-			String sal = request.getParameter("sal");
-			String minEdubgIcd = request.getParameter("minEdubgIcd");
-			String enterTpCd = request.getParameter("enterTpCd");
-			String workRegion = request.getParameter("workRegion");
-//			int regionCd;
-
-			String jobsNm = request.getParameter("jobsNm");
-//			int jobsCd;
-
-			String regDt = request.getParameter("regDt");
-			String closeDt = request.getParameter("closeDt");
-
-			Date regDate = Date.valueOf(regDt);
-			Date closeDate = Date.valueOf(closeDt);
-
-//			int saveStatus = Integer.parseInt(request.getParameter("saveStatus"));
-//			String saveStatus = request.getParameter("saveStatus");
-
-			int minSal = Integer.parseInt(request.getParameter("minSal"));
-			int maxSal = Integer.parseInt(request.getParameter("maxSal"));
-			String jobCont = request.getParameter("jobCont");
-//			Date smodifyDtm;
-			String contactTelNo = request.getParameter("contactTelNo");
-//			int detailType = Integer.parseInt(request.getParameter("detailType"));
-
-			rlservice.editRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, 0, null, true));
-			rdservice.editRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 0, 1));
 			view = "redirect:/recruit/recruitmylist.jsp";
 		}
 		return view;

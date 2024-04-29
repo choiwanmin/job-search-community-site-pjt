@@ -7,24 +7,10 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
-// 등록일, 마감일 현재 날짜에 선택되어 있도록 하는 구문
-// document.getElementById('currentDate').value = new Date().toISOString().substring(0, 10);
-
-// 전화번호 수정 방법1
-// const hypenTel = (target) => {
-// 	 target.value = target.value
-// 	   .replace(/[^0-9]/g, '')
-// 	   .replace(/^(\d{2,3})(\d{3,4})(\d{4})$/, `$1-$2-$3`);
-// 	}
-
 const save = () => {
-	let f = document.querySelector("form");
-    if(f.requestSubmit) {
-        f.requestSubmit();
-    } else {
-		f.saveStatus.value = '1';
-		f.submit();
-    }
+// 	console.log(f.saveStatus.value)
+	f.saveStatus.value = '1';
+	f.submit();
 }
 </script>
 </head>
@@ -56,10 +42,10 @@ const save = () => {
 					조건</label>
 				<div class="col-sm-10">
 					<select class="form-select" id="salTpCd" name="salTpCd">
-						<option value="h">시급</option>
-						<option value="d">일급</option>
-						<option value="m">월급</option>
-						<option value="y">연봉</option>
+						<option value="H">시급</option>
+						<option value="D">일급</option>
+						<option value="M">월급</option>
+						<option value="Y">연봉</option>
 					</select>
 				</div>
 			</div>
@@ -107,10 +93,8 @@ const save = () => {
 				<div class="row mb-3">
 					<label for="workRegion" class="col-sm-2 col-form-label">근무 지역 주소</label>
 					<div class="col-sm-10">
-						<input type="button" onclick="sample6_execDaumPostcode()"
-							value="우편번호 찾기"><br>
-						<input type="text"
-							id="sample6_address" placeholder="주소" name="addr" required><br>
+						<input type="button" onclick="sample6_execDaumPostcode()" value="우편번호 찾기"><br>
+						<input type="text" id="sample6_address" placeholder="주소" name="addr" required><br>
 						<span class="post-wrap">
 						<input type="text" id="sample6_postcode" placeholder="우편번호" name="p_code" required>
 						<input type="text" id="sample6_detailAddress" placeholder="상세주소" name="addrdet" required>
@@ -150,7 +134,7 @@ const save = () => {
 			<div class="btn_wrap">
 				<input type="hidden" name="saveStatus" value="0">
 				<input class="btn btn-primary" type="submit" value="임시 저장">
-				<input class="btn btn-primary" type="button" value="공고 등록" onclick="save()">
+				<input class="btn btn-primary" type="button" value="공고 등록" onClick="save()">
 				<input class="btn btn-primary" type="button" value="되돌아가기" onclick="history.back()">
 			</div>
 		</form>

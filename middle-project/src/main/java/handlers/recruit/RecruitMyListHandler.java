@@ -28,7 +28,6 @@ public class RecruitMyListHandler implements Handler {
 
 		String busiNo = "";
 
-		ArrayList<String> saveStatusStrLst = new ArrayList<String>();
 		if (mservice.getMem(id).getType() == 2) {
 			busiNo = (cservice.getByCorpId(id)).getBusi_no();
 			rlList = rlservice.getByBusiNo(busiNo);
@@ -37,9 +36,7 @@ public class RecruitMyListHandler implements Handler {
 		request.setAttribute("id", id);
 		request.setAttribute("busiNo", busiNo);
 		request.setAttribute("rlList", rlList);
-		request.setAttribute("saveStatusStrLst", saveStatusStrLst);
-//		request.setAttribute("saveStatusStr", saveStatusStr);
-		
+
 		if (myList == 0) {
 			request.setAttribute("view", "/recruit/recruitmylist.jsp");
 		} else {

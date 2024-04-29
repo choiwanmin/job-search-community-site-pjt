@@ -30,13 +30,15 @@ public class RecruitEditHandler implements Handler {
 
 			CorpService cservice = new CorpService();
 			String busiNo = (cservice.getByCorpId(corpid)).getBusi_no(); // 기업-사업자등록번호(corp테이블-busi_no컬럼)
-//			String wantedAuthNo; // 공고-공고번호
+			String wantedAuthNo = request.getParameter("wantedAuthNo"); // 공고-공고번호
 			String wantedTitle = request.getParameter("wantedTitle"); // 공고-공고제목
 			String salTpCd = request.getParameter("salTpCd"); // 공고-임금조건
 			String sal = request.getParameter("sal"); // 공고-임금조건에 따른 임금
 			String minEdubgIcd = request.getParameter("minEdubgIcd"); // 공고-최소학력
 			String enterTpCd = request.getParameter("enterTpCd"); // 공고-경력
-			String workRegion = request.getParameter("workRegion"); // 공고-근무지역 전체 주소
+			String workRegion = "(" + request.getParameter("p_code") + ") " + request.getParameter("addr") + ", "
+					+ request.getParameter("addrdet");
+			; // 공고-근무지역 전체 주소
 //			int regionCd =  O// 공고-근무지역코드(ex.경기도 성남시)
 
 			String jobsNm = request.getParameter("jobsNm"); // 공고-직종이름
@@ -61,12 +63,12 @@ public class RecruitEditHandler implements Handler {
 			RecruitListService rlservice = new RecruitListService();
 			RecruitDetailService rdservice = new RecruitDetailService();
 
-			rlservice.editRecruitList(new RecruitList(busiNo, null, wantedTitle, salTpCd, sal, minEdubgIcd, enterTpCd,
-					workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, false));
-			rdservice.editRecruitDetail(new RecruitDetail(0, null, minSal, maxSal, null, null, jobCont, null, null,
-					null, contactTelNo, 1, 0));
+			rlservice.editRecruitList(new RecruitList(busiNo, wantedAuthNo, wantedTitle, salTpCd, sal, minEdubgIcd,
+					enterTpCd, workRegion, 0, jobsNm, 0, regDate, closeDate, saveStatus, null, false));
+			rdservice.editRecruitDetail(new RecruitDetail(0, wantedAuthNo, minSal, maxSal, null, null, jobCont, null,
+					null, null, contactTelNo, 1, 0));
 
-			view = "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
+			view = "redirect:/recruit/recruitmylist.do?mylist=0&id=" + corpid + "&busiNo=" + busiNo;
 		} else {
 			String wantedAuthNo = request.getParameter("wantedAuthNo");
 
@@ -91,17 +93,17 @@ public class RecruitEditHandler implements Handler {
 
 			String salTpCd = rl.getSalTpCd();
 			switch (salTpCd) {
-			case "h":
+			case "H":
 				salTpCd = "시급";
 				break;
-			case "d":
+			case "D":
 				salTpCd = "일급";
 				break;
-			case "m":
+			case "M":
 				salTpCd = "월급";
 				break;
-			case "y":
-				salTpCd = "연급";
+			case "Y":
+				salTpCd = "연봉";
 				break;
 			default:
 				salTpCd = "-";
@@ -162,16 +164,19 @@ public class RecruitEditHandler implements Handler {
 			}
 
 			String workRegion = rl.getWorkRegion();
+			String p_code = null;
+			String addr = null;
+			String addrdet = null;
 //			String addr = workRegion.replaceAll("\\(.[^0-9]s*\\)", workRegion);
 
 			String[] addrArr1 = workRegion.split(" ");
-			String p_code = addrArr1[0].replaceAll("[\\('\\)]", "");
+			p_code = addrArr1[0].replaceAll("[\\('\\)]", "");
 			String addrProcess1 = workRegion.replaceAll(addrArr1[0], "");
 			String addrProcess2 = addrProcess1.replaceFirst("[\\(]", "");
 			String addrProcess3 = addrProcess2.replaceFirst("[\\)]", "").trim();
 			String[] addrArr2 = addrProcess3.split(",");
-			String addr = addrArr2[0].trim();
-			String addrdet = addrArr2[1].trim();
+			addr = addrArr2[0].trim();
+			addrdet = addrArr2[1].trim();
 
 			String saveStatusStr = null;
 			int saveStatus = rl.getSaveStatus();

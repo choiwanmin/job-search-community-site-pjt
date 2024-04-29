@@ -22,18 +22,18 @@
         
        
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
+<script src="https://kit.fontawesome.com/7167d8d101.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 window.onload=()=>{
 	listLoad()
 }
-
-
 const listLoad=()=>{
     const req = new XMLHttpRequest();
     let job_rec_wrap = document.querySelectorAll(".job_rec_wrap")[0];
     let index_recr="";
     req.onload = () => {
+    	console.log(req.responseText)
     	let arr = JSON.parse(req.responseText);
     	for(let a of arr){
     		index_recr = `
@@ -128,9 +128,9 @@ const ae=(val,ti)=>{
           </div>
     </nav>
 <!-- main index body -->
-			<c:if test="${not empty view }">
-				<jsp:include page="${view }"/>
-			</c:if>
+		<c:if test="${not empty view }">
+			<jsp:include page="${view }"/>
+		</c:if>
 <c:if test="${empty view }">
 
 <section class="sw-wrap">

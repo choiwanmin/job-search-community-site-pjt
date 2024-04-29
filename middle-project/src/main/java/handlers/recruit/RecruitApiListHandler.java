@@ -75,21 +75,25 @@ public class RecruitApiListHandler implements Handler {
 				String basicAddr = wanted.getElementsByTagName("basicAddr").item(0).getTextContent();
 				String detailAddr = wanted.getElementsByTagName("detailAddr").item(0).getTextContent();
 				String smodifyDtm = wanted.getElementsByTagName("smodifyDtm").item(0).getTextContent();
-
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + wantedAuthNo);
 				//
 				String urlDetail = "https://openapi.work.go.kr/opi/opi/opia/wantedApi.do?authKey=" + authKey
 						+ "&callTp=D&returnType=XML&wantedAuthNo=" + wantedAuthNo + "&infoSvc=VALIDATION";
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + urlDetail.toString());
 
 				URL url2 = new URL(urlDetail);
 				URLConnection conn2 = url2.openConnection();
-
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + conn2.toString());
 				InputStream is2 = conn2.getInputStream();
 
 				Document doc2 = builder.parse(is2);
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + doc2.toString());
 
 				Element root2 = doc2.getDocumentElement();
 
 				NodeList corpInfoNode = root2.getElementsByTagName("corpInfo");
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + corpInfoNode.toString());
+
 				NodeList wantedInfoNode = root2.getElementsByTagName("wantedInfo");
 				NodeList empchargeInfoNode = root2.getElementsByTagName("empchargeInfo");
 				Element corpInfo = (Element) corpInfoNode.item(0);
@@ -103,8 +107,9 @@ public class RecruitApiListHandler implements Handler {
 
 				//
 				String jobsNm = wantedInfo.getElementsByTagName("jobsNm").item(0).getTextContent();
-				String[] jobsNmArr = jobsNm.split("\\(",2);
+				String[] jobsNmArr = jobsNm.split("\\(", 2);
 				String wantedTitle = wantedInfo.getElementsByTagName("wantedTitle").item(0).getTextContent();
+//				System.out.println("dbug =====>>>>>>>>>>>>>>>>>>" + wantedTitle.toString());
 				String relJobsNm = wantedInfo.getElementsByTagName("relJobsNm").item(0).getTextContent();
 				String jobCont = wantedInfo.getElementsByTagName("jobCont").item(0).getTextContent();
 				String workRegion = wantedInfo.getElementsByTagName("workRegion").item(0).getTextContent();
@@ -168,8 +173,8 @@ public class RecruitApiListHandler implements Handler {
 //							Integer.parseInt(jobsCd), regDate, closeDate, 1, homePg, true));
 //					if (rdservice.getByWantedAuthNo(wantedAuthNo) == null) {
 //						rdservice.addApiRecruitDetail(new RecruitDetail(0, wantedAuthNo, Integer.parseInt(minSal),
-//								Integer.parseInt(maxSal), jobsNmArr[0], srchKeywordNm, jobCont, smodifyDatetime, basicAddr,
-//								detailAddr, contactTelno, 1, 0));
+//								Integer.parseInt(maxSal), jobsNmArr[0], srchKeywordNm, jobCont, smodifyDatetime,
+//								basicAddr, detailAddr, contactTelno, 1, 0));
 //						saveCntRecruit++;
 //					}
 //				}
