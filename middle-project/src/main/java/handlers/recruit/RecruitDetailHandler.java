@@ -8,10 +8,12 @@ import javax.servlet.http.HttpServletResponse;
 import corp.CorpService;
 import handlers.Handler;
 import mem.MemService;
+import person.PersonService;
 import recruit.recruitdetail.RecruitDetail;
 import recruit.recruitdetail.RecruitDetailService;
 import recruit.recruitlist.RecruitList;
 import recruit.recruitlist.RecruitListService;
+import recruitApply.RecruitApplyService;
 
 public class RecruitDetailHandler implements Handler {
 
@@ -22,8 +24,14 @@ public class RecruitDetailHandler implements Handler {
 		if (request.getMethod().equals("GET")) {
 			// detail
 			String id = (String) request.getSession().getAttribute("loginId");
+			PersonService pservice=new PersonService();
+			int usernum = pservice.getPerson(id).getNum();
+			RecruitApplyService aservice=new RecruitApplyService();			
 			MemService mservice = new MemService();
 			String wantedAuthNo = request.getParameter("wantedAuthNo");
+			if(aservice.getApply(usernum, wantedAuthNo)!=null) {
+				request.setAttribute("msg2", "이미 지원한 공고");
+			}
 
 			CorpService cservice = new CorpService();
 			RecruitListService rlservice = new RecruitListService();

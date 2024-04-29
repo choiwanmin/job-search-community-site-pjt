@@ -17,7 +17,7 @@ public class ScrapListHandler implements Handler {
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
 		String view="";
-		int id=Integer.parseInt(request.getParameter("userid"));
+		String id=request.getParameter("userid");
 		ScrapService service =new ScrapService();
 		RecruitListService rservice=new RecruitListService();
 		ArrayList<Scrap> list=service.getById(id);

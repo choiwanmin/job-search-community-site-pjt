@@ -42,7 +42,7 @@ public class RecruitApplyDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setInt(1,num);
-			pstmt.setString(1,wanted_auth_no);
+			pstmt.setString(2,wanted_auth_no);
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			if(rs.next()) {
@@ -98,7 +98,7 @@ public class RecruitApplyDao {
 	//userSelect(유저가 지원한 리스트)
 	public ArrayList<RecruitApply> selectByUser(String applycant_num) {
 		Connection conn = db.conn();
-		String sql = "select * from recruit_apply where recruit_apply=? order by appldate";
+		String sql = "select * from recruit_apply where applycant_num=? order by appldate";
 		ArrayList<RecruitApply> list = new ArrayList<RecruitApply>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

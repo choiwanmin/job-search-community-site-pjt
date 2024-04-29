@@ -12,7 +12,7 @@ public class ScrapService {
 	public void add(Scrap s) {
 		ArrayList<Scrap> arr=dao.selectById(s.getUserid());
 		if(arr.size()>=10) {
-			dao.delete(arr.get(0).getNum());
+			dao.delete(arr.get(0).getScrp_num());
 		}	
 		dao.insert(s);
 	}
@@ -23,7 +23,7 @@ public class ScrapService {
 	public Scrap getByNum(int num) {
 		return dao.selectBynum(num);
 	}
-	public ArrayList<Scrap> getById(int id){
+	public ArrayList<Scrap> getById(String id){
 		return dao.selectById(id);
 	}
 }
