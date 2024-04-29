@@ -29,6 +29,7 @@ public class CorpApplyListHandler implements Handler {
 		
 		for(RecruitApply r: list) {
 			Person p = pservice.getByNum(r.getApplycant_num());
+			System.out.println(r);
 			JSONObject obj = new JSONObject();
 			obj.put("id", p.getUserid());
 			obj.put("email", p.getEmail());
