@@ -25,7 +25,7 @@ public class RecruitDelHandler implements Handler {
 		rlservice.delRecruitList(busiNo, wantedAuthNo);
 		rdservice.delRecruitDetail(wantedAuthNo);
 
-		return "redirect:/recruit/recruitmylist.do?id=" + corpid + "&busiNo=" + busiNo;
+		return "redirect:/recruit/recruitmylist.do?mylist=0&id=" + corpid + "&busiNo=" + busiNo;
 	}
 
 }

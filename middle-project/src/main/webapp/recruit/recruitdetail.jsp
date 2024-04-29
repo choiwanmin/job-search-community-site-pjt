@@ -7,6 +7,18 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+const edit = () => {
+	location.href = '${pageContext.request.contextPath}/recruit/recruitedit.do?wantedAuthNo=${wantedAuthNo }';
+}
+
+const del = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitdel.do?wantedAuthNo=${wantedAuthNo }';
+}
+
+const recruitmylist = () => {
+	location.href = '${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=0&id=${corpid }&busiNo=${busi_no }';
+}
+
 const recruitlist = () => {
 	location.href = '${pageContext.request.contextPath }/recruit/recruitlist.do';
 }
@@ -22,10 +34,12 @@ const scrap = () => {
 </head>
 <body>
 <c:if test = "${sessionScope.loginType.equals('기업')}">
+<c:if test = "${sessionScope.loginId eq corpid }">
 <h3 class="form_title text-center">${corpid }(사업자등록번호:${busi_no })님의 공고<br/> 공고 번호:[${wantedAuthNo }] 상세 페이지</h3>
 </c:if>
+</c:if>
 
-<c:if test = "${sessionScope.loginType.equals('구직자')}">
+<c:if test = "${sessionScope.loginType.equals('구직자') || sessionScope.loginId ne corpid }">
 <h3 class="form_title text-center">${rl.wantedTitle }</h3>
 <h3>공고 번호:${wantedAuthNo } 상세</h3>
 <h4>기업정보</h4>
@@ -34,6 +48,7 @@ const scrap = () => {
 <tr><th>기업주소</th><td>${corp_addr }</td></tr>
 </table>
 </c:if>
+
 <table border="1">
     <tr><th>공고상세내용</th><td><textarea name="content" rows="10" style="width:100%;border:0;resize:none;" readonly>${rd.jobCont }</textarea></td></tr>
     
@@ -104,11 +119,31 @@ geocoder.addressSearch('${rl.workRegion }', function(result, status) {
 
 </script>
 <!-- kakao api map 끝 -->
+<c:if test = "${empty sessionScope.loginId}">
 <input type="button" value="공고 목록" onclick="recruitlist()">
+</c:if>
+
+<c:if test = "${not empty sessionScope.loginId}">
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
+<input type="button" value="공고 목록" onclick="recruitlist()">
 <input type="button" value="지원" onclick="apply()">
 <input type="button" value="스크랩" onclick="scrap()">
 </c:if>
+<c:if test = "${sessionScope.loginId eq corpid}">
+<input type="hidden" name="corpid" value="${corpid }">
+<input type="hidden" name="busiNo" value="${busi_no }">
+<input type="button" value="공고 목록" onclick="recruitmylist()">
+<input type="button" value="공고 수정" onclick="edit()">
+<input type="button" value="공고 삭제" onclick="del()">
+</c:if>
+<c:if test = "${sessionScope.loginId ne corpid}">
+<input type="button" value="공고 목록" onclick="recruitlist()">
+</c:if>
+</c:if>
+
+
+
+
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/map.js"></script>
 </body>
