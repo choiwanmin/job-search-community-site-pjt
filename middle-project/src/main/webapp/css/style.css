@@ -50,14 +50,21 @@ nav {
 .show{
 	display:none;
 }
+.time-title{
+	border: 1px solid #e6e6e6;
+    background: #fff;
+    padding: 10px 0;
+    background-color: aliceblue;
+}
 .time-rec{
+	padding-left:10px;
     width: 140px;
-    height: 65px;
-	border:1px solid #eee;
-	background-color:#fff;
+    height: 40px;
+	background-color: #ffffff9e;
 	margin: 7px 0 4px 0;
 	overflow:hidden;
     text-overflow:ellipsis;
     white-space:nowrap;
+    color: #6d6d6d;
 }
 

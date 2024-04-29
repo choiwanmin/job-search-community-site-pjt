@@ -155,11 +155,16 @@ const ae=(val,ti)=>{
     <div>
     <c:if test="${sessionScope.loginType.equals('구직자') }">
     	<div style="position:fixed; top:350px; right:50px; ">
-   		<p style="font-weight: 700;">최근 본 공고</p>
+    	<div class="time-title">
+    	   		<p style="font-weight: 700; text-align: center;">최근 본 공고</p>
+    	</div>
+
     		<c:forEach var="d" items="${recent }">
+    		<a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${d.wanted_auth_no }">
     		<div class="time-rec">
-			<a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${d.wanted_auth_no }">${d.wanted_title } </a><br>    
+			${d.wanted_title }  
 			</div>
+			</a>
 			</c:forEach>
     	</div>
     </c:if>
