@@ -191,7 +191,9 @@ const check = () => {
 					</select>
 				</div>
 			</div>
-<button type="button" class="btn btn-primary" onclick="check()">수정완료</button>
+			<div class="btn_wrap">
+				<button type="button" class="btn btn-primary" onclick="check()">수정완료</button>
+			</div>
 </form>
 </div>
 </div>
