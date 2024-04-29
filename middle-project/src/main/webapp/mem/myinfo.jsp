@@ -20,11 +20,16 @@ window.onload = () => {
 <body>
 <h3>내 정보 확인</h3>
 <c:if test="${sessionScope.loginType == '구직자' }">
-  <h4>구직자 정보</h4>
+<div style="display:flex; justify-content:center; margin-top: 50px">
+  <div style="display:inline-block"><h4>구직자 정보</h4></div>	
+</div>
+<div style="display:flex;">
 <form action="${pageContext.request.contextPath }/mem/editmyinfo.do"  style="padding: 20px">
 <div style="display: none" id="type">
 TYPE
 </div>
+<div style="width:600px; display:flex;">
+<div style="justify-content: flex-end;"><a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></div>
 <table style="padding: 40px; width: 600px">
 <tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" readonly></td></tr>
@@ -36,12 +41,19 @@ TYPE
 <tr><th>성별</th><td><input class="form-control form-control-lg" type="text" placeholder="성별" aria-label=".form-control-lg example" name="gender" value="${p.gender }" readonly></td></tr>
 <tr><th>나이</th><td><input class="form-control form-control-lg" type="text" placeholder="나이를 입력하세요.." aria-label=".form-control-lg example" name="age" value="${p.age }" readonly></td></tr>
 <tr><th>관심분야</th><td><input class="form-control form-control-lg" type="text" placeholder="관심분야 .. ..." aria-label=".form-control-lg example" name="jobCd" value="${p.jobNm }" readonly></td></tr>
-<tr>
-<td>
-<a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></td>
-</tr>
 </table>
-<input type="submit" value="수정" style="width: 80px">
+</div>
+<div class="row mb-3">
+				<div class="col-sm-10">
+				<div>
+					<span>
+					<input type="submit" value="수정" style="width: 80px">
+					</span>
+				</div>
+			</div>
+			</div>
+<div>
+</div>
 </form>
 </c:if>
 <c:if test="${sessionScope.loginType == '기업' }">
