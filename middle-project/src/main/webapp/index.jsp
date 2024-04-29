@@ -22,6 +22,7 @@
         
        
 <script type="text/javascript" src="${pageContext.request.contextPath }/js/main.js"></script>
+<script src="https://kit.fontawesome.com/7167d8d101.js" crossorigin="anonymous"></script>
 <title>Insert title here</title>
 <script type="text/javascript">
 window.onload=()=>{
@@ -127,9 +128,9 @@ const ae=(val,ti)=>{
           </div>
     </nav>
 <!-- main index body -->
-			<c:if test="${not empty view }">
-				<jsp:include page="${view }"/>
-			</c:if>
+		<c:if test="${not empty view }">
+			<jsp:include page="${view }"/>
+		</c:if>
 <c:if test="${empty view }">
 
 <section class="sw-wrap">
