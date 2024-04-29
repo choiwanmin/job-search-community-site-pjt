@@ -37,8 +37,6 @@ public class RecruitMyListHandler implements Handler {
 		request.setAttribute("busiNo", busiNo);
 		request.setAttribute("rlList", rlList);
 
-//		request.setAttribute("saveStatusStr", saveStatusStr);
-
 		if (myList == 0) {
 			request.setAttribute("view", "/recruit/recruitmylist.jsp");
 		} else {
