@@ -1,7 +1,5 @@
 package handlers.recruit;
 
-import java.sql.Date;
-
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
@@ -24,24 +22,24 @@ public class RecruitDetailHandler implements Handler {
 		if (request.getMethod().equals("GET")) {
 			// detail
 			String id = (String) request.getSession().getAttribute("loginId");
-			PersonService pservice=new PersonService();
-			int usernum = pservice.getPerson(id).getNum();
-			RecruitApplyService aservice=new RecruitApplyService();			
+
 			MemService mservice = new MemService();
+			PersonService pservice = new PersonService();
+
 			String wantedAuthNo = request.getParameter("wantedAuthNo");
-			if(aservice.getApply(usernum, wantedAuthNo)!=null) {
-				request.setAttribute("msg2", "이미 지원한 공고");
+			if (mservice.getMem(id) != null) {
+				if (pservice.getPerson(id) != null) {
+					int usernum = pservice.getPerson(id).getNum();
+					RecruitApplyService aservice = new RecruitApplyService();
+					if (aservice.getApply(usernum, wantedAuthNo) != null) {
+						request.setAttribute("msg2", "이미 지원한 공고");
+					}
+				}
 			}
 
 			CorpService cservice = new CorpService();
 			RecruitListService rlservice = new RecruitListService();
 			RecruitDetailService rdservice = new RecruitDetailService();
-
-//			if(mservice.getMem(id).getType() == 1) {
-//				view = "/index.jsp";
-//			} else {
-//				view = "/corp/info.jsp";
-//			}
 
 			String busi_no = rlservice.getByWantedAuthNo(wantedAuthNo).getBusiNo();
 			String corpid = cservice.getByBusiNo(busi_no).getCorpid();
@@ -129,7 +127,7 @@ public class RecruitDetailHandler implements Handler {
 				enterTpCd = "관계없음";
 				break;
 			}
-			String saveStatusStr = null; 
+			String saveStatusStr = null;
 			int saveStatus = rl.getSaveStatus();
 			switch (saveStatus) {
 			case 0:
@@ -140,15 +138,14 @@ public class RecruitDetailHandler implements Handler {
 				break;
 			}
 
-			
 			String listTypeStr = null;
 			boolean listType = rl.isType();
-			if(listType) {
+			if (listType) {
 				listTypeStr = "api공고";
 			} else {
-				listTypeStr = "사용자공고";				
+				listTypeStr = "사용자공고";
 			}
-			
+
 			String detailTypeStr = null;
 			int detailType = rd.getType();
 			System.out.println(rd);
@@ -166,10 +163,10 @@ public class RecruitDetailHandler implements Handler {
 				detailTypeStr = "진행";
 				break;
 			}
-			System.out.println(rl.getSal());
+
 			request.setAttribute("salTpCd", salTpCd);
 			request.setAttribute("minEdubgIcd", minEdubgIcd);
-			request.setAttribute("enterTpCd", enterTpCd);			
+			request.setAttribute("enterTpCd", enterTpCd);
 			request.setAttribute("saveStatusStr", saveStatusStr);
 			request.setAttribute("listTypeStr", listTypeStr);
 			request.setAttribute("detailTypeStr", detailTypeStr);
