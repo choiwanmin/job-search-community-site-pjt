@@ -21,8 +21,8 @@ public class ScrapDao {
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			// pstmt.set..(?순서, 값): ? 들어갈 값 설정
-			pstmt.setInt(1, s.getUserid());
-			pstmt.setString(2, s.getWanted_auth_no());
+			pstmt.setString(2,s.getWanted_auth_no());
+			pstmt.setString(1, s.getUserid());
 			// sql 실행
 			int cnt = pstmt.executeUpdate();// insert, update, delete문장 실행.
 			// pstmt.executeQuery()//select문 실행 => ResultSet 반환
@@ -42,7 +42,7 @@ public class ScrapDao {
 	public void delete(int num) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "delete scrap where num=?";
+		String sql = "delete scrap where scrap_num=?";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -66,7 +66,7 @@ public class ScrapDao {
 	}
 	public Scrap selectBynum(int num) {
 		Connection conn = db.conn();
-		String sql = "select * from scrap where num=?";
+		String sql = "select * from scrap where scrap_num=?";
 		Scrap s = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -77,9 +77,9 @@ public class ScrapDao {
 			//rs.next(): 읽을 다음 줄로 이동. 읽을 것이 있으면 true, 없으면 false반환
 			if(rs.next()) {
 				s = new Scrap();
-				s.setNum(rs.getInt(1));//1번 컬럼의 문자열 값을 읽음
-				s.setUserid(rs.getInt(2));//2번 컬럼의 문자열 값을 읽음
-				s.setWanted_auth_no(rs.getString(3));//3번 컬럼의 문자열 값을 읽음
+				s.setScrp_num(rs.getInt(1));
+				s.setWanted_auth_no(rs.getString(3));//1번 컬럼의 문자열 값을 읽음
+				s.setWanted_auth_no(rs.getString(2));
 			}
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
@@ -94,12 +94,12 @@ public class ScrapDao {
 		}
 		return s;
 	}
-	public ArrayList<Scrap> selectById(int num){
+	public ArrayList<Scrap> selectById(String id){
 		//db 연결
 		Connection conn = db.conn();
 		
 		//sql문 작성
-		String sql = "select * from Scrap where userid=? order by num";
+		String sql = "select * from Scrap where userid=? order by scrap_num";
 		
 		//ArrayList 생성
 		ArrayList<Scrap> list = new ArrayList<>();
@@ -107,7 +107,7 @@ public class ScrapDao {
 		try {
 			//PreparedStatement 객체 생성
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setInt(1, num);
+			pstmt.setString(1, id);
 			//sql 실행
 			ResultSet rs = pstmt.executeQuery();
 			
@@ -115,9 +115,9 @@ public class ScrapDao {
 			while(rs.next()) {
 				Scrap s = new Scrap();
 				s = new Scrap();
-				s.setNum(rs.getInt(1));//1번 컬럼의 문자열 값을 읽음
-				s.setUserid(rs.getInt(2));//2번 컬럼의 문자열 값을 읽음
-				s.setWanted_auth_no(rs.getString(3));//3번 컬럼의 문자열 값을 읽음
+				s.setScrp_num(rs.getInt(1));
+				s.setWanted_auth_no(rs.getString(3));//1번 컬럼의 문자열 값을 읽음
+				s.setWanted_auth_no(rs.getString(2));
 				list.add(s);
 			}
 		} catch (SQLException e) {

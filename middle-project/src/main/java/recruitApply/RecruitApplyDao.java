@@ -98,7 +98,7 @@ public class RecruitApplyDao {
 	//userSelect(유저가 지원한 리스트)
 	public ArrayList<RecruitApply> selectByUser(String applycant_num) {
 		Connection conn = db.conn();
-		String sql = "select * from recruit_apply where recruit_apply=? order by appldate";
+		String sql = "select * from recruit_apply where applycant_num=? order by appldate";
 		ArrayList<RecruitApply> list = new ArrayList<RecruitApply>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);

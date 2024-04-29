@@ -12,10 +12,10 @@ const recruitlist = () => {
 }
 
 const apply = () => {
-	location.href = '${pageContext.request.contextPath }/recruit/recruitdel.do?wantedAuthNo=${wantedAuthNo }';
+	location.href = '${pageContext.request.contextPath }/apply/add.do?wanted_auth_no=${wantedAuthNo }';
 }
 const scrap = () => {
-	location.href = '${pageContext.request.contextPath }/scrap/add.do?wantedAuthNo=${wantedAuthNo }';
+	location.href = '${pageContext.request.contextPath }/scrap/add.do?wanted_auth_no=${wantedAuthNo }';
 }
 
 </script>
@@ -106,7 +106,12 @@ geocoder.addressSearch('${rl.workRegion }', function(result, status) {
 <!-- kakao api map 끝 -->
 <input type="button" value="공고 목록" onclick="recruitlist()">
 <c:if test = "${sessionScope.loginType.equals('구직자')}">
+<c:if test = "${empty msg2 }">
 <input type="button" value="지원" onclick="apply()">
+</c:if>
+<c:if test = "${not empty msg2 }">
+${msg2 }
+</c:if>
 <input type="button" value="스크랩" onclick="scrap()">
 </c:if>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
