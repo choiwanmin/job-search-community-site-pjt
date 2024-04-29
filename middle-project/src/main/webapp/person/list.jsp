@@ -112,7 +112,7 @@
 <c:forEach var="d" items="${list }">
 <tr>
 	<th>${d.num }</th>
-	<th><a href="${pageContext.request.contextPath }/person/detail.do?num=${d.num }&id=${sessionScope.loginId}">${d.userid }</a></th>
+	<th><a href="${pageContext.request.contextPath }/person/detail.do?num=${d.num }">${d.userid }</a></th>
 	<th>${d.gender }</th>
 	<th>${d.age }</th>
 	<th>${d.email }</th>

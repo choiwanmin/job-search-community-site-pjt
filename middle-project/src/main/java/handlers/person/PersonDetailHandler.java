@@ -14,12 +14,10 @@ public class PersonDetailHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		// TODO Auto-generated method stub
-		String view="/person/info.jsp";
+		String view="/corp/info.jsp";
 		PersonService pservice=new PersonService();
 		AppFormService aservice=new AppFormService();
-		String id=request.getParameter("id");
-		//int num=Integer.parseInt(request.getParameter("num"));  >> 실제로 사용할 코드
-		int num=pservice.getPerson(id).getNum();
+		int num=Integer.parseInt(request.getParameter("num"));  
 		Person p=pservice.getByNum(num);
 		AppForm a=aservice.getForm(num);
 		if (p != null) {
