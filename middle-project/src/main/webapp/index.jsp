@@ -120,11 +120,9 @@ const listLoad=()=>{
           </div>
     </nav>
 <!-- main index body -->
-		<center>
 			<c:if test="${not empty view }">
 				<jsp:include page="${view }"/>
 			</c:if>
-		</center>
 <c:if test="${empty view }">
 
 <section class="sw-wrap">
