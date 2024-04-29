@@ -50,5 +50,14 @@ nav {
 .show{
 	display:none;
 }
-
+.time-rec{
+    width: 140px;
+    height: 65px;
+	border:1px solid #eee;
+	background-color:#fff;
+	margin: 7px 0 4px 0;
+	overflow:hidden;
+    text-overflow:ellipsis;
+    white-space:nowrap;
+}
 

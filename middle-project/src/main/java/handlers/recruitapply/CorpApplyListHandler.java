@@ -55,10 +55,8 @@ public class CorpApplyListHandler implements Handler {
 			}
 			obj.put("career", career);
 			obj.put("age", p.getAge());
-			
 			arr.add(obj);
 		}
-		
 		String res = arr.toJSONString();
 		return "responsebody/"+res;
 	}

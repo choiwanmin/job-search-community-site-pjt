@@ -147,10 +147,11 @@ const listLoad=()=>{
     <div>
     <c:if test="${sessionScope.loginType.equals('구직자') }">
     	<div style="position:fixed; top:350px; right:50px; ">
-   		<h4>최근 본 공고</h4>
-    		<br/>
+   		<p style="font-weight: 700;">최근 본 공고</p>
     		<c:forEach var="d" items="${recent }">
+    		<div class="time-rec">
 			<a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${d.wanted_auth_no }">${d.wanted_title } </a><br>    
+			</div>
 			</c:forEach>
     	</div>
     </c:if>
