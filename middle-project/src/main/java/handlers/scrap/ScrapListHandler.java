@@ -6,6 +6,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import handlers.Handler;
+import person.Person;
+import person.PersonService;
 import person.Scrap;
 import person.ScrapService;
 import recruit.recruitlist.RecruitList;
@@ -20,6 +22,8 @@ public class ScrapListHandler implements Handler {
 		String id=(String) request.getSession().getAttribute("loginId");
 		ScrapService service =new ScrapService();
 		RecruitListService rservice=new RecruitListService();
+		PersonService pservice=new PersonService();
+		Person p=pservice.getPerson(id);
 		ArrayList<Scrap> list=service.getById(id);
 		ArrayList<RecruitList> rlist=new ArrayList<>();
 		for(Scrap s:list) {
@@ -27,7 +31,7 @@ public class ScrapListHandler implements Handler {
 			System.out.println(s.getWanted_auth_no());
 		}
 		
-		
+		request.setAttribute("person", p);
 		request.setAttribute("list", rlist);
 		request.setAttribute("view", "/scrap/list.jsp");
 		return view;
