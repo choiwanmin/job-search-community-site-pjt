@@ -82,7 +82,6 @@ const edit = (num) =>{
 
 	<div class="w1200" style="padding-top: 150px;">
 <div class="container">
-    <h3 class="mb-4">글 상세보기</h3>
 <form action="${pageContext.request.contextPath }/comment/add.do" method="post" name="f">
 <input type="hidden" name="data" value="${d.fname }">
 <table class="table table-bordered">

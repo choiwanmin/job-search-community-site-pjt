@@ -35,3 +35,11 @@
     border: 2px solid black;
   	opacity: 1;  
   	}
+  	.logo{
+  	position: relative;
+    width: 100px;
+    height:30px;
+    top:0px;
+    right: 0px;
+    opacity: 1;
+  	}
