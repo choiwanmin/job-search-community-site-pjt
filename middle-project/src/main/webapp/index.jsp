@@ -121,6 +121,7 @@ const ae=(val,ti)=>{
 				</c:if>
 				<c:if test="${sessionScope.loginType.equals('기업') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
+				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/out.do?id=${sessionScope.loginId }">회원탈퇴</a>
 				</c:if>
 			 </nav>
                   </li>
