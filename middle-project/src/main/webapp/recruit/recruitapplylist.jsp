@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
+const pdetail=(num)=>{
+	console.log(num)
+	//location.href = '${pageContext.request.contextPath }/person/detail.do?num=${'+num+'}';
+}
 const chageLangSelect=()=>{
     var langSelect = document.getElementById("selectbox");
     var selectValue = langSelect.options[langSelect.selectedIndex].value;
@@ -23,12 +27,14 @@ const chageLangSelect=()=>{
     `;
     req.onload = () => {
 		let arr = JSON.parse(req.responseText);
-		for(let a of arr){
-			console.log(a) 
+		for(let a of arr){ 
+						
 			// 새 행(Row) 추가
 			 const newRow = table.insertRow();
+			console.log(a.num)
+			newRow.onclick=pdetail(a.num);
 			// 새 행(Row)에 Cell 추가
-			 const newCell1 = newRow.insertCell(0);
+			const newCell1 = newRow.insertCell(0);
 			const newCell2 = newRow.insertCell(1);
 			const newCell3 = newRow.insertCell(2);
 			const newCell4 = newRow.insertCell(3);

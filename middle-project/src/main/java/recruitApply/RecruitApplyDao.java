@@ -132,9 +132,9 @@ public class RecruitApplyDao {
 		}
 	}
 	//통계용(sql 설정)
-	public RecruitApply count(String wanted_auth_no) {
+	public RecruitApply getCountGender (String wanted_auth_no) {
 		Connection conn = db.conn();
-		String sql = "select count(),count() from recruit_apply where applycant_num=? and wanted_auth_no=?";
+		String sql = "select gender,count(gender) from recruit_apply,person where recruit_apply.wanted_auth_no=? and recruit_apply.applycant_num = person.num group by gender;";
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,wanted_auth_no);

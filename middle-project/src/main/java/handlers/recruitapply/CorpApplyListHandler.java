@@ -29,10 +29,11 @@ public class CorpApplyListHandler implements Handler {
 		
 		for(RecruitApply r: list) {
 			Person p = pservice.getByNum(r.getApplycant_num());
-			System.out.println(r);
+			System.out.println("p:"+p.getNum());
 			JSONObject obj = new JSONObject();
 			obj.put("id", p.getUserid());
 			obj.put("email", p.getEmail());
+			obj.put("num", p.getNum());
 			switch(Integer.parseInt(p.getEducation())) {
 			case 0: edu="학력무관";
 				 break;
