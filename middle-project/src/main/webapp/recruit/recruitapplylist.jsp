@@ -13,30 +13,10 @@ const chageLangSelect=()=>{
     var selectValue = langSelect.options[langSelect.selectedIndex].value;
     const req = new XMLHttpRequest();
     let table = document.querySelector("#apply_list");
-    table.innerHTML=`
-    	<tr>
-    	<th>지원자 ID</th>
-    	<th>학력</th>
-    	<th>경력</th>
-    	<th>나이</th>
-    	</tr>
-    `;
     req.onload = () => {
 		let arr = JSON.parse(req.responseText);
 		for(let a of arr){
-			console.log(a) 
-			// 새 행(Row) 추가
-			 const newRow = table.insertRow();
-			// 새 행(Row)에 Cell 추가
-			 const newCell1 = newRow.insertCell(0);
-			const newCell2 = newRow.insertCell(1);
-			const newCell3 = newRow.insertCell(2);
-			const newCell4 = newRow.insertCell(3);
-			// Cell에 텍스트 추가
-			newCell1.innerText = a.id;
-			newCell2.innerText = a.email;
-			newCell3.innerText = a.education;
-			newCell4.innerText = a.age;
+			console.log(a)
 		}
 	}
 	req.open('get', '${pageContext.request.contextPath }/mem/applyDetail.do?wanted_auth_no='+selectValue);
@@ -47,7 +27,7 @@ const chageLangSelect=()=>{
 </head>
 <body>
 <h3>지원자 목록</h3>
-<select class="form-select" aria-label="Default select example" id="selectbox"" name="selectbox" onchange="chageLangSelect()">
+<select class="form-select" aria-label="Default select example" id="selectbox"" name="selectbox" onchange="chageLangSelect()" style="margin-bottom: 30px">
   <option selected disabled>지원자를 확인할 공고를 선택하세요.</option>
   <c:forEach var="rllist" items="${rlList }">
     <option value="${rllist.wantedAuthNo }" >${rllist.wantedTitle }</option>
