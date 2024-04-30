@@ -32,5 +32,8 @@ public class RecruitApplyService {
 	public void delApply(int num,String wanted_auth_no) {
 		dao.delete(num, wanted_auth_no);
 	}
+	public ArrayList<RecruitApplyStat> getStat(String group,String wanted_auth_no){
+		return dao.getCount(group, wanted_auth_no);
+	}
 	
 }
