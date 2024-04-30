@@ -133,22 +133,23 @@ public class RecruitApplyDao {
 	}
 
 	//통계용(sql 설정)
-	public RecruitApply getCountGender (String wanted_auth_no) {
+	public ArrayList<RecruitApplyStat> getCount(String group,String wanted_auth_no) {
 		Connection conn = db.conn();
-		String sql = "select gender,count(gender) from recruit_apply,person where recruit_apply.wanted_auth_no=? and  recruit_apply.applycant_num = person.num group by gender;";
+		String sql = "select "+group+",count("+group+") from recruit_apply,person where recruit_apply.wanted_auth_no=? and recruit_apply.applycant_num = person.num group by "+group;
+		ArrayList<RecruitApplyStat> list = new ArrayList<RecruitApplyStat>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			pstmt.setString(1,wanted_auth_no);
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
-			if(rs.next()) {
-				return new RecruitApply(rs.getString(1),rs.getString(2),rs.getInt(3),rs.getDate(4),rs.getString(5));
+			while(rs.next()) {
+				list.add(new RecruitApplyStat(rs.getString(1),rs.getInt(2)));
 			}
 		} catch (SQLException e) {e.printStackTrace();} 
 		finally {
 			try {conn.close();} 
 			catch (SQLException e) {e.printStackTrace();}
 		}
-		return null;
+		return list;
 	}
 }
