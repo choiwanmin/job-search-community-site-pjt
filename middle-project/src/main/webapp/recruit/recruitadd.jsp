@@ -7,8 +7,14 @@
 <meta charset="UTF-8">
 <title>Insert title here</title>
 <script type="text/javascript">
+const req = ()=>{
+	let check = /[\{\}\[\]\/|\)*\\\=\(\'\"]/g;
+    if(check.test(f.wantedTitle.value)){
+      alert("사용할 수 없는 특수문자를 사용하였습니다.");
+      return
+    }
+}
 const save = () => {
-// 	console.log(f.saveStatus.value)
 	f.saveStatus.value = '1';
 	f.submit();
 }
@@ -115,13 +121,13 @@ const save = () => {
 			<div class="row mb-3">
 				<label for="currentDate" class="col-sm-2 col-form-label">공고등록일</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="date" id="currentDate" name="regDt" required>
+					<input class="form-control" type="date" id="regDt" name="regDt" required>
 				</div>
 			</div>
 			<div class="row mb-3">
 				<label for="currentDate" class="col-sm-2 col-form-label">공고마감일</label>
 				<div class="col-sm-10">
-					<input class="form-control" type="date" id="currentDate" name="closeDt" required>
+					<input class="form-control" type="date" id="closeDt" name="closeDt" required>
 				</div>
 			</div>
 			<div class="row mb-3">
@@ -143,4 +149,11 @@ const save = () => {
 </body>
 <script src="//t1.daumcdn.net/mapjsapi/bundle/postcode/prod/postcode.v2.js"></script>
 <script src="../js/map.js"></script>
+<script type="text/javascript">
+var now_date = Date.now()
+var timeOff = new Date().getTimezoneOffset()*60000; 
+var today = new Date(now_date-timeOff).toISOString().split("T")[0];
+document.getElementById("regDt").setAttribute("min", today);
+document.getElementById("closeDt").setAttribute("min", today);
+</script>
 </html>
