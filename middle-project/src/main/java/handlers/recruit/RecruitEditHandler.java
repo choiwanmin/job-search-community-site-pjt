@@ -174,10 +174,15 @@ public class RecruitEditHandler implements Handler {
 			String addrProcess1 = workRegion.replaceAll(addrArr1[0], "");
 			String addrProcess2 = addrProcess1.replaceFirst("[\\(]", "");
 			String addrProcess3 = addrProcess2.replaceFirst("[\\)]", "").trim();
-			String[] addrArr2 = addrProcess3.split(",");
-			addr = addrArr2[0].trim();
-			addrdet = addrArr2[1].trim();
-
+			if (addrProcess3.contains(",")) {
+				String[] addrArr2 = addrProcess3.split(",");
+				addr = addrArr2[0].trim();
+				addrdet = addrArr2[1].trim();
+			} else {
+				int index = addrProcess3.indexOf("(");
+				addr = addrProcess3.substring(0,index).trim();
+				addrdet = addrProcess3.substring(index).trim().replaceAll("[\\('\\)]", "");
+			}
 			String saveStatusStr = null;
 			int saveStatus = rl.getSaveStatus();
 			switch (saveStatus) {
