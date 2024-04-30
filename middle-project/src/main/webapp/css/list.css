@@ -25,3 +25,13 @@
     opacity: 0.5;
     display: block;
   }
+   .memimg {
+    position: relative;
+    width: 105px;
+    height:90px;
+    right: 0px;
+    margin-top:20px;
+    border-radius: 30%;
+    border: 2px solid black;
+  	opacity: 1;  
+  	}
