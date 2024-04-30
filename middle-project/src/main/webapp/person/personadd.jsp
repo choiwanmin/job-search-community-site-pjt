@@ -40,7 +40,7 @@ const check = () => {
 </head>
 <body>
 	<div class="w800 p40">
-		<h3 class="form_title text-center">기업 정보 등록하기</h3>
+		<h3 class="form_title text-center">구직자 정보 등록하기</h3>
 		<p class="form_sub text-center">회원님의 정보를 기입해주세요.</p>
 		<div class="form_Wrap">
 		<form class=""

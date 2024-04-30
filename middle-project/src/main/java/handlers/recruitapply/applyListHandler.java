@@ -20,11 +20,14 @@ public class applyListHandler implements Handler {
 		String id=(String)request.getSession().getAttribute("loginId");
 		PersonService pservice = new PersonService();
 		Person p = pservice.getPerson(id);
+		ArrayList<RecruitApply> list=null;
+		if(p!= null) {
 		int num = p.getNum();
 		RecruitApplyService applyService = new RecruitApplyService();
-		ArrayList<RecruitApply> list=applyService.getUserList(num);
-		System.out.println(list.get(0).getWanted_title());
+		list=applyService.getUserList(num);
+		}
 		request.setAttribute("list", list);
+		request.setAttribute("person", p);
 		request.setAttribute("view", "/apply/list.jsp");
 		return "/person/info.jsp";
 	}

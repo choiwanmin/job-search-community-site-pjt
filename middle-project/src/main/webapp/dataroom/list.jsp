@@ -96,9 +96,9 @@ button.btn-primary {
 			onclick="a(1)" class="btn btn-custom me-2"> <input
 			type="button" value="취준" onclick="a(2)" class="btn btn-custom me-2">
 		<input type="button" value="채용공고" onclick="a(3)"
-			class="btn btn-custom me-2"> <input type="button" value="자소서"
+			class="btn btn-custom me-2"> <input type="button" value="면접"
 			onclick="a(4)" class="btn btn-custom me-2"> <input
-			type="button" value="면접" onclick="a(5)" class="btn btn-custom me-2">
+			type="button" value="자소서" onclick="a(5)" class="btn btn-custom me-2">
 		<input type="button" value="나의좋아요" onclick="a(6)"
 			class="btn btn-custom me-2"><br />
 
@@ -229,6 +229,9 @@ button.btn-primary {
 				</c:forEach>
 			</tbody>
 		</table>
+		<c:if test="${not empty msg }">
+${msg }
+</c:if>
 		<div class="row justify-content-end mb-3">
 			<input type="button" value=" 글쓰기 " onclick="f()"
 				class="btn btn-custom me-2" style="width: auto;">
@@ -298,8 +301,6 @@ button.btn-primary {
 		</c:if>
 	</div>
 </div>
-	<c:if test="${not empty msg }">
-${msg }
-</c:if>
+	
 </body>
 </html>
