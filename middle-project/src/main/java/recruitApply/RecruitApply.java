@@ -8,8 +8,6 @@ public class RecruitApply {
 	private int applycant_num;//지원자-person(num)
 	private Date appldate;//지원일
 	private String busi_no;//사업자 번호
-	private String[] edu;//통계용(학력)
-	private String[] carrer;//통계용(경력)
 	
 	public RecruitApply() {}
 	
@@ -20,10 +18,6 @@ public class RecruitApply {
 		this.applycant_num = applycant_num;
 		this.appldate = appldate;
 		this.busi_no = busi_no;
-	}
-	public RecruitApply(String[] edu,String[] carrer) {
-		this.edu = edu;
-		this.carrer = carrer;
 	}
 	
 	public String getWanted_auth_no() {
@@ -73,23 +67,6 @@ public class RecruitApply {
 
 	public void setBusi_no(String busi_no) {
 		this.busi_no = busi_no;
-	}
-
-
-	public String[] getEdu() {
-		return edu;
-	}
-
-	public void setEdu(String[] edu) {
-		this.edu = edu;
-	}
-
-	public String[] getCarrer() {
-		return carrer;
-	}
-
-	public void setCarrer(String[] carrer) {
-		this.carrer = carrer;
 	}
 
 	@Override

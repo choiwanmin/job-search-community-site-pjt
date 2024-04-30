@@ -74,8 +74,9 @@ const ae=(val,ti)=>{
         <div class="container-fluid">
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
-                <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">Main</a>
+                 <li class="nav-item">
+                  <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">
+                <img class="logo" src="${pageContext.request.contextPath }/img/매치잇.png" alt="대체_텍스트"></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
@@ -97,6 +98,7 @@ const ae=(val,ti)=>{
               </ul>
             </div>
             <div class="collapse navbar-collapse" id="navUser">
+            
             <c:if test="${empty sessionScope.loginId }">
                 <ul class="navbar-nav">
                   <li class="nav-item" id="join">
