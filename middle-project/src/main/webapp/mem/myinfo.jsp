@@ -30,6 +30,7 @@ TYPE
 </div>
 <div style="width:600px; display:flex;">
 <table style="padding: 40px; width: 600px">
+<tr><th>사진</th><td><img alt="${appform.picture }"  src="../app/image/${appform.picture}"  style="width:50px;height:30px"></td></tr>
 <tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" readonly></td></tr>
 <tr><th>전화번호</th><td><input class="form-control form-control-lg" type="text" placeholder="UserTel..." aria-label=".form-control-lg example"name="usertel" value="${p.usertel }" readonly></td></tr>
@@ -40,6 +41,8 @@ TYPE
 <tr><th>성별</th><td><input class="form-control form-control-lg" type="text" placeholder="성별" aria-label=".form-control-lg example" name="gender" value="${p.gender }" readonly></td></tr>
 <tr><th>나이</th><td><input class="form-control form-control-lg" type="text" placeholder="나이를 입력하세요.." aria-label=".form-control-lg example" name="age" value="${p.age }" readonly></td></tr>
 <tr><th>관심분야</th><td><input class="form-control form-control-lg" type="text" placeholder="관심분야 .. ..." aria-label=".form-control-lg example" name="jobCd" value="${p.jobNm }" readonly></td></tr>
+<tr><th>포트폴리오</th><td><a href="${pageContext.request.contextPath }/appform/down.do?fname=${appform.pofol }&type=pofol">${appform.pofol } </a></td></tr>
+<tr><th>자기소개서</th><td><a href="${pageContext.request.contextPath }/appform/down.do?fname=${appform.coverletter }&type=coverletter">${appform.coverletter } </a></td></tr>
 </table>
 </div>
 <div class="row mb-3">
