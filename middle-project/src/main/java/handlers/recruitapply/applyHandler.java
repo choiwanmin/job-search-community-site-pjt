@@ -36,8 +36,8 @@ public class applyHandler implements Handler {
 			RecruitApplyService applyService = new RecruitApplyService();
 
 			applyService.addApply(new RecruitApply(wanted_auth_no,r.getWantedTitle(),num,null,r.getBusiNo()));
-				
-			request.setAttribute("view", "/apply/list.jsp");
+					
+			view="redirect:/index.jsp";
 		}else {//지원 공고 리스트 보기
 			//지원자 ID
 			String userid = (String)request.getSession().getAttribute("loginId");

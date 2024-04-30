@@ -36,8 +36,8 @@ public class RecruitAddHandler implements Handler {
 			String sal = request.getParameter("sal"); // 공고-임금조건에 따른 임금
 			String minEdubgIcd = request.getParameter("minEdubgIcd"); // 공고-최소학력
 			String enterTpCd = request.getParameter("enterTpCd"); // 공고-경력
-			String workRegion = "(" + request.getParameter("p_code") + ")" + " " + request.getParameter("addr") + ", "
-					+ request.getParameter("addrdet"); // 공고-근무지역 전체 주소
+			String workRegion = "(" + request.getParameter("p_code") + ")" + " " + request.getParameter("addr") + " ("
+					+ request.getParameter("addrdet") + ")"; // 공고-근무지역 전체 주소
 //			int regionCd =  O// 공고-근무지역코드(ex.경기도 성남시)
 
 			String jobsNm = request.getParameter("jobsNm"); // 공고-직종이름

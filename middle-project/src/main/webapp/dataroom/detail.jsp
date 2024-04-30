@@ -6,29 +6,28 @@
 <head>
 <meta charset="UTF-8">
 <title>Insert title here</title>
-<link href="${pageContext.request.contextPath }/bootstrap-5.3.3/css/bootstrap.min.css" rel="stylesheet">
-<style>
-    body {
-        padding: 20px;
-    }
-
-    .container {
-        max-width: 800px;
-        margin: auto;
-    }
-
-    .btn-comment {
-        margin-top: 10px;
-    }
-    textarea {
-        background-color: #f9f9f9;
-        width: calc(100% - 20px); /* 테이블 셀의 패딩을 고려하여 너비를 조정합니다 */
-            height: calc(100% - 20px); /* 테이블 셀의 패딩을 고려하여 높이를 조정합니다 */
-            background-color: #f0f0f0;
-            resize: none; /* 사용자가 textarea의 크기를 조절하지 못하도록 설정합니다 */
-        
-    }
-</style>
+<style type="text/css"> 
+body {
+            background-color: white;
+        }
+        .btn-custom {
+	position: relative;
+	top: -10px; /* 상단으로 10px 이동 */
+	width: 120px;
+	background-color: transparent;
+	border: 1px solid #007bff; /* 파란색 테두리 */
+	color: #007bff; /* 파란색 텍스트 */
+	border-radius: 0; /* 테두리 모서리를 둥글지 않게 */
+}
+textarea {
+    width: calc(100% - 6px); /* 테이블 셀의 너비에서 패딩값 제외 */
+    height: calc(100% - 6px); /* 테이블 셀의 높이에서 패딩값 제외 */
+    resize: none; /* 크기 조절 비활성화 */
+    padding: 3px; /* 내부 패딩 설정 */
+    border: none; /* 테두리 제거 */
+    overflow: auto; /* 스크롤바 추가 */
+}
+        </style>
 <script type="text/javascript">
 const b = (type) =>{
 	location.href="${pageContext.request.contextPath }/dataroom/favo.do?num=${d.num}&id=${sessionScope.loginId}&type="+type;
@@ -80,8 +79,9 @@ const edit = (num) =>{
 </script>
 </head>
 <body>
+
+	<div class="w1200" style="padding-top: 150px;">
 <div class="container">
-    <h3 class="mb-4">글 상세보기</h3>
 <form action="${pageContext.request.contextPath }/comment/add.do" method="post" name="f">
 <input type="hidden" name="data" value="${d.fname }">
 <table class="table table-bordered">
@@ -111,7 +111,7 @@ const edit = (num) =>{
 <tr><th>작성자</th><th>댓글</th><th>작성일</th><th>수정/삭제/답글</th></tr>
 <c:forEach var="c" items="${list }">
 <form action="${pageContext.request.contextPath }/comment/edit.do" method="post">
-<tr><td>${c.id }</td><td><textarea rows="5" cols="20" name="edit_content">${c.content }
+<tr><td>${c.id }</td><td><textarea rows="5" cols="40" name="edit_content">${c.content }
 <c:if test="${c.is_edit==1 }">(수정됨)</c:if>
 </textarea></td>
 <td>${c.wdate}</td>
@@ -119,30 +119,30 @@ const edit = (num) =>{
 <input type="hidden" value="${c.num }" name="num">
 <input type="hidden" value="${c.data_num }" name="data_num">
 <c:if test="${c.id.equals(sessionScope.loginId) }">
-<input type="submit" value="수정" class="btn btn-primary btn-sm">
-<input type="button" value="삭제" onclick="del(${c.num})" class="btn btn-danger btn-sm">
+<input type="submit" value="수정" class="btn btn-custom me-2">
+<input type="button" value="삭제" onclick="del(${c.num})" class="btn btn-custom me-2">
 </c:if>
-<input type="button" value="답글쓰기" onclick="none(${c.num})" class="btn btn-secondary btn-sm">
+<input type="button" value="답글쓰기" onclick="none(${c.num})" class="btn btn-custom me-2">
 </td></tr>
 <!-- 원 댓글 끝 -->
-<tr style="display:none" id="tr${c.num}"><th>↪<th><textarea rows="5" cols="20" id="addcomment${c.num }"></textarea></th>
+<tr style="display:none" id="tr${c.num}"><th>↪<th><textarea rows="5" cols="40" id="addcomment${c.num }"></textarea></th>
 <th></th>
-<th><input type="button" value="작성" onclick="add(${c.num})" class="btn btn-primary btn-comment">
-<input type="button" value="취소" onclick="cancel(${c.num})" class="btn btn-secondary btn-comment"></th>
+<th><input type="button" value="작성" onclick="add(${c.num})" class="btn btn-custom me-2">
+<input type="button" value="취소" onclick="cancel(${c.num})" class="btn btn-custom me-2"></th>
 </tr>	
 <!-- 대댓글 쓰기 끝 -->
 <c:forEach var="r" items="${ref_list }">
 <c:if test="${r.ref_num==c.num }">
-<tr><td>↪${r.id }</td><td><textarea rows="5" cols="20" id="edit_content${r.num }">${r.content }
+<tr><td>↪${r.id }</td><td><textarea rows="5" cols="40" id="edit_content${r.num }">${r.content }
 <c:if test="${r.is_edit==1 }">(수정됨)</c:if>
 </textarea></td>
 <td>${r.wdate}</td>
-<td>
+<td style="width: 100px; max-width: 100px">
 <input type="hidden" value="${r.num }" name="num">
 <input type="hidden" value="${r.data_num }" name="data_num">
 <c:if test="${r.id.equals(sessionScope.loginId) }">
-<input type="button" value="수정" onclick="edit(${r.num})" class="btn btn-primary btn-sm">
-<input type="button" value="삭제" onclick="del(${r.num})" class="btn btn-danger btn-sm">
+<input type="button" value="수정" onclick="edit(${r.num})" class="btn btn-custom me-2">
+<input type="button" value="삭제" onclick="del(${r.num})" class="btn btn-custom me-2">
 </td></tr>
 </c:if>
 </c:if>
@@ -151,6 +151,7 @@ const edit = (num) =>{
 </form>
 </c:forEach>
 </table>
+</div>
 </div>
 </body>
 </html>

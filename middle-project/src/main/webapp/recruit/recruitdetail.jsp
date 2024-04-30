@@ -79,7 +79,7 @@ const scrap = () => {
 <input type="button" class="btn btn-g" value="Áö¿ø" onclick="apply()">
 </c:if>
 <c:if test = "${not empty msg2 }">
-${msg2 }
+<button type="button" class="btn btn-primary readbtn">${msg2}</button>
 </c:if>
 <input type="button" class="btn btn-y" value="½ºÅ©·¦" onclick="scrap()">
 </c:if>

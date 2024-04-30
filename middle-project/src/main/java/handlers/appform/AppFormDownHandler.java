@@ -20,7 +20,7 @@ public class AppFormDownHandler implements Handler {
 		// TODO Auto-generated method stub
 		String fname=request.getParameter("fname");
 		String type=request.getParameter("type");
-		String path=AppFormService.path;
+		String path=AppFormService.path+"\\src\\main\\webapp\\app\\";
 		System.out.println(path);
 		File f=null;
 		if(type.equals("pofol")) {

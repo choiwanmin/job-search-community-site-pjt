@@ -14,7 +14,7 @@
 </thead>
 <c:forEach var="q" items="${list }">
 <tr>
-	<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wanted_auth_no=${q.wanted_auth_no}"> ${q.wanted_title} </a></td>
+	<td><a href="${pageContext.request.contextPath }/recruit/recruitdetail.do?wantedAuthNo=${q.wanted_auth_no }"> ${q.wanted_title} </a></td>
 </tr>    
 </c:forEach>
 </table>

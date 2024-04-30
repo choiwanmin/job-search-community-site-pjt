@@ -52,7 +52,7 @@
                   <li class="nav-item nav-link">
                     ${sessionScope.loginId } /${sessionScope.loginType } 회원 <span id="user">▼</span>
              <nav id="show" class="nav flex-column show">
-				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/corpinfo.do">내 정보 확인</a>
+				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/person/info.do">내 정보 확인</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/out.do?id=${sessionScope.loginId }">회원탈퇴</a>
 			 </nav>
@@ -68,9 +68,14 @@
         <div class="info_left">
           <h4 class="topic">개인정보</h4>
           <ul> 
+          <c:if test="${not empty person }">
           	<li class="info_title"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/myinfo.do">내 정보 확인</a> </li>
+          	<li class="info_title"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/editmyinfo.do">지원자 정보 수정</a></li>
+          	</c:if>
+          	<c:if test="${empty person }">
             <li class="info_title"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a> </li>
-            <li class="info_title"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/editmyinfo.do">지원자 정보 수정</a></li>
+            </c:if>
+            
           </ul>
           <h4 class="topic">지원정보</h4>
           <ul>

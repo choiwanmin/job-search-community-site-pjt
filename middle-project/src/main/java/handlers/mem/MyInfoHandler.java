@@ -4,6 +4,8 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import appform.AppForm;
+import appform.AppFormService;
 import handlers.Handler;
 import mem.Mem;
 import mem.MemService;
@@ -23,10 +25,13 @@ public class MyInfoHandler implements Handler {
 			// 로그인한 사람의 id를 session에서 꺼냄
 			String loginId = (String) session.getAttribute("loginId");
 			MemService service = new MemService();
+			AppFormService aservice=new AppFormService();
 			// loginId db에서 검색
 			Mem m = service.getMem(loginId);
 			PersonService pservice = new PersonService();
 			Person p = pservice.getPerson(loginId);
+			int num=pservice.getPerson(loginId).getNum();
+			AppForm a=aservice.getForm(num);
 			if (p != null) {
 				if (p.getCareer().equals("N")) {
 					p.setCareer("신입");
@@ -63,6 +68,7 @@ public class MyInfoHandler implements Handler {
 			request.setAttribute("m", m);
 			request.setAttribute("p", p);
 			request.setAttribute("view", "/mem/myinfo.jsp");
+			request.setAttribute("appform", a);
 			if (p != null) {
 				session.setAttribute("person", p);
 			}

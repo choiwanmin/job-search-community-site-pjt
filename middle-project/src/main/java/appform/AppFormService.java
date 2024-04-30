@@ -6,7 +6,7 @@ import java.util.ArrayList;
 
 public class AppFormService {
 private AppFormDao dao;
-public static String lpath=System.getProperty("user.dir");
+public static String lpath=System.getProperty("user.home");
 public static File findGitDirectory(File f){
 	while(f !=null) {
 		File cd=new File(f,"git");

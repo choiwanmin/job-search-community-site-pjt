@@ -17,10 +17,6 @@ public class PersonInfoHandler implements Handler {
 		PersonService service=new PersonService();
 		Person p=service.getPerson(id);
 		request.setAttribute("person", p);
-		if(p==null) {
-			request.setAttribute("view", "/index.jsp");
-		}
-		
 		return view;
 	}
 
