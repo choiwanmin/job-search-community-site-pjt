@@ -26,7 +26,8 @@
             <div class="collapse navbar-collapse" id="navbarNav">
               <ul class="navbar-nav">
                 <li class="nav-item">
-                  <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">Main</a>
+                 <a class="nav-link" href="${pageContext.request.contextPath }/index.jsp">
+                <img class="logo" src="${pageContext.request.contextPath }/img/매치잇.png" alt="대체_텍스트"></a>
                 </li>
                 <li class="nav-item">
                   <a class="nav-link" href="${pageContext.request.contextPath }/dataroom/list.do?viewtype=1">게시판</a>
@@ -79,7 +80,6 @@
             <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=1">지원자 목록</a></li>
             <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitadd.do">공고 등록</a></li>
             <li class="info_title"><a href="${pageContext.request.contextPath }/recruit/recruitmylist.do?mylist=0">내 공고 확인</a></li>
-            <li class="info_title"><a href="">내 정보 수정</a></li>
           </ul>    
         </div>
         <div class="info_right">

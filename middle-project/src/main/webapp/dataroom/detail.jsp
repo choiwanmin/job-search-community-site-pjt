@@ -103,7 +103,7 @@ const edit = (num) =>{
 <!-- 글 보여주기 끝 -->
 <div id='getJson' style="border:1px solid blue;display:none;position:absolute;top:50px;left:200px"></div>
 <table class="table table-bordered">
-<tr><th>댓글작성</th><th><textarea rows="5" cols="30" name="comment" ></textarea></th><th><input type="submit" value="작성" class="btn btn-primary btn-comment"></th></tr>
+<tr><th>댓글작성</th><th><textarea rows="5" cols="30" name="comment" ></textarea></th><th><input type="submit" value="작성" class="btn btn-custom me-2"></th></tr>
 </table>
 </form>
 <table class="table table-bordered">
