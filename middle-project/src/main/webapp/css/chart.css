@@ -1,0 +1,9 @@
+.chart_wrap{
+	display: flex;
+	  justify-content: center;
+    align-items: center;
+}
+
+#gender_chart{
+	margin-right:30px;
+}
