@@ -22,12 +22,17 @@
 </div>
   
 <table id="apply_list" class = "table table-striped table-hover">
+<thead>
 <tr>
 <th>지원자 ID</th>
 <th>학력</th>
 <th>경력</th>
 <th>나이</th>
 </tr>
+</thead>
+<tbody>
+
+</tbody>
 
 </table>
 </body>
@@ -48,12 +53,31 @@ let doctor = 0;
 
 
 const chageLangSelect=()=>{
+	//통계용 성별 변수
+	mal = 0;
+	fam = 0;
+
+	any = 0;
+	high = 0;
+	der = 0;
+	coll = 0;
+	master = 0;
+	doctor = 0;
+
     var langSelect = document.getElementById("selectbox");
     var selectValue = langSelect.options[langSelect.selectedIndex].value;
     const req = new XMLHttpRequest();
-    let table = document.querySelector("#apply_list");
+    let table = document.querySelector("tbody");
+    while(table.rows.length > 0){
+    	table.deleteRow(0);
+    }
+    
+    
+	const can_wrap = document.getElementById('can_wrap');
+	can_wrap.innerHTML="";
     req.onload = () => {
 		let arr = JSON.parse(req.responseText);
+		console.log(arr)
 		for(let total of arr.total){
 			for(let key in total){
 				//성별
@@ -73,7 +97,6 @@ const chageLangSelect=()=>{
 		gen.id = 'gender_chart';
 		const edu = document.createElement("canvas");
 		edu.id = 'edu_chart';
-		const can_wrap = document.getElementById('can_wrap');
 		can_wrap.append(gen);
 		can_wrap.append(edu);
 		chart();
