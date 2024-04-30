@@ -12,12 +12,12 @@ public class ScrapService {
 	public void add(Scrap s) {
 		ArrayList<Scrap> arr=dao.selectById(s.getUserid());
 		if(arr.size()>=10) {
-			dao.delete(arr.get(0).getScrp_num());
+			dao.delete(arr.get(0).getWanted_auth_no(),arr.get(0).getUserid());
 		}	
 		dao.insert(s);
 	}
-	public void delete(int num) {
-		dao.delete(num);
+	public void delete(String num,String id) {
+		dao.delete(num,id);
 	}
 	
 	public Scrap getByNum(int num) {

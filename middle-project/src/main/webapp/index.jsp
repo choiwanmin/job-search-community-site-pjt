@@ -112,7 +112,7 @@ const ae=(val,ti)=>{
                   <li class="nav-item nav-link">
                     ${sessionScope.loginId } /${sessionScope.loginType } 회원 <span id="user">▼</span>
              <nav id="show" class="nav flex-column show">
-				<c:if test="${sessionScope.loginType.equals('구직자') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/myinfo.do">내 정보 확인</a>
+				<c:if test="${sessionScope.loginType.equals('구직자') }"><a class="nav-link log-nav" href="${pageContext.request.contextPath }/person/info.do">내 정보 확인</a>
 				<a class="nav-link log-nav" href="${pageContext.request.contextPath }/mem/logout.do">로그아웃</a>
 				<a class="nav-link log-nav"  href="${pageContext.request.contextPath }/dataroom/add.do">자료 등록</a>
 				<a class="nav-link log-nav"  href="${pageContext.request.contextPath }/appform/add.do">지원서 등록</a>

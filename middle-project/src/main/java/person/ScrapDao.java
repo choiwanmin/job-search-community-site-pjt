@@ -39,15 +39,16 @@ public class ScrapDao {
 			}
 		}
 	}
-	public void delete(int num) {
+	public void delete(String num,String id) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "delete scrap where scrap_num=?";
+		String sql = "delete scrap where wanted_auth_no=? and userid=?";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
 			// pstmt.set..(?순서, 값): ? 들어갈 값 설정
-			pstmt.setInt(1,num);
+			pstmt.setString(1,num);
+			pstmt.setString(2,id);
 			// sql 실행
 			int cnt = pstmt.executeUpdate();// insert, update, delete문장 실행.
 			// pstmt.executeQuery()//select문 실행 => ResultSet 반환
@@ -117,7 +118,7 @@ public class ScrapDao {
 				s = new Scrap();
 				s.setScrp_num(rs.getInt(1));
 				s.setWanted_auth_no(rs.getString(3));//1번 컬럼의 문자열 값을 읽음
-				s.setWanted_auth_no(rs.getString(2));
+				s.setUserid(rs.getString(2));
 				list.add(s);
 			}
 		} catch (SQLException e) {

@@ -18,7 +18,7 @@ public class applyHandler implements Handler {
 	@Override
 	public String process(HttpServletRequest request, HttpServletResponse response) {
 		//공고 최초 지원하기
-		String view = "/index.jsp";
+		String view = "/person/info.jsp";
 		//post=처음 회사 정보 등록(db에 추가)
 		if(request.getMethod().equals("GET")) {
 			//지원자 ID
@@ -37,12 +37,15 @@ public class applyHandler implements Handler {
 
 			applyService.addApply(new RecruitApply(wanted_auth_no,r.getWantedTitle(),num,null,r.getBusiNo()));
 				
-			view = "/index.jsp";
+			request.setAttribute("view", "/apply/list.jsp");
 		}else {//지원 공고 리스트 보기
 			//지원자 ID
 			String userid = (String)request.getSession().getAttribute("loginId");
+			PersonService pservice = new PersonService();
+			Person p = pservice.getPerson(userid);
+			int num = p.getNum();
 			RecruitApplyService rservice = new RecruitApplyService();
-			ArrayList<RecruitApply> list = rservice.getUserList(userid);
+			ArrayList<RecruitApply> list = rservice.getUserList(num);
 			
 			
 			request.setAttribute("view", "/recruit/recruitdetail.jsp");

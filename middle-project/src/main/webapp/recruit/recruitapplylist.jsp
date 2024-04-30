@@ -8,6 +8,10 @@
 <title>Insert title here</title>
 <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
 <script type="text/javascript">
+const pdetail=(num)=>{
+	console.log(num)
+	//location.href = '${pageContext.request.contextPath }/person/detail.do?num=${'+num+'}';
+}
 const chageLangSelect=()=>{
     var langSelect = document.getElementById("selectbox");
     var selectValue = langSelect.options[langSelect.selectedIndex].value;
@@ -15,8 +19,8 @@ const chageLangSelect=()=>{
     let table = document.querySelector("#apply_list");
     req.onload = () => {
 		let arr = JSON.parse(req.responseText);
-		for(let a of arr){
-			console.log(a)
+		for(let a of arr){ 
+						
 		}
 	}
 	req.open('get', '${pageContext.request.contextPath }/mem/applyDetail.do?wanted_auth_no='+selectValue);

@@ -96,13 +96,13 @@ public class RecruitApplyDao {
 		return list;
 	}
 	//userSelect(유저가 지원한 리스트)
-	public ArrayList<RecruitApply> selectByUser(String applycant_num) {
+	public ArrayList<RecruitApply> selectByUser(int applycant_num) {
 		Connection conn = db.conn();
 		String sql = "select * from recruit_apply where applycant_num=? order by appldate";
 		ArrayList<RecruitApply> list = new ArrayList<RecruitApply>();
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
-			pstmt.setString(1, applycant_num);
+			pstmt.setInt(1, applycant_num);
 			ResultSet rs = pstmt.executeQuery();
 			//ResultSet 읽을 줄로 이동
 			while(rs.next()) {
@@ -131,8 +131,9 @@ public class RecruitApplyDao {
 			catch (SQLException e) {e.printStackTrace();}
 		}
 	}
-	//지원자 나이 통계용(sql 설정)
-	public RecruitApply count(String wanted_auth_no) {
+
+	//통계용(sql 설정)
+	public RecruitApply getCountGender (String wanted_auth_no) {
 		Connection conn = db.conn();
 		String sql = "select gender,count(gender) from recruit_apply,person where recruit_apply.wanted_auth_no=? and  recruit_apply.applycant_num = person.num group by gender;";
 		try {

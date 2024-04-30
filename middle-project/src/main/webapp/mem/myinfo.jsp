@@ -29,7 +29,6 @@ window.onload = () => {
 TYPE
 </div>
 <div style="width:600px; display:flex;">
-<div style="justify-content: flex-end;"><a href="${pageContext.request.contextPath }/person/personadd.do">추가정보등록</a></div>
 <table style="padding: 40px; width: 600px">
 <tr><th>ID</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="id" value="${m.id }" readonly></td></tr>
 <tr><th>PWD</th><td><input class="form-control form-control-lg" type="text" placeholder=".form-control-lg" aria-label=".form-control-lg example" name="pwd" value="${m.pwd }" readonly></td></tr>
@@ -47,7 +46,6 @@ TYPE
 				<div class="col-sm-10">
 				<div>
 					<span>
-					<input type="submit" value="수정" style="width: 80px">
 					</span>
 				</div>
 			</div>
