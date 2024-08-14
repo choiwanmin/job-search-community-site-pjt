@@ -21,7 +21,7 @@ public class MemDao {
 	public void insert(Mem m) {
 		Connection conn = db.conn();
 		// 실행할 쿼리문 작성
-		String sql = "insert into member values(?,?,?)";
+		String sql = "insert into member_tb values(?,?,?)";
 		// 자바에서 sql을 실행할 수 있는 PreparedStatement 생성
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -48,7 +48,7 @@ public class MemDao {
 
 	public int update(Mem m) {// id로 찾아서 pwd수정
 		Connection conn = db.conn();
-		String sql = "update member set pwd=? where id=?";
+		String sql = "update member_tb set pwd=? where id=?";
 		int cnt = 0;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -74,7 +74,7 @@ public class MemDao {
 	//회원탈퇴
 	public int delete(String id) {
 	      Connection conn = db.conn();
-	      String sql = "delete from member where id=?";
+	      String sql = "delete from member_tb where id=?";
 	      int cnt = 0;
 	      try {
 	         PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -98,7 +98,7 @@ public class MemDao {
 	//pk기준 검색 메서드는 반환타입은 vo, 파라메터는 pk 컬럼. mem은 String id를 파람으로 받음
 	public Mem select(String id) {
 		Connection conn = db.conn();
-		String sql = "select * from member where id=?";
+		String sql = "select * from member_tb where id=?";
 		Mem mem = null;
 		try {
 			PreparedStatement pstmt = conn.prepareStatement(sql);
@@ -133,7 +133,7 @@ public class MemDao {
 		Connection conn = db.conn();
 		
 		//sql문 작성
-		String sql = "select * from member";
+		String sql = "select * from member_tb";
 		
 		//ArrayList 생성
 		ArrayList<Mem> list = new ArrayList<Mem>();
