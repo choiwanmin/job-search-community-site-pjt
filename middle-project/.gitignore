@@ -115,9 +115,6 @@ buildNumber.properties
 # JDT-specific (Eclipse Java Development Tools)
 .classpath
 
-# DB info
-src/main/java/conn/DBConnect.java
-
 ### Windows ###
 # Windows thumbnail cache files
 Thumbs.db
