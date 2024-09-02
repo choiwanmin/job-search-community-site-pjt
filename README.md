@@ -1,5 +1,5 @@
 # MatchIt<br/>(구인 및 구직을 위한 채용 사이트)
-*※ 기존에 수행한 https://github.com/choiwanmin/kosta_final_pjt_restapi_backend 프로젝트를 정비 및 정리*
+*※ 기존에 수행한 https://github.com/choiwanmin/Recruit_Project 프로젝트를 정비 및 정리*
 
 ## 목차
 * [프로젝트 소개](#프로젝트-소개)
@@ -12,25 +12,24 @@
 
 ## 프로젝트 소개
 > ### 프로젝트 개요
-* 
-* 개발 기간 :
-* 개발 구성원 :
+* 수업을 통해 학습한 Java, Maven, Servlet&Jsp 기술을 활용한 프로젝트 수행
+* Open-API를 활용한 개발 프로젝트 수행
+* 개발 기간 : 2024.04.12 ~ 2024.04.29 (13일)
+* 개발 구성원 : 5명 (FullStack 5)
 > ### 프로젝트 목표
-* 팀 목표 :
-* 개인 목표 : 기술적으로 DB 및 DBMS에 중심을 두고 프로젝트 참여를 목표
+* 팀 목표 : Open API를 활용한 채용 사이트 개발을 목표로 함
+* 개인 목표 : Open API를 통해 기업의 채용 정보 관련 기능 개발을 목표로 함
 
 ## 기술 스택
 |구분|사용 기술|
 |:---|:---|
-|Front-End||
-|Back-End||
-|Data Analysis||
-|DBMS||
-|Storage||
-|Server||
-|IDE||
-|SCM||
-|Etc.||
+|Front-End|`HTML`, `CSS`, `Javascript`|
+|Back-End|`Java`, `JDBC`, `Maven`, `Servlet&JSP`, `JSTL`, `EL`, `Open-API`|
+|DBMS|`Oracle`|
+|Server|`Apache Tomcat`|
+|IDE|`Eclipse`, `Oracle Sql Developer`|
+|SCM|`Git & Github`|
+|Etc.|`Kakaotalk`, `ChatGPT`|
 
 ## 주요 기능
 
