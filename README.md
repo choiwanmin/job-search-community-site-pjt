@@ -45,7 +45,19 @@
 ## 기타
 > ### DB ERD
 
+<details>
+<summary>DB ERD 보기</summary>
+<div markdown="1">
+  
+</div>
+</details>
+
 > ### 프로젝트 구조
+
+<details>
+<summary>프로젝트 구조 보기</summary>
+<div markdown="1">
+  
 ```
 📦kosta_mini_pjt2_review
 ┣ 📂.git
@@ -448,3 +460,6 @@
 ┃ ┣ 📂Tomcat v9.0 Server at localhost-config
 ┃ ┗ 📜.project
 ```
+
+</div>
+</details>
