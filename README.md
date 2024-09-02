@@ -1,4 +1,4 @@
-# MATCHIT<br/>(구인 및 구직을 위한 채용 사이트)
+# MatchIt<br/>(구인 및 구직을 위한 채용 사이트)
 *※ 기존에 수행한 https://github.com/choiwanmin/kosta_final_pjt_restapi_backend 프로젝트를 정비 및 정리*
 
 ## 목차
