@@ -47,7 +47,8 @@
 <details>
 <summary>DB ERD 보기</summary>
 <div markdown="1">
-  
+  |![minipjt2_erd](https://github.com/user-attachments/assets/1280d43c-ff5f-4ab0-8a9c-f001d0b88cb3)|
+  |:---:|
 </div>
 </details>
 
