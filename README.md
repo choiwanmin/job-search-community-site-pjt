@@ -55,7 +55,12 @@
 
 ## 클라이언트 화면 UI
 *※ 2024/00/00 기준 데이터 UI*
-> ### 메인 관련 페이지
+<details>
+<summary> > ### 메인 관련 페이지 </summary>
+<div markdown="1">
+ 
+</div>
+</details>
 
 <details>
 <summary>메인 관련 페이지 보기</summary>
