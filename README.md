@@ -58,7 +58,7 @@
 > ### 메인 관련 페이지
 
 <details>
-<summary>구직 지원자 페이지 보기</summary>
+<summary>메인 관련 페이지 보기</summary>
 <div markdown="1">
  
  |메인 페이지|
