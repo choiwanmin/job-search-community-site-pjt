@@ -63,15 +63,15 @@
  
  |메인 페이지|
  |:---:|
- ||
+ |![minipjt2_ui_메인페이지](https://github.com/user-attachments/assets/6dfe7c21-2f8f-4bda-84e3-0d09105c01dc)|
 
  |공고 목록|워크넷 API 데이터 채용 공고|
  |:---:|:---:|
- |||
+ |![minipjt2_ui_공고목록페이지](https://github.com/user-attachments/assets/3800dc15-992a-4f26-b36c-87cc6c56c82b)|![minipjt2_ui_워크넥api공고페이지](https://github.com/user-attachments/assets/17ce21cb-0f25-4dde-869a-7f63778e6482)|
 
  |회원가입 페이지|로그인 페이지|
  |:---:|:---:|
- |||
+ |![minipjt2_회원가입페이지](https://github.com/user-attachments/assets/03b496ed-7e4f-4765-b8d0-f3e4dd53d1c4)|![minipjt2_로그인페이지](https://github.com/user-attachments/assets/b78a1cb8-de9c-4e51-ba20-18f9347d2227)|
 
 </div>
 </details>
@@ -81,11 +81,19 @@
 <details>
 <summary>구직 지원자 페이지 보기</summary>
 <div markdown="1">
- 
- |구직 지원자 페이지|로그인 페이지|
+
+ |지원자 정보 조회|지원자 정보 수정|
  |:---:|:---:|
- |||
-  
+ |![minipjt2_지원자정보조회](https://github.com/user-attachments/assets/3fd2a404-bc05-4abb-b73b-c05a9a9b353b)|![minipjt2_지원자정보수정](https://github.com/user-attachments/assets/51324a8b-a664-44d9-a5f4-a66c1eff340b)|
+
+ |지원자 서류 등록|지원 목록|
+ |:---:|:---:|
+ |![minipjt2_구직자이력서등록](https://github.com/user-attachments/assets/4dc9be83-ec0d-4032-8862-3da1837657b4)|![minipjt2_구직지원자지원목록](https://github.com/user-attachments/assets/928e1e01-8b54-4844-886f-91aad7682080)|
+
+ |최근 본 공고|공고 스크랩|
+ |:---:|:---:|
+ |![minipjt2_구직지원자최근본공고](https://github.com/user-attachments/assets/7d34ac1a-07c3-4cc3-9030-7c60a80ac65b)|![minipjt2_구직지원자공고스크랩](https://github.com/user-attachments/assets/9bbb611f-1305-4129-8e0d-1ae728a56baa)|
+   
 </div>
 </details>
 
@@ -94,23 +102,32 @@
 <details>
 <summary>구인 기업 페이지 보기</summary>
 <div markdown="1">
-
- |구인 기업 페이지|로그인 페이지|
+ 
+ |기업 정보 등록|기업 정보 수정|
  |:---:|:---:|
- |||
+ |![minipjt2_구인기업정보등록](https://github.com/user-attachments/assets/e6c335bf-3d76-433a-8b4c-494171baf576)|![minipjt2_구인기업정보수정](https://github.com/user-attachments/assets/f33c1e7c-3413-4212-82cb-be5c6090bd66)|
+ 
+ |기업 공고 등록|기업이 등록한 공고|
+ |:---:|:---:|
+ |![minipjt2_구인기업공고등록](https://github.com/user-attachments/assets/d83914f3-6de6-4131-9b26-402c9dedb400)|![minipjt2_구인기업등록한공고](https://github.com/user-attachments/assets/0e0291cf-5c14-46dc-9aff-c8e38d32ae4f)|
 
-
+ |등록한 공고 목록|등록한 공고 지원 통계|
+ |:---:|:---:|
+ |![minipjt2_구인기업등록한공고목록](https://github.com/user-attachments/assets/c58ce2b7-dd9e-4837-acd5-e06a8f4141fa)|![minipjt2_구인기업등록한공고지원통계](https://github.com/user-attachments/assets/2dc3d10d-aca7-41b2-948d-638af97640a7)|
+ 
+ 
 </div>
 </details>
 
 > ### 게시판 페이지
+
 <details>
 <summary>게시판 페이지 보기</summary>
 <div markdown="1">
 
- |게시판 페이지|로그인 페이지|
+ |게시판|게시글 페이지 댓글|
  |:---:|:---:|
- |||
+ |![minipjt2_게시판페이지](https://github.com/user-attachments/assets/e583211c-4f10-4c91-9b9a-112dbb7d1fff)|![minipjt2_댓글페이지](https://github.com/user-attachments/assets/de766f15-111b-47fd-82a6-d8190e09ce5b)|
  
 </div>
 </details>
