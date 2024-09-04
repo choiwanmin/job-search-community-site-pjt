@@ -56,9 +56,9 @@
    |![minipjt2_워크넷api (8)](https://github.com/user-attachments/assets/cda393df-d043-4059-91c4-0ea9f4c4c8e6)|![minipjt2_워크넷api (1)](https://github.com/user-attachments/assets/8d741d4d-4ad9-4bdc-bf78-4e7c871372ca)|![minipjt2_워크넷api (2)](https://github.com/user-attachments/assets/3c74bdae-60f4-4999-ae11-8bdff72ccb32)|![minipjt2_워크넷api (6)](https://github.com/user-attachments/assets/cf264e89-262d-4a0a-8710-f290979f4bf5)|![minipjt2_워크넷api (7)](https://github.com/user-attachments/assets/5df6b315-6015-46f6-8fce-c7a702a58024)|
    
  * xml에 형태의 데이터를 DB 저장을 위해 가공 작업
-   |채용 공고 데이터 수집 및 시각화1|채용 공고 데이터 수집 및 시각화2|
-   |:---:|:---:|
-   |||
+   |채용 공고 데이터 수집|채용 공고 시각화1|채용 공고 시각화2|
+   |:---:|:---:|:---:|
+   |![minipjt2_워크넷api (3) - 복사본1](https://github.com/user-attachments/assets/3fb7cbfa-9c54-4a39-94c4-a1914ad04be6)|![minipjt2_워크넷api (4)](https://github.com/user-attachments/assets/6b8415da-57f3-4ec0-96a7-2e640cfa7b4e)|![minipjt2_워크넷api (5)](https://github.com/user-attachments/assets/6b462f8f-850b-4e79-a47c-cd4080258839)|
    
 ## 프로젝트 아키텍쳐
 
