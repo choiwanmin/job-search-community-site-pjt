@@ -60,7 +60,7 @@
       
    |채용 공고 데이터 수집|채용 공고 시각화1|채용 공고 시각화2|
    |:---:|:---:|:---:|
-   |![minipjt2_워크넷api (3)](https://github.com/user-attachments/assets/66983b18-69ed-4757-b0bc-757de02955c9)|![minipjt2_워크넷api (4)](https://github.com/user-attachments/assets/6b8415da-57f3-4ec0-96a7-2e640cfa7b4e)|![minipjt2_워크넷api (5)](https://github.com/user-attachments/assets/6b462f8f-850b-4e79-a47c-cd4080258839)|
+   |![minipjt2_워크넷api (3)](https://github.com/user-attachments/assets/3afd24e4-a791-4d30-ae7b-ca4eca933376)|![minipjt2_워크넷api (4)](https://github.com/user-attachments/assets/6b8415da-57f3-4ec0-96a7-2e640cfa7b4e)|![minipjt2_워크넷api (5)](https://github.com/user-attachments/assets/6b462f8f-850b-4e79-a47c-cd4080258839)|
    
 ## 프로젝트 아키텍쳐
 
