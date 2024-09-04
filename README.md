@@ -49,9 +49,6 @@
   * 댓글 기능
 
 ## 주요 작업 내용
-> ### 설계 및 개발
- * 다양한 채용 플랫폼을 참고하여 워크넷 API 정보를 잘 나타낼 수 있는 기능과 화면을 선정
- * 설계한 기능과 UI를 지속적으로 수정 및 보완하며 개발 진행
 > ### 워크넷 API를 활용한 채용 정보 데이터 수집
  * 워크넷 오픈 API를 통해 채용 정보에서 채용 목록 및 채용 상세 정보를 데이터 수집 대상으로 선정<br/>*(https://openapi.work.go.kr/opi/opi/opia/wantedApiListVw.do)*
    
@@ -60,11 +57,16 @@
    |![minipjt2_워크넷api (8)](https://github.com/user-attachments/assets/cda393df-d043-4059-91c4-0ea9f4c4c8e6)|![minipjt2_워크넷api (1)](https://github.com/user-attachments/assets/8d741d4d-4ad9-4bdc-bf78-4e7c871372ca)|![minipjt2_워크넷api (2)](https://github.com/user-attachments/assets/3c74bdae-60f4-4999-ae11-8bdff72ccb32)|![minipjt2_워크넷api (6)](https://github.com/user-attachments/assets/cf264e89-262d-4a0a-8710-f290979f4bf5)|![minipjt2_워크넷api (7)](https://github.com/user-attachments/assets/5df6b315-6015-46f6-8fce-c7a702a58024)|
    
  * xml에 형태의 데이터를 DB 저장을 위해 가공 작업
-      
+  *※ 2024/00/00 기준 데이터 UI*
+   
    |채용 공고 데이터 수집|채용 공고 시각화1|채용 공고 시각화2|
    |:---:|:---:|:---:|
    |![minipjt2_워크넷api (3)](https://github.com/user-attachments/assets/3afd24e4-a791-4d30-ae7b-ca4eca933376)|![minipjt2_워크넷api (4)](https://github.com/user-attachments/assets/6b8415da-57f3-4ec0-96a7-2e640cfa7b4e)|![minipjt2_워크넷api (5)](https://github.com/user-attachments/assets/6b462f8f-850b-4e79-a47c-cd4080258839)|
-   
+
+> ### 설계 및 개발
+ * 다양한 채용 플랫폼을 참고하여 워크넷 API 정보를 잘 나타낼 수 있는 기능과 화면을 선정
+ * 설계한 기능과 UI를 지속적으로 수정 및 보완하며 개발 진행
+
 ## 프로젝트 아키텍쳐
 
 ## 클라이언트 화면 UI
