@@ -52,7 +52,7 @@
 > ### 워크넷 API를 활용한 채용 정보 데이터 수집
  * 워크넷 오픈 API를 통해 채용 목록 및 채용 상세 정보를 수집
    |워크넷 오픈 API|워크넷 오픈 API 채용 목록|워크넷 오픈 API 채용 상세|채용 목록 xml|채용 상세 xml|
-   |:---:|:---:|:---:|
+   |:---:|:---:|:---:|:---:|:---:|
    |![minipjt2_워크넷api (8)](https://github.com/user-attachments/assets/cda393df-d043-4059-91c4-0ea9f4c4c8e6)|![minipjt2_워크넷api (1)](https://github.com/user-attachments/assets/8d741d4d-4ad9-4bdc-bf78-4e7c871372ca)|![minipjt2_워크넷api (2)](https://github.com/user-attachments/assets/3c74bdae-60f4-4999-ae11-8bdff72ccb32)|![minipjt2_워크넷api (6)](https://github.com/user-attachments/assets/cf264e89-262d-4a0a-8710-f290979f4bf5)|![minipjt2_워크넷api (7)](https://github.com/user-attachments/assets/5df6b315-6015-46f6-8fce-c7a702a58024)|
    
  * xml에 형태의 데이터를 DB 저장을 위해 가공 작업
