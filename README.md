@@ -60,7 +60,7 @@
    
    |채용 공고 데이터 수집|채용 공고 시각화1|채용 공고 시각화2|
    |:---:|:---:|:---:|
-   |![minipjt2_워크넷api (3)](https://github.com/user-attachments/assets/3afd24e4-a791-4d30-ae7b-ca4eca933376)|![minipjt2_워크넷api (4)](https://github.com/user-attachments/assets/6b8415da-57f3-4ec0-96a7-2e640cfa7b4e)|![minipjt2_워크넷api (5)](https://github.com/user-attachments/assets/6b462f8f-850b-4e79-a47c-cd4080258839)|
+   |![minipjt2_워크넷api (3)](https://github.com/user-attachments/assets/3afd24e4-a791-4d30-ae7b-ca4eca933376)|![minipjt2_워크넷api (4)-1](https://github.com/user-attachments/assets/9e5e67c1-1af3-46d4-9cb7-92d8cc54e526)|![minipjt2_워크넷api (5)-1](https://github.com/user-attachments/assets/92ba67eb-33ee-4b79-903a-bc7c39f7fa86)|
 
 > ### 설계 및 개발
  * 다양한 채용 플랫폼을 참고하여 워크넷 API 정보를 잘 나타낼 수 있는 기능과 화면을 선정
