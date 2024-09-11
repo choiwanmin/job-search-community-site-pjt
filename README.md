@@ -21,7 +21,7 @@
 ## 기술 스택
 |구분|사용 기술|
 |:---|:---|
-|Front-End|`HTML`, `CSS`, `Javascript`, `Bootstrap`|
+|Front-End|`HTML`, `CSS`, `Javascript`, `Bootstrap`, `Ajax`|
 |Back-End|`Java`, `JDBC`, `Maven`, `Servlet&JSP`, `JSTL`, `EL`, `Open-API`|
 |DBMS|`Oracle`|
 |Server|`Apache Tomcat`|
